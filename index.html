@@ -1,10 +1,21 @@
 <!DOCTYPE html>
-<html lang="si">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>විශ්වවිද්‍යාල තොරතුරු | University Information</title>
+    <title>Higher Learning Hub - Your Guide After A/Ls</title>
     <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #3073b3;
+            --secondary-color: #2c5282;
+            --light-color: #e2e8f0;
+            --dark-color: #1a365d;
+            --success-color: #48bb78;
+            --warning-color: #ecc94b;
+            --danger-color: #f56565;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -13,976 +24,1129 @@
         }
 
         body {
-            background-color: #f5f5f5;
+            background-color: #f8f9fa;
             color: #333;
             line-height: 1.6;
         }
 
-        /* Navigation Bar */
-        .navbar {
-            background-color: #1a2a6c;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-container {
+        .container {
+            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .logo-container {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 0 1rem;
+            justify-content: center;
+            margin-bottom: 0.5rem;
         }
 
         .logo {
-            color: white;
-            font-size: 1.5rem;
-            font-weight: bold;
-            padding: 1rem 0;
-            text-decoration: none;
+            width: 60px;
+            height: 60px;
+            margin-right: 10px;
         }
 
-        .nav-menu {
+        .site-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .site-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--secondary-color);
+            padding: 0.5rem 0;
+        }
+
+        .nav-container {
             display: flex;
-            list-style: none;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .nav-item {
-            margin: 0 0.5rem;
-        }
-
-        .nav-link {
             color: white;
             text-decoration: none;
-            padding: 1rem;
-            display: block;
-            transition: background-color 0.3s, color 0.3s;
+            padding: 0.5rem 1rem;
+            margin: 0.25rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
         }
 
-        .nav-link:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+        .nav-item:hover {
+            background-color: rgba(255,255,255,0.1);
         }
 
-        .active {
-            background-color: rgba(255, 255, 255, 0.2);
-            font-weight: bold;
+        /* Main Content */
+        main {
+            padding: 2rem 0;
         }
 
-        .hamburger {
-            display: none;
-            cursor: pointer;
-        }
-
-        .bar {
-            display: block;
-            width: 25px;
-            height: 3px;
-            margin: 5px auto;
-            background-color: white;
-            transition: all 0.3s;
-        }
-
-        /* Header */
-        header {
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f);
-            color: white;
+        .welcome-section {
             text-align: center;
-            padding: 3rem 0;
-            margin-bottom: 2rem;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* Main Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Stream Categories Section */
-        .categories-section {
             margin-bottom: 3rem;
         }
 
-        .category-title {
+        .welcome-section h2 {
             font-size: 2rem;
-            margin-bottom: 1.5rem;
-            text-align: center;
-            color: #1a2a6c;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-
-        .category-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(to right, #1a2a6c, #b21f1f);
-        }
-
-        .stream-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .stream-card {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .stream-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .stream-header {
-            padding: 1.5rem;
-            text-align: center;
-            color: white;
-        }
-
-        .science-header {
-            background: linear-gradient(135deg, #0f9b0f, #52c234);
-        }
-
-        .commerce-header {
-            background: linear-gradient(135deg, #2980b9, #6dd5fa);
-        }
-
-        .arts-header {
-            background: linear-gradient(135deg, #8e44ad, #9b59b6);
-        }
-
-        .technology-header {
-            background: linear-gradient(135deg, #e67e22, #f39c12);
-        }
-
-        .stream-body {
-            padding: 1.5rem;
-        }
-
-        .stream-description {
+            color: var(--primary-color);
             margin-bottom: 1rem;
         }
 
-        .stream-courses {
-            margin-bottom: 1rem;
+        .welcome-section p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
         }
 
-        .course-item {
-            padding: 0.5rem 0;
-            border-bottom: 1px dashed #eee;
-        }
-
-        .course-item:last-child {
-            border-bottom: none;
-        }
-
-        .stream-btn {
+        .cta-button {
             display: inline-block;
-            background-color: #1a2a6c;
+            background-color: var(--primary-color);
             color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 5px;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
             text-decoration: none;
-            margin-top: 1rem;
+            font-weight: bold;
             transition: background-color 0.3s;
-            text-align: center;
-            width: 100%;
         }
 
-        .stream-btn:hover {
-            background-color: #0f1c45;
+        .cta-button:hover {
+            background-color: var(--secondary-color);
         }
 
-        .science-btn {
-            background-color: #0f9b0f;
-        }
-
-        .science-btn:hover {
-            background-color: #0a7a0a;
-        }
-
-        .commerce-btn {
-            background-color: #2980b9;
-        }
-
-        .commerce-btn:hover {
-            background-color: #1f6aa6;
-        }
-
-        .arts-btn {
-            background-color: #8e44ad;
-        }
-
-        .arts-btn:hover {
-            background-color: #763995;
-        }
-
-        .technology-btn {
-            background-color: #e67e22;
-        }
-
-        .technology-btn:hover {
-            background-color: #d35400;
-        }
-
-        /* Options Section */
-        .options-section {
+        /* Path Cards */
+        .path-section {
             margin-bottom: 3rem;
         }
 
-        .options-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: center;
-        }
-
-        .option-card {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 500px;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .option-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .card-header {
-            padding: 1.5rem;
+        .path-section h2 {
             text-align: center;
-            color: white;
-        }
-
-        .pass-header {
-            background: linear-gradient(135deg, #0f9b0f, #52c234);
-        }
-
-        .fail-header {
-            background: linear-gradient(135deg, #ff7e5f, #feb47b);
-        }
-
-        .card-body {
-            padding: 2rem;
-        }
-
-        .card-list {
-            list-style-type: none;
+            font-size: 1.8rem;
+            color: var(--primary-color);
             margin-bottom: 1.5rem;
         }
 
-        .card-list-item {
-            padding: 0.5rem 0;
-            border-bottom: 1px dashed #eee;
-        }
-
-        .card-list-item:last-child {
-            border-bottom: none;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: #1a2a6c;
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 5px;
-            text-decoration: none;
-            margin-top: 1rem;
-            transition: background-color 0.3s;
-        }
-
-        .btn:hover {
-            background-color: #0f1c45;
-        }
-
-        .pass-btn {
-            background-color: #0f9b0f;
-        }
-
-        .pass-btn:hover {
-            background-color: #0a7a0a;
-        }
-
-        .fail-btn {
-            background-color: #e67e22;
-        }
-
-        .fail-btn:hover {
-            background-color: #d35400;
-        }
-
-        /* Universities Section */
-        .universities-section {
-            margin-bottom: 3rem;
-        }
-
-        .universities-container {
+        .path-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
 
-        .university-card {
+        .path-card {
             background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s;
         }
 
-        .university-card:hover {
+        .path-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
 
-        .university-image {
+        .path-image {
             width: 100%;
             height: 180px;
-            background-color: #eee;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .university-image img {
-            width: 100%;
-            height: 100%;
             object-fit: cover;
         }
 
-        .university-info {
+        .path-content {
             padding: 1.5rem;
         }
 
-        .university-name {
+        .path-content h3 {
             font-size: 1.4rem;
+            color: var(--secondary-color);
             margin-bottom: 0.5rem;
-            color: #1a2a6c;
         }
 
-        .university-description {
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-            color: #555;
-        }
-
-        .popular-courses {
-            margin-top: 1rem;
-        }
-
-        .course-tag {
-            display: inline-block;
-            background-color: #f1f1f1;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
-            color: #444;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background-color: #1a2a6c;
-            color: white;
-            text-align: center;
-            padding: 3rem 0;
-            margin: 3rem 0;
-            border-radius: 10px;
-        }
-
-        .cta-title {
-            font-size: 2rem;
+        .path-content p {
             margin-bottom: 1rem;
         }
 
-        .cta-description {
-            max-width: 700px;
-            margin: 0 auto 2rem auto;
-        }
-
-        .cta-btn {
-            display: inline-block;
+        /* About Section */
+        .about-section {
             background-color: white;
-            color: #1a2a6c;
-            padding: 1rem 2rem;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s, transform 0.3s;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
         }
 
-        .cta-btn:hover {
-            background-color: #f9f9f9;
-            transform: scale(1.05);
+        .about-section h2 {
+            text-align: center;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .team-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-member h3 {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+        }
+
+        .team-member p {
+            font-size: 0.9rem;
+            color: #666;
         }
 
         /* Footer */
         footer {
-            background-color: #333;
+            background-color: var(--dark-color);
             color: white;
-            padding: 3rem 0 1.5rem 0;
+            padding: 2rem 0;
         }
 
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
+        .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
+            margin-bottom: 2rem;
         }
 
         .footer-section h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            position: relative;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-color);
             padding-bottom: 0.5rem;
         }
 
-        .footer-section h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background-color: #f1f1f1;
-        }
-
-        .footer-links {
+        .footer-section ul {
             list-style: none;
         }
 
-        .footer-links li {
-            margin-bottom: 0.8rem;
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
         }
 
-        .footer-links a {
+        .footer-section a {
             color: #ccc;
             text-decoration: none;
             transition: color 0.3s;
         }
 
-        .footer-links a:hover {
+        .footer-section a:hover {
             color: white;
         }
 
-        .footer-contact p {
-            margin-bottom: 0.8rem;
-            color: #ccc;
-        }
-
-        .social-icons {
+        .social-links {
             display: flex;
-            margin-top: 1.5rem;
+            gap: 1rem;
         }
 
         .social-icon {
-            width: 35px;
-            height: 35px;
-            background-color: #555;
+            width: 40px;
+            height: 40px;
+            background-color: #444;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 0.8rem;
-            text-decoration: none;
             transition: background-color 0.3s;
         }
 
         .social-icon:hover {
-            background-color: #777;
+            background-color: var(--primary-color);
         }
 
         .copyright {
             text-align: center;
-            padding-top: 2rem;
-            margin-top: 2rem;
+            padding-top: 1rem;
+            margin-top: 1rem;
             border-top: 1px solid #444;
-            color: #ccc;
         }
 
-        /* Responsive design */
+        /* Path Selection Page Styles */
+        .path-selection {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .path-selection h2 {
+            text-align: center;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .path-flowchart {
+            max-width: 100%;
+            display: block;
+            margin: 0 auto 2rem;
+        }
+
+        .stream-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stream-card {
+            background-color: var(--light-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .stream-card:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-5px);
+            cursor: pointer;
+        }
+
+        .stream-card h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .stream-card p {
+            font-size: 0.9rem;
+        }
+
+        .sector-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .sector-card {
+            background-color: white;
+            border: 2px solid var(--light-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: border-color 0.3s;
+        }
+
+        .sector-card:hover {
+            border-color: var(--primary-color);
+        }
+
+        .sector-card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--light-color);
+        }
+
+        .institution-list {
+            list-style: none;
+        }
+
+        .institution-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .institution-list li:before {
+            content: "•";
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+        }
+
+        .institution-list a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .institution-list a:hover {
+            color: var(--primary-color);
+        }
+
+        /* YouTube Section */
+        .youtube-section {
+            margin-bottom: 3rem;
+        }
+
+        .youtube-section h2 {
+            text-align: center;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .video-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 180px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .play-button {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background-color: rgba(0,0,0,0.7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .play-button:after {
+            content: "";
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-left: 18px solid white;
+            border-bottom: 10px solid transparent;
+            margin-left: 5px;
+        }
+
+        .video-info {
+            padding: 1rem;
+        }
+
+        .video-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .video-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 2rem;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .contact-form h2 {
+            text-align: center;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        textarea.form-input {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Responsive Styles */
         @media (max-width: 768px) {
-            .hamburger {
-                display: block;
+            .site-title {
+                font-size: 2rem;
             }
 
-            .hamburger.active .bar:nth-child(1) {
-                transform: translateY(8px) rotate(45deg);
+            .site-subtitle {
+                font-size: 1rem;
             }
 
-            .hamburger.active .bar:nth-child(2) {
-                opacity: 0;
+            .team-grid, .path-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .site-title {
+                font-size: 1.8rem;
             }
 
-            .hamburger.active .bar:nth-child(3) {
-                transform: translateY(-8px) rotate(-45deg);
-            }
-
-            .nav-menu {
-                position: fixed;
-                left: -100%;
-                top: 60px;
+            .nav-container {
                 flex-direction: column;
-                background-color: #1a2a6c;
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
             }
 
-            .nav-menu.active {
-                left: 0;
-            }
-
-            .nav-item {
-                margin: 0;
-            }
-
-            .options-container {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .option-card {
-                max-width: 100%;
+            .team-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-<!-- Navigation Bar -->
-<nav class="navbar">
-    <div class="nav-container">
-        <a href="#" class="logo">🎓 විශ්වවිද්‍යාල තොරතුරු</a>
+<!-- Header -->
+<header>
+    <div class="container">
+        <div class="logo-container">
+            <img src="/api/placeholder/80/80" alt="Higher Learning Hub Logo" class="logo">
+            <div>
+                <h1 class="site-title">Higher Learning Hub</h1>
+                <p class="site-subtitle">Your Guide After A/L Exams</p>
+            </div>
+        </div>
+    </div>
+</header>
 
-        <ul class="nav-menu">
-            <li class="nav-item"><a href="index.html" class="nav-link active">මුල් පිටුව</a></li>
-            <li class="nav-item"><a href="#universities-section" class="nav-link">විශ්වවිද්‍යාල</a></li>
-            <li class="nav-item"><a href="#categories-section" class="nav-link">පාඨමාලා</a></li>
-            <li class="nav-item"><a href="alternatives.html" class="nav-link">විකල්ප අවස්ථා</a></li>
-            <li class="nav-item"><a href="resources.html" class="nav-link">සම්පත්</a></li>
-            <li class="nav-item"><a href="contact.html" class="nav-link">සම්බන්ධ වන්න</a></li>
-        </ul>
-
-        <div class="hamburger">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
+<!-- Navigation -->
+<nav>
+    <div class="container">
+        <div class="nav-container">
+            <a href="#home" class="nav-item">Home</a>
+            <a href="#path-selection" class="nav-item">Path Selection</a>
+            <a href="#institutions" class="nav-item">Institutions</a>
+            <a href="#resources" class="nav-item">Resources</a>
+            <a href="#youtube" class="nav-item">YouTube Channel</a>
+            <a href="#about" class="nav-item">About Us</a>
+            <a href="#contact" class="nav-item">Contact</a>
         </div>
     </div>
 </nav>
 
-<!-- Header -->
-<header>
+<!-- Main Content -->
+<main>
     <div class="container">
-        <h1>විශ්වවිද්‍යාල තොරතුරු කේන්ද්‍රය</h1>
-        <p class="subtitle">ඔබේ විෂය ධාරාව අනුව උසස් අධ්‍යාපන අවස්ථා සොයා ගැනීමට සහ ඔබේ අනාගතය සැලසුම් කිරීමට අවශ්‍ය සියලු තොරතුරු මෙහි ඇත</p>
+        <!-- Welcome Section -->
+        <section id="home" class="welcome-section">
+            <h2>Welcome to Higher Learning Hub</h2>
+            <p>Your one-stop resource for educational guidance after A/L exams. We understand how overwhelming it can be to plan your future education and career path. Our mission is to provide clear, concise information to help you make informed decisions about your next steps.</p>
+            <a href="#path-selection" class="cta-button">Explore Your Options</a>
+        </section>
+
+        <!-- Path Selection Section -->
+        <section id="path-selection" class="path-selection">
+            <h2>Find Your Path After A/L Exams</h2>
+            <img src="/api/placeholder/800/400" alt="Educational Path Flowchart" class="path-flowchart">
+
+            <h3 style="text-align: center; margin-bottom: 1.5rem;">Select Your Status</h3>
+
+            <div class="stream-options">
+                <div class="stream-card" onclick="location.href='#passed'">
+                    <h3>Passed A/L Exams</h3>
+                    <p>Explore options for higher education</p>
+                </div>
+                <div class="stream-card" onclick="location.href='#failed'">
+                    <h3>Failed A/L Exams</h3>
+                    <p>Discover alternative pathways</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- A/L Passed Section -->
+        <section id="passed" class="path-selection">
+            <h2>Options After Passing A/L Exams</h2>
+            <h3 style="text-align: center; margin-bottom: 1.5rem;">Select Your A/L Stream</h3>
+
+            <div class="stream-options">
+                <div class="stream-card" onclick="location.href='#maths'">
+                    <h3>Mathematics</h3>
+                    <p>Engineering, IT, Science & more</p>
+                </div>
+                <div class="stream-card" onclick="location.href='#science'">
+                    <h3>Science</h3>
+                    <p>Medicine, Biology, Agriculture & more</p>
+                </div>
+                <div class="stream-card" onclick="location.href='#technology'">
+                    <h3>Technology</h3>
+                    <p>Engineering Technology, Bio Systems & more</p>
+                </div>
+                <div class="stream-card" onclick="location.href='#commerce'">
+                    <h3>Commerce</h3>
+                    <p>Business, Accounting, Economics & more</p>
+                </div>
+                <div class="stream-card" onclick="location.href='#arts'">
+                    <h3>Arts</h3>
+                    <p>Humanities, Law, Languages & more</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mathematics Stream Options -->
+        <section id="maths" class="path-selection">
+            <h2>Options for Mathematics Stream Students</h2>
+
+            <div class="sector-options">
+                <div class="sector-card">
+                    <h3>Government Sector</h3>
+                    <ul class="institution-list">
+                        <li><a href="#">University of Moratuwa - Engineering</a></li>
+                        <li><a href="#">University of Peradeniya - Engineering</a></li>
+                        <li><a href="#">University of Colombo - IT/Computer Science</a></li>
+                        <li><a href="#">University of Kelaniya - Physical Sciences</a></li>
+                        <li><a href="#">University of Sri Jayewardenepura - Physical Sciences</a></li>
+                        <li><a href="#">University of Ruhuna - Engineering</a></li>
+                        <li><a href="#">University of Jaffna - Engineering/IT</a></li>
+                        <li><a href="#">Wayamba University - Industrial Management</a></li>
+                    </ul>
+                </div>
+
+                <div class="sector-card">
+                    <h3>Semi-Government Sector</h3>
+                    <ul class="institution-list">
+                        <li><a href="#">NSBM Green University - Computing/Engineering</a></li>
+                        <li><a href="#">SLIIT - IT/Engineering</a></li>
+                        <li><a href="#">IIT - IT/Computer Science</a></li>
+                        <li><a href="#">NIBM - Computing/Data Science</a></li>
+                        <li><a href="#">Ocean University - Maritime Studies</a></li>
+                        <li><a href="#">CINEC Campus - Engineering/IT</a></li>
+                        <li><a href="#">Ceylon German Technical Training Institute</a></li>
+                    </ul>
+                </div>
+
+                <div class="sector-card">
+                    <h3>Private Sector</h3>
+                    <ul class="institution-list">
+                        <li><a href="#">Horizon Campus - IT/Engineering</a></li>
+                        <li><a href="#">ICBT Campus - IT/Engineering</a></li>
+                        <li><a href="#">APIIT - Computing/Engineering</a></li>
+                        <li><a href="#">ACBT - IT/Computing</a></li>
+                        <li><a href="#">ANC - IT/Software Engineering</a></li>
+                        <li><a href="#">Saegis Campus - IT/Management</a></li>
+                        <li><a href="#">Esoft Metro Campus - IT/Engineering</a></li>
+                        <li><a href="#">KIU - Engineering/Technology</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Failed A/L Section -->
+        <section id="failed" class="path-selection">
+            <h2>Options After Not Passing A/L Exams</h2>
+
+            <div class="sector-options">
+                <div class="sector-card">
+                    <h3>Government Sector</h3>
+                    <ul class="institution-list">
+                        <li><a href="#">NAITA - National Apprentice and Industrial Training Authority</a></li>
+                        <li><a href="#">VTA - Vocational Training Authority</a></li>
+                        <li><a href="#">Department of Technical Education and Training</a></li>
+                        <li><a href="#">National Youth Services Council</a></li>
+                        <li><a href="#">Ceylon German Technical Training Institute</a></li>
+                    </ul>
+                </div>
+
+                <div class="sector-card">
+                    <h3>Semi-Government Sector</h3>
+                    <ul class="institution-list">
+                        <li><a href="#">NAITA Certificate Courses</a></li>
+                        <li><a href="#">NIBM Certificate Programs</a></li>
+                        <li><a href="#">Open University Certificate Courses</a></li>
+                        <li><a href="#">VTA Short Courses</a></li>
+                        <li><a href="#">Ocean University Certificate Programs</a></li>
+                    </ul>
+                </div>
+
+                <div class="sector-card">
+                    <h3>Private Sector</h3>
+                    <ul class="institution-list">
+                        <li><a href="#">ESOFT Certificate Courses</a></li>
+                        <li><a href="#">ICBT Certificate Programs</a></li>
+                        <li><a href="#">ACBT Foundation Programs</a></li>
+                        <li><a href="#">ANC Certificate/Diploma Programs</a></li>
+                        <li><a href="#">Saegis Campus Certificate Programs</a></li>
+                        <li><a href="#">CINEC Vocational Training</a></li>
+                        <li><a href="#">IDM Certificate Courses</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <h2>About Higher Learning Hub</h2>
+            <p>Higher Learning Hub is a mini project initiated by students at the Faculty of Technology, Wayamba University of Sri Lanka. Our goal is to address the challenge faced by post-2000 generation (GenZ) students who often lack clear guidance on their educational pathways after completing their A/L exams.</p>
+            <p>The main issue we identified is that many students simply follow paths recommended by friends or elders, often leading to educational choices that don't align with their goals and qualifications. As a generation that has grown up with technology at our fingertips, we created this resource to provide efficient, accurate information that helps students navigate their options.</p>
+
+            <h3 style="text-align: center; margin: 2rem 0 1rem;">Our Team</h3>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="/api/placeholder/120/120" alt="Team Member" class="team-photo">
+                    <h3>M.R.M. LAKSHAN</h3>
+                    <p>239123</p>
+                    <p>Website Development</p>
+                </div>
+                <div class="team-member">
+                    <img src="/api/placeholder/120/120" alt="Team Member" class="team-photo">
+                    <h3>L.G.N.M. LENDARA</h3>
+                    <p>239124</p>
+                    <p>Information Gathering</p>
+                </div>
+                <div class="team-member">
+                    <img src="/api/placeholder/120/120" alt="Team Member" class="team-photo">
+                    <h3>R. LIKSHANRAJ</h3>
+                    <p>239125</p>
+                    <p>YouTube Channel Management</p>
+                </div>
+                <div class="team-member">
+                    <img src="/api/placeholder/120/120" alt="Team Member" class="team-photo">
+                    <h3>D.L.M. LOKUGE</h3>
+                    <p>239129</p>
+                    <p>Information Research</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 2rem; text-align: center;">
+                <p>Academic Advisor: Mr. H.M.S.M HERATH</p>
+            </div>
+        </section>
+
+        <!-- YouTube Section -->
+        <section id="youtube" class="youtube-section">
+            <h2>Our YouTube Channel</h2>
+            <p style="text-align: center; margin-bottom: 1.5rem;">Check out our informative videos about higher education options and career pathways</p>
+
+            <div class="video-grid">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <div class="play-button"></div>
+                        <img src="/api/placeholder/300/180" alt="Video Thumbnail">
+                    </div>
+                    <div class="video-info">
+                        <h3>Government University Options After A/L</h3>
+                        <p>Learn about all government university opportunities in Sri Lanka</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <div class="play-button"></div>
+                        <img src="/api/placeholder/300/180" alt="Video Thumbnail">
+                    </div>
+                    <div class="video-info">
+                        <h3>Vocational Training Pathways</h3>
+                        <p>Explore vocational education options for practical skills</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <div class="play-button"></div>
+                        <img src="/api/placeholder/300/180" alt="Video Thumbnail">
+                    </div>
+                    <div class="video-info">
+                        <h3>Private University Guide</h3>
+                        <p>Comprehensive look at private higher education in Sri Lanka</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="#" class="cta-button">Visit Our YouTube Channel</a>
+            </div>
+        </section>
+
+        <!-- Contact Form -->
+        <section id="contact" class="contact-form">
+            <h2>Contact Us</h2>
+            <form>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" class="form-input" placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-input" placeholder="Your email">
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" class="form-input" placeholder="Subject">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" class="form-input" placeholder="Your message"></textarea>
+                </div>
+                <button type="submit" class="submit-button">Send Message</button>
+            </form>
+        </section>
     </div>
-</header>
-
-<div class="container">
-    <!-- A/L Options Section -->
-    <section class="options-section" id="al-options-section">
-        <h2 class="category-title">ඔබේ A/L ප්‍රතිඵල අනුව විකල්ප</h2>
-
-        <div class="options-container">
-            <!-- A/L Pass Card -->
-            <div class="option-card">
-                <div class="card-header pass-header">
-                    <h2>A/L විභාගය සමත් වූවන් සඳහා</h2>
-                </div>
-                <div class="card-body">
-                    <p>ඔබ A/L විභාගය සමත් වී රජයේ විශ්වවිද්‍යාල සඳහා තේරී සිටීම ගැන සුබ පැතුම්! මෙහි ඔබට ලැබෙන විකල්ප ගැන තොරතුරු ඇතුළත් වේ.</p>
-
-                    <h3>රජයේ විශ්වවිද්‍යාල පාඨමාලා</h3>
-                    <ul class="card-list">
-                        <li class="card-list-item">ඉංජිනේරු විද්‍යාව (Engineering)</li>
-                        <li class="card-list-item">වෛද්‍ය විද්‍යාව (Medicine)</li>
-                        <li class="card-list-item">පරිගණක විද්‍යාව (Computer Science)</li>
-                        <li class="card-list-item">ව්‍යාපාර පරිපාලනය (Business Administration)</li>
-                        <li class="card-list-item">නීතිය (Law)</li>
-                    </ul>
-
-                    <h3>ප්‍රධාන විශ්වවිද්‍යාල</h3>
-                    <ul class="card-list">
-                        <li class="card-list-item">කොළඹ විශ්වවිද්‍යාලය (University of Colombo)</li>
-                        <li class="card-list-item">පේරාදෙණිය විශ්වවිද්‍යාලය (University of Peradeniya)</li>
-                        <li class="card-list-item">මොරටුව විශ්වවිද්‍යාලය (University of Moratuwa)</li>
-                        <li class="card-list-item">කැළණිය විශ්වවිද්‍යාලය (University of Kelaniya)</li>
-                        <li class="card-list-item">ශ්‍රී ජයවර්ධනපුර විශ්වවිද්‍යාලය (Sri Jayewardenepura)</li>
-                    </ul>
-
-                    <a href="government-universities.html" class="btn pass-btn">වැඩි විස්තර බලන්න</a>
-                </div>
-            </div>
-
-            <!-- A/L Fail Card -->
-            <div class="option-card">
-                <div class="card-header fail-header">
-                    <h2>A/L විභාගය සමත් නොවූවන් සඳහා</h2>
-                </div>
-                <div class="card-body">
-                    <p>A/L විභාගය පරාජය වීම අවසානය නොවේ. ඔබට තවමත් ගුණාත්මක අධ්‍යාපනයක් ලබා ගැනීමට හා වෘත්තීය මාර්ගයක යාමට බොහෝ විකල්ප ඇත.</p>
-
-                    <h3>පෞද්ගලික විශ්වවිද්‍යාල/කැම්පස්</h3>
-                    <ul class="card-list">
-                        <li class="card-list-item">SLIIT (Sri Lanka Institute of Information Technology)</li>
-                        <li class="card-list-item">ICBT Campus (International College of Business & Technology)</li>
-                        <li class="card-list-item">NSBM Green University</li>
-                        <li class="card-list-item">IIT (Informatics Institute of Technology)</li>
-                        <li class="card-list-item">APIIT (Asia Pacific Institute of Information Technology)</li>
-                    </ul>
-
-                    <h3>වෙනත් පාඨමාලා විකල්ප</h3>
-                    <ul class="card-list">
-                        <li class="card-list-item">වෘත්
-
-                        <li class="card-list-item">වෘත්තීය පුහුණු ආයතන (VTA)</li>
-                        <li class="card-list-item">SLIATE (Sri Lanka Institute of Advanced Technical Education)</li>
-                        <li class="card-list-item">පිටරට විශ්වවිද්‍යාල සඳහා අයදුම් කිරීම</li>
-                        <li class="card-list-item">දුරස්ථ අධ්‍යාපන පාඨමාලා (Online Courses)</li>
-                        <li class="card-list-item">වෘත්තීය සහතික පාඨමාලා (Professional Certifications)</li>
-                    </ul>
-
-                    <a href="alternative-options.html" class="btn fail-btn">වැඩි විස්තර බලන්න</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Universities Section -->
-    <section class="universities-section" id="universities-section">
-        <h2 class="category-title">ප්‍රමුඛ විශ්වවිද්‍යාල</h2>
-
-        <div class="universities-container">
-            <!-- University 1 -->
-            <div class="university-card">
-                <div class="university-image">
-                    <img src="/api/placeholder/400/320" alt="කොළඹ විශ්වවිද්‍යාලය" />
-                </div>
-                <div class="university-info">
-                    <h3 class="university-name">කොළඹ විශ්වවිද්‍යාලය</h3>
-                    <p class="university-description">
-                        1921 දී ආරම්භ කරන ලද ශ්‍රී ලංකාවේ පැරණිතම විශ්වවිද්‍යාලය. වෛද්‍ය, නීති, විද්‍යා හා ව්‍යාපාර යන පීඨ සඳහා ප්‍රසිද්ධය.
-                    </p>
-                    <div class="popular-courses">
-                        <span class="course-tag">වෛද්‍ය විද්‍යාව</span>
-                        <span class="course-tag">නීතිය</span>
-                        <span class="course-tag">IT</span>
-                        <span class="course-tag">කළමනාකරණය</span>
-                    </div>
-                    <a href="colombo-university.html" class="btn">වැඩි විස්තර</a>
-                </div>
-            </div>
-
-            <!-- University 2 -->
-            <div class="university-card">
-                <div class="university-image">
-                    <img src="/api/placeholder/400/320" alt="පේරාදෙණිය විශ්වවිද්‍යාලය" />
-                </div>
-                <div class="university-info">
-                    <h3 class="university-name">පේරාදෙණිය විශ්වවිද්‍යාලය</h3>
-                    <p class="university-description">
-                        1942 දී ආරම්භ කරන ලද ශ්‍රී ලංකාවේ දෙවන පැරණිතම විශ්වවිද්‍යාලය. කෘෂිකර්මය, ඉංජිනේරු විද්‍යාව හා වෛද්‍ය සඳහා ප්‍රසිද්ධය.
-                    </p>
-                    <div class="popular-courses">
-                        <span class="course-tag">ඉංජිනේරු</span>
-                        <span class="course-tag">කෘෂිකර්මය</span>
-                        <span class="course-tag">වෛද්‍ය</span>
-                        <span class="course-tag">දන්ත වෛද්‍ය</span>
-                    </div>
-                    <a href="peradeniya-university.html" class="btn">වැඩි විස්තර</a>
-                </div>
-            </div>
-
-            <!-- University 3 -->
-            <div class="university-card">
-                <div class="university-image">
-                    <img src="/api/placeholder/400/320" alt="මොරටුව විශ්වවිද්‍යාලය" />
-                </div>
-                <div class="university-info">
-                    <h3 class="university-name">මොරටුව විශ්වවිද්‍යාලය</h3>
-                    <p class="university-description">
-                        තාක්ෂණික අධ්‍යාපනය සඳහා විශේෂිත වූ විශ්වවිද්‍යාලය. ඉංජිනේරු, වාස්තු විද්‍යාව සහ තොරතුරු තාක්ෂණය සඳහා ප්‍රසිද්ධය.
-                    </p>
-                    <div class="popular-courses">
-                        <span class="course-tag">ඉංජිනේරු</span>
-                        <span class="course-tag">IT</span>
-                        <span class="course-tag">වාස්තු විද්‍යාව</span>
-                        <span class="course-tag">උපකරණ</span>
-                    </div>
-                    <a href="moratuwa-university.html" class="btn">වැඩි විස්තර</a>
-                </div>
-            </div>
-
-            <!-- University 4 -->
-            <div class="university-card">
-                <div class="university-image">
-                    <img src="/api/placeholder/400/320" alt="ශ්‍රී ජයවර්ධනපුර විශ්වවිද්‍යාලය" />
-                </div>
-                <div class="university-info">
-                    <h3 class="university-name">ශ්‍රී ජයවර්ධනපුර විශ්වවිද්‍යාලය</h3>
-                    <p class="university-description">
-                        1959 දී ආරම්භ කරන ලද වාණිජ, කළමනාකරණ හා වෛද්‍ය පාඨමාලා සඳහා ප්‍රසිද්ධ විශ්වවිද්‍යාලයකි.
-                    </p>
-                    <div class="popular-courses">
-                        <span class="course-tag">කළමනාකරණය</span>
-                        <span class="course-tag">වෛද්‍ය</span>
-                        <span class="course-tag">ගිණුම්කරණය</span>
-                        <span class="course-tag">මානව ශාස්ත්‍ර</span>
-                    </div>
-                    <a href="jayawardenepura-university.html" class="btn">වැඩි විස්තර</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stream Categories Section -->
-    <section class="categories-section" id="categories-section">
-        <h2 class="category-title">විෂය ධාරා අනුව පාඨමාලා</h2>
-
-        <div class="stream-container">
-            <!-- Science Stream -->
-            <div class="stream-card">
-                <div class="stream-header science-header">
-                    <h2>විද්‍යා ධාරාව</h2>
-                </div>
-                <div class="stream-body">
-                    <p class="stream-description">විද්‍යා විෂයන් (භෞතික විද්‍යාව, රසායන විද්‍යාව, ජීව විද්‍යාව) හදාරන සිසුන් සඳහා ප්‍රධාන විශ්වවිද්‍යාල පාඨමාලා</p>
-
-                    <div class="stream-courses">
-                        <div class="course-item">වෛද්‍ය විද්‍යාව (MBBS)</div>
-                        <div class="course-item">ඉංජිනේරු විද්‍යාව (Engineering)</div>
-                        <div class="course-item">දන්ත වෛද්‍ය විද්‍යාව (Dental Surgery)</div>
-                        <div class="course-item">වෛද්‍ය රසායනාගාර විද්‍යාව (MLS)</div>
-                        <div class="course-item">ඖෂධවේදය (Pharmacy)</div>
-                    </div>
-
-                    <a href="science.html" class="stream-btn science-btn">වැඩි විස්තර</a>
-                </div>
-            </div>
-
-            <!-- Commerce Stream -->
-            <div class="stream-card">
-                <div class="stream-header commerce-header">
-                    <h2>වාණිජ ධාරාව</h2>
-                </div>
-                <div class="stream-body">
-                    <p class="stream-description">වාණිජ විෂයන් (ගිණුම්කරණය, ව්‍යාපාර අධ්‍යයනය, ආර්ථික විද්‍යාව) හදාරන සිසුන් සඳහා ප්‍රධාන විශ්වවිද්‍යාල පාඨමාලා</p>
-
-                    <div class="stream-courses">
-                        <div class="course-item">ව්‍යාපාර පරිපාලනය (Business Administration)</div>
-                        <div class="course-item">ගිණුම්කරණය (Accountancy)</div>
-                        <div class="course-item">මූල්‍ය (Finance)</div>
-                        <div class="course-item">අලෙවිකරණය (Marketing)</div>
-                        <div class="course-item">මානව සම්පත් කළමනාකරණය (HRM)</div>
-                    </div>
-
-                    <a href="commerce.html" class="stream-btn commerce-btn">වැඩි විස්තර</a>
-                </div>
-            </div>
-
-            <!-- Arts Stream -->
-            <div class="stream-card">
-                <div class="stream-header arts-header">
-                    <h2>කලා ධාරාව</h2>
-                </div>
-                <div class="stream-body">
-                    <p class="stream-description">කලා විෂයන් (භාෂා, ඉතිහාසය, භූගෝල විද්‍යාව, ආගම) හදාරන සිසුන් සඳහා ප්‍රධාන විශ්වවිද්‍යාල පාඨමාලා</p>
-
-                    <div class="stream-courses">
-                        <div class="course-item">නීතිය (Law)</div>
-                        <div class="course-item">භාෂා පරිවර්තනය (Language Translation)</div>
-                        <div class="course-item">මනෝ විද්‍යාව (Psychology)</div>
-                        <div class="course-item">සමාජ විද්‍යාව (Sociology)</div>
-                        <div class="course-item">පුරාවිද්‍යාව (Archaeology)</div>
-                    </div>
-
-                    <a href="arts.html" class="stream-btn arts-btn">වැඩි විස්තර</a>
-                </div>
-            </div>
-
-            <!-- Technology Stream -->
-            <div class="stream-card">
-                <div class="stream-header technology-header">
-                    <h2>තාක්ෂණ ධාරාව</h2>
-                </div>
-                <div class="stream-body">
-                    <p class="stream-description">තාක්ෂණික විෂයන් (ඉංජිනේරු තාක්ෂණය, ජෛව පද්ධති තාක්ෂණය) හදාරන සිසුන් සඳහා ප්‍රධාන විශ්වවිද්‍යාල පාඨමාලා</p>
-
-                    <div class="stream-courses">
-                        <div class="course-item">තාක්ෂණවේදය (Technology)</div>
-                        <div class="course-item">තොරතුරු තාක්ෂණය (Information Technology)</div>
-                        <div class="course-item">ජෛව පද්ධති තාක්ෂණය (Biosystems Technology)</div>
-                        <div class="course-item">ආහාර තාක්ෂණය (Food Technology)</div>
-                        <div class="course-item">සන්නිවේදන තාක්ෂණය (Communication Technology)</div>
-                    </div>
-
-                    <a href="technology.html" class="stream-btn technology-btn">වැඩි විස්තර</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <h2 class="cta-title">ඔබේ විශ්වවිද්‍යාල මාර්ගෝපදේශකයා සමඟ සම්බන්ධ වන්න</h2>
-            <p class="cta-description">උසස් අධ්‍යාපනය පිළිබඳ ප්‍රශ්න ඇත්ද? අපගේ උපදේශකයන් සමඟ පෞද්ගලික උපදේශන සැසිවාරයක් සඳහා ලියාපදිංචි වන්න.</p>
-            <a href="consultation.html" class="cta-btn">නොමිලේ උපදේශන සැසියක් වෙන් කරන්න</a>
-        </div>
-    </section>
-
-</div>
+</main>
 
 <!-- Footer -->
 <footer>
-    <div class="footer-container">
-        <div class="footer-section">
-            <h3>සබැඳි</h3>
-            <ul class="footer-links">
-                <li><a href="index.html">මුල් පිටුව</a></li>
-                <li><a href="universities.html">විශ්වවිද්‍යාල</a></li>
-                <li><a href="courses.html">පාඨමාලා</a></li>
-                <li><a href="alternatives.html">විකල්ප අවස්ථා</a></li>
-                <li><a href="resources.html">සම්පත්</a></li>
-                <li><a href="contact.html">සම්බන්ධ වන්න</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-section">
-            <h3>විෂය ධාරා</h3>
-            <ul class="footer-links">
-                <li><a href="science.html">විද්‍යා ධාරාව</a></li>
-                <li><a href="commerce.html">වාණිජ ධාරාව</a></li>
-                <li><a href="arts.html">කලා ධාරාව</a></li>
-                <li><a href="technology.html">තාක්ෂණ ධාරාව</a></li>
-                <li><a href="vocational.html">වෘත්තීය පුහුණුව</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-section">
-            <h3>අපව සම්බන්ධ කරගන්න</h3>
-            <div class="footer-contact">
-                <p>දුරකථන: (+94) 011-2456789</p>
-                <p>ඊමේල්: info@universityinfo.lk</p>
-                <p>ලිපිනය: අංක 123, ගාලු පාර, කොළඹ 03</p>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h3>Higher Learning Hub</h3>
+                <p>Your guide to educational pathways after A/L exams. Helping students make informed decisions about their future.</p>
+                <div class="social-links" style="margin-top: 1rem;">
+                    <a href="#" class="social-icon">FB</a>
+                    <a href="#" class="social-icon">YT</a>
+                    <a href="#" class="social-icon">IN</a>
+                </div>
             </div>
-
-            <div class="social-icons">
-                <a href="#" class="social-icon">FB</a>
-                <a href="#" class="social-icon">TW</a>
-                <a href="#" class="social-icon">IG</a>
-                <a href="#" class="social-icon">YT</a>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#path-selection">Path Selection</a></li>
+                    <li><a href="#institutions">Institutions</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                    <li><a href="#youtube">YouTube Channel</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">University Grants Commission</a></li>
+                    <li><a href="#">NAITA</a></li>
+                    <li><a href="#">Vocational Training Authority</a></li>
+                    <li><a href="#">Open University</a></li>
+                    <li><a href="#">Ministry of Education</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Faculty of Technology</p>
+                <p>Wayamba University of Sri Lanka</p>
+                <p>Kuliyapitiya, Sri Lanka</p>
+                <p>Email: higherlearninghub@gmail.com</p>
+                <p>Phone: +94 XXXXXXXXX</p>
             </div>
         </div>
-
-        <div class="footer-section">
-            <h3>පුවත් ප්‍රකාශන</h3>
-            <p>අපගේ නවතම පුවත් හා විශ්වවිද්‍යාල තොරතුරු ලබා ගැනීම සඳහා ලියාපදිංචි වන්න.</p>
-            <form action="#" method="POST" class="newsletter-form">
-                <input type="email" name="email" placeholder="ඔබේ ඊමේල් ලිපිනය" required>
-                <button type="submit" class="btn">දායක වන්න</button>
-            </form>
+        <div class="copyright">
+            <p>&copy; 2025 Higher Learning Hub. A mini-project by students of Wayamba University of Sri Lanka.</p>
         </div>
-    </div>
-
-    <div class="copyright">
-        <p>&copy; 2025 විශ්වවිද්‍යාල තොරතුරු මධ්‍යස්ථානය. සියලුම හිමිකම් ඇවිරිණි.</p>
     </div>
 </footer>
 
+<!-- Science Stream Section -->
+<div id="science" style="display: none;">
+    <section class="path-selection">
+        <h2>Options for Science Stream Students</h2>
+
+        <div class="sector-options">
+            <div class="sector-card">
+                <h3>Government Sector</h3>
+                <ul class="institution-list">
+                    <li><a href="#">University of Colombo - Medicine/Science</a></li>
+                    <li><a href="#">University of Peradeniya - Medicine/Science/Agriculture</a></li>
+                    <li><a href="#">University of Sri Jayewardenepura - Medicine/Science</a></li>
+                    <li><a href="#">University of Kelaniya - Medicine/Science</a></li>
+                    <li><a href="#">University of Jaffna - Medicine/Science</a></li>
+                    <li><a href="#">University of Ruhuna - Medicine/Science/Fisheries</a></li>
+                    <li><a href="#">Eastern University - Science/Agriculture</a></li>
+                    <li><a href="#">Rajarata University - Medicine/Science</a></li>
+                </ul>
+            </div>
+
+            <div class="sector-card">
+                <h3>Semi-Government Sector</h3>
+                <ul class="institution-list">
+                    <li><a href="#">NSBM Green University - Bio Science</a></li>
+                    <li><a href="#">SLIIT - Biotechnology</a></li>
+                    <li><a href="#">Ocean University - Marine Science</a></li>
+                    <li><a href="#">CINEC Campus - Health Sciences</a></li>
+                    <li><a href="#">NIBM - Health Information Management</a></li>
+                </ul>
+            </div>
+
+            <div class="sector-card">
+                <h3>Private Sector</h3>
+                <ul class="institution-list">
+                    <li><a href="#">SAITM - Medicine/Science</a></li>
+                    <li><a href="#">South Asian Institute of Technology and Medicine</a></li>
+                    <li><a href="#">Horizon Campus - Biomedical Science</a></li>
+                    <li><a href="#">ICBT Campus - Biomedical Science</a></li>
+                    <li><a href="#">KIU - Nursing/Biomedical Science</a></li>
+                    <li><a href="#">Aquinas College - Biological Science</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Technology Stream Section -->
+<div id="technology" style="display: none;">
+    <section class="path-selection">
+        <h2>Options for Technology Stream Students</h2>
+
+        <div class="sector-options">
+            <div class="sector-card">
+                <h3>Government Sector</h3>
+                <ul class="institution-list">
+                    <li><a href="#">University of Moratuwa - Technology</a></li>
+                    <li><a href="#">University of Vocational Technology</a></li>
+                    <li><a href="#">Uva Wellassa University - Technology Programs</a></li>
+                    <li><a href="#">Wayamba University - Technology Programs</a></li>
+                    <li><a href="#">University of Jaffna - Technology Programs</a></li>
+                    <li><a href="#">University of Kelaniya - Technology Programs</a></li>
+                </ul>
+            </div>
+
+            <div class="sector-card">
+                <h3>Semi-Government Sector</h3>
+                <ul class="institution-list">
+                    <li><a href="#">Institute of Technology, University of Moratuwa</a></li>
+                    <li><a href="#">Hardy Advanced Technological Institute</a></li>
+                    <li><a href="#">Sri Lanka Institute of Advanced Technological Education</a></li>
+                    <li><a href="#">Ceylon German Technical Training Institute</a></li>
+                    <li><a href="#">National Apprentice and Industrial Training Authority</a></li>
+                </ul>
+            </div>
+
+            <div class="sector-card">
+                <h3>Private Sector</h3>
+                <ul class="institution-list">
+                    <li><a href="#">ICBT Campus - Technology Programs</a></li>
+                    <li><a href="#">SLIIT - Technology Programs</a></li>
+                    <li><a href="#">Esoft Metro Campus - Technology Programs</a></li>
+                    <li><a href="#">IDM Nations Campus - Technology Programs</a></li>
+                    <li><a href="#">CINEC Campus - Technology Programs</a></li>
+                    <li><a href="#">KIU - Technology Programs</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Commerce Stream Section -->
+<div id="commerce" style="display: none;">
+    <section class="path-selection">
+        <h2>Options for Commerce Stream Students</h2>
+
+        <div class="sector-options">
+            <div class="sector-card">
+                <h3>Government Sector</h3>
+                <ul class="institution-list">
+                    <li><a href="#">University of Sri Jayewardenepura - Management Studies</a></li>
+                    <li><a href="#">University of Kelaniya - Commerce</a></li>
+                    <li><a href="#">University of Colombo - Business School</a></li>
+                    <li><a href="#">University of Jaffna - Management</a></li>
+                    <li><a href="#">University of Peradeniya - Management</a></li>
+                    <li><a href="#">University of Ruhuna - Management</a></li>
+                    <li><a href="#">Wayamba University - Business Studies</a></li>
+                    <li><a href="#">Uva Wellassa University - Entrepreneurship</a></li>
+                </ul>
+            </div>
+
+            <div class="sector-card">
+                <h3>Semi-Government Sector</h3>
+                <ul class="institution-list">
+                    <li><a href="#">NSBM Green University - Business/Finance</a></li>
+                    <li><a href="#">SLIIT - Business School</a></li>
+                    <li><a href="#">NIBM - Business Management</a></li>
+                    <li><a href="#">Open University - Management Studies</a></li>
+                    <li><a href="#">Institute of Chartered Accountants</a></li>
+                    <li><a href="#">CINEC Campus - Logistics & Supply Chain</a></li>
+                </ul>
+            </div>
+
+            <div class="sector-card">
+                <h3>Private Sector</h3>
+                <ul class="institution-list">
+                    <li><a href="#">CMA Sri Lanka</a></li>
+                    <li><a href="#">CIMA Sri Lanka</a></li>
+                    <li><a href="#">ACCA Sri Lanka</a></li>
+                    <li><a href="#">ICBT Campus - Business School</a></li>
+                    <li><a href="#">Horizon Campus - Business School</a></li>
+                    <li><a href="#">ANC Education - Business</a></li>
+                    <li><a href="#">APIIT - Business Innovation</a></li>
+                    <li><a href="#">BMS - Business Management School</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Arts Stream Section -->
+<div id="arts" style="display: none;">
+    <section class="path-selection">
+        <h2>Options for Arts Stream Students</h2>
+
+        <div class="sector-options">
+            <div class="sector-card">
+                <h3>Government Sector</h3>
+                <ul class="institution-list">
+                    <li><a href="#">University of Colombo - Arts/Law</a></li>
+                    <li><a href="#">University of Peradeniya - Arts</a></li>
+                    <li><a href="#">University of Kelaniya - Humanities</a></li>
+                    <li><a href="#">University of Sri Jayewardenepura - Humanities</a></li>
+                    <li><a href="#">University of Jaffna - Arts</a></li>
+                    <li><a href="#">Eastern University - Arts & Culture</a></li>
+                    <li><a href="#">Rajarata University - Social Sciences</a></li>
+                    <li><a href="#">Sabaragamuwa University - Languages</a></li>
+                </ul>
+            </div>
+
+            <div class="sector-card">
+                <h3>Semi-Government Sector</h3>
+                <ul class="institution-list">
+                    <li><a href="#">Open University - Social Sciences</a></li>
+                    <li><a href="#">National Institute of Education</a></li>
+                    <li><a href="#">NSBM Green University - Liberal Arts</a></li>
+                    <li><a href="#">Buddhist and Pali University</a></li>
+                    <li><a href="#">University of the Visual and Performing Arts</a></li>
+                </ul>
+            </div>
+
+            <div class="sector-card">
+                <h3>Private Sector</h3>
+                <ul class="institution-list">
+                    <li><a href="#">Royal Institute - Higher Education</a></li>
+                    <li><a href="#">ICBT Campus - Law/Psychology</a></li>
+                    <li><a href="#">Horizon Campus - Legal Studies</a></li>
+                    <li><a href="#">ANC Education - Law/Psychology</a></li>
+                    <li><a href="#">APIIT - Law</a></li>
+                    <li><a href="#">Aquinas College - Arts Programs</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Resources Section -->
+<div id="resources" style="display: none;">
+    <section class="path-selection">
+        <h2>Educational Resources</h2>
+
+        <div class="sector-options">
+            <div class="sector-card">
+                <h3>Scholarship Information</h3>
+                <ul class="institution-list">
+                    <li><a href="#">Government Scholarship Schemes</a></li>
+                    <li><a href="#">Foreign Scholarship Opportunities</a></li>
+                    <li><a href="#">Mahapola Scholarship</a></li>
+                    <li><a href="#">Bursary Schemes</a></li>
+                    <li><a href="#">Educational Loan Options</a></li>
+                </ul>
+            </div>
+
+            <div class="sector-card">
+                <h3>Career Guidance</h3>
+                <ul class="institution-list">
+                    <li><a href="#">Career Aptitude Tests</a></li>
+                    <li><a href="#">In-Demand Careers in Sri Lanka</a></li>
+                    <li><a href="#">Future Employment Trends</a></li>
+                    <li><a href="#">Professional Development Resources</a></li>
+                    <li><a href="#">Internship Opportunities</a></li>
+                </ul>
+            </div>
+
+            <div class="sector-card">
+                <h3>Additional Resources</h3>
+                <ul class="institution-list">
+                    <li><a href="#">Z-Score Calculator</a></li>
+                    <li><a href="#">University Admission Statistics</a></li>
+                    <li><a href="#">Professional Qualification Guides</a></li>
+                    <li><a href="#">Student Visa Information</a></li>
+                    <li><a href="#">University Ranking Systems</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Simple JavaScript for Navigation -->
 <script>
-    // Hamburger menu toggle
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('.nav-menu');
+    // Get all navigation links
+    const navLinks = document.querySelectorAll('.nav-item');
 
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
-    });
-
-    // Close menu when clicking a link
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-        });
-    });
-
-    // Wait for the DOM to be fully loaded
-    document.addEventListener('DOMContentLoaded', function() {
-        // Get navigation elements
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('.nav-menu');
-        const navLinks = document.querySelectorAll('.nav-link');
-
-        // Toggle hamburger menu on click
-        hamburger.addEventListener('click', function() {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-
-        // Close the menu when a navigation link is clicked
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-            });
-        });
-
-        // Close the menu when clicking outside of it
-        document.addEventListener('click', function(event) {
-            const isClickInsideNav = navMenu.contains(event.target) || hamburger.contains(event.target);
-            if (!isClickInsideNav && navMenu.classList.contains('active')) {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
+    // Add click event listeners
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 100,
+                    behavior: 'smooth'
+                });
             }
         });
+    });
 
-        // Add active class to current page link
-        const currentPage = window.location.pathname.split("/").pop();
-
-        navLinks.forEach(link => {
-            const linkHref = link.getAttribute('href');
-
-            if (linkHref === currentPage ||
-                (currentPage === '' && linkHref === 'index.html')) {
-                link.classList.add('active');
-            } else {
-                link.classList.remove('active');
+    // Stream selection
+    document.querySelectorAll('.stream-card').forEach(card => {
+        card.addEventListener('click', function() {
+            const targetId = this.getAttribute('onclick').split("'")[1].substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                targetElement.style.display = 'block';
+                window.scrollTo({
+                    top: targetElement.offsetTop - 100,
+                    behavior: 'smooth'
+                });
             }
         });
     });

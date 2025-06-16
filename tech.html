@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sri Lankan University Technology Degrees</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #2563eb;
+            /*background: linear-gradient(135deg, #667eea 0%, #ffffff 100%);*/
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+            padding: 30px 0;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .search-container {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .search-box {
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 25px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            outline: none;
+        }
+
+        .university-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .university-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+
+        .university-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .university-name {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+            text-transform: uppercase;
+        }
+
+        .degree-category {
+            margin-bottom: 20px;
+        }
+
+        .category-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #e74c3c;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .category-title::before {
+            content: "📚";
+            margin-right: 8px;
+        }
+
+        .specialization-list {
+            list-style: none;
+            margin-left: 20px;
+        }
+
+        .specialization-list li {
+            padding: 5px 0;
+            color: #555;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .specialization-list li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: white;
+            color: #667eea;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .university-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 15px;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Sri Lankan University Technology Degrees</h1>
+        <p>Comprehensive Guide to Technology Programs in Sri Lankan Universities</p>
+    </div>
+
+    <div class="stats">
+        <div class="stat-item">
+            <span class="stat-number" id="universityCount">11</span>
+            <span class="stat-label">Universities</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number" id="programCount">3</span>
+            <span class="stat-label">Main Programs</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number" id="specializationCount">35+</span>
+            <span class="stat-label">Specializations</span>
+        </div>
+    </div>
+
+    <div class="search-container">
+        <input type="text" class="search-box" id="searchBox" placeholder="Search universities or degree programs...">
+    </div>
+
+    <div class="filter-buttons">
+        <button class="filter-btn active" onclick="filterCards('all')">All Programs</button>
+        <button class="filter-btn" onclick="filterCards('biosystems')">Biosystems Technology</button>
+        <button class="filter-btn" onclick="filterCards('ict')">ICT</button>
+        <button class="filter-btn" onclick="filterCards('engineering')">Engineering Technology</button>
+    </div>
+
+    <div class="university-grid" id="universityGrid">
+        <!-- University of Sri Jayewardenepura -->
+        <div class="university-card" data-categories="biosystems,ict,engineering">
+            <div class="university-name">University of Sri Jayewardenepura - Faculty of Technology</div>
+
+            <div class="degree-category">
+                <div class="category-title">Bachelor of Biosystems Technology Honours</div>
+                <ul class="specialization-list">
+                    <li>Agriculture and Environmental Technology</li>
+                    <li>Food Processing Technology</li>
+                    <li>Industrial Biosystems Technology</li>
+                </ul>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Bachelor of Information and Communication Technology Honours</div>
+                <ul class="specialization-list">
+                    <li>Multimedia Technology</li>
+                    <li>Network Technology</li>
+                    <li>Software Technology</li>
+                </ul>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Bachelor of Engineering Technology Honours</div>
+                <ul class="specialization-list">
+                    <li>Construction and Building Services Technology</li>
+                    <li>Energy and Environmental Technology</li>
+                    <li>Geotechnology</li>
+                    <li>Automobile Technology</li>
+                    <li>Mechatronics Technology</li>
+                    <li>Polymer Processing Technology</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- University of Colombo -->
+        <div class="university-card" data-categories="biosystems,ict,engineering">
+            <div class="university-name">University of Colombo</div>
+
+            <div class="degree-category">
+                <div class="category-title">Bachelor of Biosystems Technology Honours</div>
+                <ul class="specialization-list">
+                    <li>Agriculture</li>
+                    <li>Environmental Technology</li>
+                </ul>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Bachelor of Engineering Technology Honours</div>
+                <ul class="specialization-list">
+                    <li>Instrumentation and Automation Technology</li>
+                </ul>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Bachelor of Information and Communication Technology</div>
+                <ul class="specialization-list">
+                    <li>Information and Communication Technology</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- University of Kelaniya -->
+        <div class="university-card" data-categories="ict,engineering">
+            <div class="university-name">University of Kelaniya</div>
+
+            <div class="degree-category">
+                <div class="category-title">Bachelor of Engineering Technology Honours</div>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Bachelor of Information and Communication Technology</div>
+            </div>
+        </div>
+
+        <!-- University of Ruhuna -->
+        <div class="university-card" data-categories="biosystems,ict,engineering">
+            <div class="university-name">University of Ruhuna</div>
+
+            <div class="degree-category">
+                <div class="category-title">Bachelor of Engineering Technology Honours</div>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Bachelor of Information and Communication Technology</div>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Bachelor of Biosystems Technology Honours</div>
+            </div>
+        </div>
+
+        <!-- University of Wayamba -->
+        <div class="university-card" data-categories="biosystems,engineering">
+            <div class="university-name">University of Wayamba</div>
+
+            <div class="degree-category">
+                <div class="category-title">Bachelor of Engineering Technology Honours</div>
+                <ul class="specialization-list">
+                    <li>Construction Technology</li>
+                    <li>Electrotechnology</li>
+                    <li>Mechanical and Manufacturing Technology</li>
+                    <li>Nano Science Technology</li>
+                </ul>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Bachelor of Biosystems Technology Honours</div>
+            </div>
+        </div>
+
+        <!-- University of Jaffna -->
+        <div class="university-card" data-categories="biosystems,engineering">
+            <div class="university-name">University of Jaffna</div>
+
+            <div class="degree-category">
+                <div class="category-title">Bachelor of Engineering Technology Honours</div>
+                <ul class="specialization-list">
+                    <li>Construction Technology</li>
+                    <li>Automobile Technology</li>
+                    <li>Electro Technology</li>
+                </ul>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Bachelor of Biosystems Technology Honours</div>
+            </div>
+        </div>
+
+        <!-- University of Rajarata -->
+        <div class="university-card" data-categories="biosystems,ict,engineering">
+            <div class="university-name">University of Rajarata</div>
+
+            <div class="degree-category">
+                <div class="category-title">Bachelor of Biosystems Technology Honours</div>
+                <ul class="specialization-list">
+                    <li>Food Technology</li>
+                    <li>Bioprocess Technology</li>
+                </ul>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Bachelor of Engineering Technology Honours</div>
+                <ul class="specialization-list">
+                    <li>Electrical and Electronic Technology</li>
+                    <li>Materials Technology</li>
+                </ul>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Bachelor of Information Communication Technology Honours</div>
+            </div>
+        </div>
+
+        <!-- University of Uva Wellassa -->
+        <div class="university-card" data-categories="biosystems,ict,engineering">
+            <div class="university-name">University of Uva Wellassa</div>
+
+            <div class="degree-category">
+                <div class="category-title">Bachelor of Biosystems Technology Honours</div>
+                <ul class="specialization-list">
+                    <li>Industrial Biosystems Technology</li>
+                    <li>Food Technology</li>
+                </ul>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Bachelor of Engineering Technology Honours</div>
+                <ul class="specialization-list">
+                    <li>Electrical and Electronic Technology</li>
+                </ul>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Bachelor of Information Communication Technology Honours</div>
+            </div>
+        </div>
+
+        <!-- University of Sabaragamuwa -->
+        <div class="university-card" data-categories="biosystems,ict">
+            <div class="university-name">University of Sabaragamuwa</div>
+
+            <div class="degree-category">
+                <div class="category-title">Bachelor of Information Communication Technology Honours</div>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Bachelor of Biosystems Technology Honours</div>
+            </div>
+        </div>
+
+        <!-- University of South Eastern -->
+        <div class="university-card" data-categories="biosystems,ict">
+            <div class="university-name">University of South Eastern</div>
+
+            <div class="degree-category">
+                <div class="category-title">Bachelor of Information Communication Technology Honours</div>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Bachelor of Biosystems Technology Honours</div>
+            </div>
+        </div>
+
+        <!-- University of Eastern -->
+        <div class="university-card" data-categories="biosystems">
+            <div class="university-name">University of Eastern</div>
+
+            <div class="degree-category">
+                <div class="category-title">Bachelor of Biosystems Technology</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Search functionality
+    const searchBox = document.getElementById('searchBox');
+    const universityCards = document.querySelectorAll('.university-card');
+
+    searchBox.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+
+        universityCards.forEach(card => {
+            const universityName = card.querySelector('.university-name').textContent.toLowerCase();
+            const specializations = Array.from(card.querySelectorAll('.specialization-list li'))
+                .map(li => li.textContent.toLowerCase()).join(' ');
+            const categories = Array.from(card.querySelectorAll('.category-title'))
+                .map(title => title.textContent.toLowerCase()).join(' ');
+
+            const searchContent = universityName + ' ' + specializations + ' ' + categories;
+
+            if (searchContent.includes(searchTerm)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+
+    // Filter functionality
+    function filterCards(category) {
+        // Update active button
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+
+        universityCards.forEach(card => {
+            if (category === 'all') {
+                card.style.display = 'block';
+            } else {
+                const categories = card.getAttribute('data-categories');
+                if (categories.includes(category)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            }
+        });
+    }
+
+    // Add some interactive hover effects
+    universityCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.borderLeft = '5px solid #3498db';
+        });
+
+        card.addEventListener('mouseleave', function() {
+            this.style.borderLeft = '1px solid #e0e0e0';
+        });
+    });
+</script>
+</body>
+</html>

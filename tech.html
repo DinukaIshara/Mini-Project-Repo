@@ -15,7 +15,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: #2563eb;
+            background: #ffffff;
             /*background: linear-gradient(135deg, #667eea 0%, #ffffff 100%);*/
             min-height: 100vh;
         }
@@ -29,7 +29,7 @@
         .header {
             text-align: center;
             margin-bottom: 40px;
-            color: white;
+            color: #3073b3;
             padding: 30px 0;
         }
 
@@ -83,7 +83,7 @@
         .university-name {
             font-size: 1.4rem;
             font-weight: bold;
-            color: #2c3e50;
+            color: #2c5282;
             margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 3px solid #3498db;
@@ -131,11 +131,11 @@
         .stats {
             display: flex;
             justify-content: space-around;
-            background: rgba(255,255,255,0.1);
+            background:#2c5282;
             padding: 20px;
             border-radius: 10px;
             margin-bottom: 30px;
-            color: white;
+            color: #ffffff;
         }
 
         .stat-item {
@@ -163,7 +163,7 @@
 
         .filter-btn {
             padding: 8px 16px;
-            background: rgba(255,255,255,0.2);
+            background: #73a4d3;
             color: white;
             border: none;
             border-radius: 20px;
@@ -173,8 +173,8 @@
         }
 
         .filter-btn:hover, .filter-btn.active {
-            background: white;
-            color: #667eea;
+            background: #3073b3;
+            color: #ffffff;
             transform: scale(1.05);
         }
 
@@ -198,6 +198,34 @@
     </style>
 </head>
 <body>
+<!--&lt;!&ndash; Header &ndash;&gt;-->
+<!--<header>-->
+<!--    <div class="container">-->
+<!--        <div class="logo-container">-->
+<!--            <img src="/api/placeholder/80/80" alt="Higher Learning Hub Logo" class="logo">-->
+<!--            <div>-->
+<!--                <h1 class="site-title">Higher Learning Hub</h1>-->
+<!--                <p class="site-subtitle">Your Guide After A/L Exams</p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</header>-->
+
+<!--&lt;!&ndash; Navigation &ndash;&gt;-->
+<!--<nav>-->
+<!--    <div class="container">-->
+<!--        <div class="nav-container">-->
+<!--            <a href="#home" class="nav-item">Home</a>-->
+<!--            <a href="#path-selection" class="nav-item">Path Selection</a>-->
+<!--            <a href="#institutions" class="nav-item">Institutions</a>-->
+<!--            <a href="#resources" class="nav-item">Resources</a>-->
+<!--            <a href="#youtube" class="nav-item">YouTube Channel</a>-->
+<!--            <a href="#about" class="nav-item">About Us</a>-->
+<!--            <a href="#contact" class="nav-item">Contact</a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</nav>-->
+
 <div class="container">
     <div class="header">
         <h1>Sri Lankan University Technology Degrees</h1>
@@ -225,9 +253,9 @@
 
     <div class="filter-buttons">
         <button class="filter-btn active" onclick="filterCards('all')">All Programs</button>
+        <button class="filter-btn" onclick="filterCards('engineering')">Engineering Technology</button>
         <button class="filter-btn" onclick="filterCards('biosystems')">Biosystems Technology</button>
         <button class="filter-btn" onclick="filterCards('ict')">ICT</button>
-        <button class="filter-btn" onclick="filterCards('engineering')">Engineering Technology</button>
     </div>
 
     <div class="university-grid" id="universityGrid">

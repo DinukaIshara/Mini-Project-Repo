@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sri Lankan University Technology Degrees</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #ffffff;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #3073b3;
+            padding: 30px 0;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .search-container {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .search-box {
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 25px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            outline: none;
+        }
+
+        .university-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .university-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+
+        .university-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border-left: 5px solid #3498db;
+        }
+
+        .university-name {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #2c5282;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+            text-transform: uppercase;
+        }
+
+        .degree-category {
+            margin-bottom: 20px;
+        }
+
+        .category-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #e74c3c;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .category-title::before {
+            content: "📚";
+            margin-right: 8px;
+        }
+
+        .specialization-list {
+            list-style: none;
+            margin-left: 20px;
+        }
+
+        .specialization-list li {
+            padding: 5px 0;
+            color: #555;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .specialization-list li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            background: #2c5282;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            color: #ffffff;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            background: #73a4d3;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: #3073b3;
+            color: #ffffff;
+            transform: scale(1.05);
+        }
+
+        .degree-item {
+            background: #f8f9fa;
+            margin-bottom: 8px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            border-left: 3px solid #3498db;
+            position: relative;
+            padding-left: 20px;
+            color: #555;
+        }
+
+        .degree-item::before {
+            content: "▸";
+            position: absolute;
+            left: 5px;
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        .degree-item.highlight {
+            background: #fff3cd;
+            border-left-color: #ffc107;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .university-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .filter-buttons {
+                justify-content: center;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            font-style: italic;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Commerce Private Universities - Sri Lanka</h1>
+        <p>Comprehensive Guide to Commerce & Business Programs in Sri Lankan Private Universities</p>
+    </div>
+
+    <div class="stats">
+        <div class="stat-item">
+            <span class="stat-number" id="universityCount">8</span>
+            <span class="stat-label">Universities</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number" id="programCount">70</span>
+            <span class="stat-label">Degree Programs</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number" id="specializationCount">15+</span>
+            <span class="stat-label">Fields of Study</span>
+        </div>
+    </div>
+
+    <div class="search-container">
+        <input type="text" class="search-box" id="searchBox" placeholder="Search universities or degree programs...">
+    </div>
+
+    <div class="filter-buttons">
+        <button class="filter-btn active" onclick="filterCards('all')">All Programs</button>
+        <button class="filter-btn" onclick="filterCards('business')">Business Management</button>
+        <button class="filter-btn" onclick="filterCards('law')">Law</button>
+        <button class="filter-btn" onclick="filterCards('technology')">Technology</button>
+        <button class="filter-btn" onclick="filterCards('finance')">Finance & Accounting</button>
+    </div>
+
+    <div class="university-grid" id="universityGrid">
+        <!-- General Sir John Kotelawala Defence University -->
+        <div class="university-card" data-categories="law,technology,business,finance">
+            <div class="university-name">General Sir John Kotelawala Defence University</div>
+
+            <div class="degree-category">
+                <div class="category-title">Law & Legal Studies</div>
+                <div class="degree-item">Bachelor of Laws (LLB)</div>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Information Technology</div>
+                <div class="degree-item">Bachelor of Science Honours in Information Technology</div>
+                <div class="degree-item">Bachelor of Science Honours in Information Systems</div>
+                <div class="degree-item">Bachelor of Science in Applied Data Science Communication</div>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Business & Management</div>
+                <div class="degree-item">Bachelor of Science in Logistics Management</div>
+                <div class="degree-item">Bachelor of Science Honours in Logistics Management</div>
+                <div class="degree-item">Bachelor of Science in Management</div>
+                <div class="degree-item">Bachelor of Science Honours in Business Analytics</div>
+                <div class="degree-item">Bachelor of Science Honours in Industrial and Service Quality Management</div>
+                <div class="degree-item">Bachelor of Science Honours in Property and Investment Management</div>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Other Programs</div>
+                <div class="degree-item">Bachelor of Science in Social Sciences</div>
+                <div class="degree-item">Bachelor of Science in Criminology & Criminal Justice</div>
+                <div class="degree-item">Bachelor of Architecture Honours</div>
+                <div class="degree-item">Bachelor of Science Honours in Geoinformatics</div>
+            </div>
+        </div>
+
+        <!-- NSBM Green University -->
+        <div class="university-card" data-categories="business,finance,law,technology">
+            <div class="university-name">NSBM Green University</div>
+
+            <div class="degree-category">
+                <div class="category-title">Business Analytics & Economics</div>
+                <div class="degree-item">BM (Honors) in Business Analytics</div>
+                <div class="degree-item">BM (Honors) in Business Economics</div>
+                <div class="degree-item">BA in Business Communication</div>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Finance & Accounting</div>
+                <div class="degree-item">BM (Hons) in Accounting and Finance</div>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Business Management</div>
+                <div class="degree-item">BBM (Hons) Tourism, Hospitality & Events</div>
+                <div class="degree-item">BSc in Business Management (Industrial Management) (Special)</div>
+                <div class="degree-item">BSc in Business Management (Logistics Management) (Special)</div>
+                <div class="degree-item">BSc in Business Management (Project Management) (Special)</div>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Law & Business</div>
+                <div class="degree-item">BM (Hons) in Law and Business Studies</div>
+                <div class="degree-item">BM (Hons.) in Law and International Trade</div>
+                <div class="degree-item">BM (Hons) in Law and E-Commerce</div>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Creative & Technical</div>
+                <div class="degree-item">BSc in Multimedia</div>
+                <div class="degree-item">Bachelor of Interior Design</div>
+            </div>
+        </div>
+
+        <!-- Saegis Campus -->
+        <div class="university-card" data-categories="business,finance,technology">
+            <div class="university-name">Saegis Campus</div>
+
+            <div class="degree-category">
+                <div class="category-title">Business Administration</div>
+                <div class="degree-item">Bachelor of Business Administration (BBA)</div>
+                <div class="degree-item">Bachelor of Business Management (Honours)</div>
+                <div class="degree-item">BBM (Hons) Tourism and Hospitality Management</div>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Specialized Management</div>
+                <div class="degree-item">Bachelor of Business Management Honours Accounting and Finance</div>
+                <div class="degree-item">Business Management Honours in Human Resource Management</div>
+                <div class="degree-item">Bachelor of Business Management Honours in Logistics and Supply Chain Management</div>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Technology & Liberal Arts</div>
+                <div class="degree-item">Bachelor of Information Technology (BIT)</div>
+                <div class="degree-item">Bachelor of Arts in English</div>
+            </div>
+        </div>
+
+        <!-- SLTC University -->
+        <div class="university-card" data-categories="business,finance">
+            <div class="university-name">SLTC University</div>
+
+            <div class="degree-category">
+                <div class="category-title">Finance & Accounting</div>
+                <div class="degree-item">BBM (Hons) in Accounting and Finance</div>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Business Management</div>
+                <div class="degree-item">Bachelor of Business Management Hons</div>
+                <div class="degree-item">BBM (Hons) in Human Resource Management</div>
+                <div class="degree-item">BBM (Hons) in Operations Management</div>
+                <div class="degree-item">BBM (Hons) in Supply Chain Management</div>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Tourism & Marketing</div>
+                <div class="degree-item">BSc (Hons) in E-Tourism and Digital Marketing</div>
+                <div class="degree-item">BSc (Hons) in Travel And Tourism Management</div>
+                <div class="degree-item">BSc in Fashion Merchandise Management</div>
+            </div>
+        </div>
+
+        <!-- Sri Lanka Institute of Information Technology -->
+        <div class="university-card" data-categories="law,technology">
+            <div class="university-name">Sri Lanka Institute of Information Technology</div>
+
+            <div class="degree-category">
+                <div class="category-title">Law & Social Sciences</div>
+                <div class="degree-item">LLB (Hons) Law</div>
+                <div class="degree-item">BSc (Hons) Psychology</div>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Education</div>
+                <div class="degree-item">B.Ed (Hons) in English</div>
+                <div class="degree-item">B.Ed (Hons) in Social Sciences</div>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Mathematics & Statistics</div>
+                <div class="degree-item">BSc (Hons) in Financial Mathematics and Applied Statistics</div>
+            </div>
+        </div>
+
+        <!-- Horizon Campus -->
+        <div class="university-card" data-categories="business,finance,law">
+            <div class="university-name">Horizon Campus</div>
+
+            <div class="degree-category">
+                <div class="category-title">Business Management</div>
+                <div class="degree-item">BSc in Business Management</div>
+                <div class="degree-item">Bachelor of Business (Latrobe)</div>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Specialized Business</div>
+                <div class="degree-item">BM Honours (Marketing)</div>
+                <div class="degree-item">BM Hons (Accounting & Finance)</div>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Law</div>
+                <div class="degree-item">Bachelor Of Law (LLB)</div>
+            </div>
+        </div>
+
+        <!-- ICBT University -->
+        <div class="university-card" data-categories="business">
+            <div class="university-name">ICBT University</div>
+
+            <div class="degree-category">
+                <div class="category-title">Business & Management</div>
+                <div class="degree-item">Bachelor of Business Management (Hons) – BBM</div>
+                <div class="degree-item">BSc (Hons) Business and Management</div>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Digital Marketing</div>
+                <div class="degree-item">BSc (Hons) Digital Marketing</div>
+            </div>
+        </div>
+
+        <!-- CINEC University -->
+        <div class="university-card" data-categories="technology,business,finance">
+            <div class="university-name">CINEC University</div>
+
+            <div class="degree-category">
+                <div class="category-title">Computer Science</div>
+                <div class="degree-item">BSc (Hons) Computer Science</div>
+                <div class="degree-item">BSc (Hons) Computer Science (Software Engineering)</div>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Business Management</div>
+                <div class="degree-item">Bachelor of Business Management Honours in Accounting</div>
+                <div class="degree-item">Bachelor of Business Management Honours in Banking and Finance</div>
+                <div class="degree-item">Bachelor of Business Management Honours in Marketing</div>
+                <div class="degree-item">Bachelor of Management Honours in Business Administration</div>
+                <div class="degree-item">Bachelor of Management Honours in Industrial Management</div>
+                <div class="degree-item">Bachelor of Management Honours in Tourism and Hospitality Management</div>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Specialized Programs</div>
+                <div class="degree-item">BSc (Hons) in Business and Industrial Mathematics</div>
+                <div class="degree-item">Bachelor of Education in English (Hons)</div>
+                <div class="degree-item">Bachelor of Science in International Transportation Management and Logistics (ITML)</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="noResults" class="no-results hidden">
+        <p>No universities or programs found matching your search criteria.</p>
+    </div>
+</div>
+
+<script>
+    // Search functionality
+    const searchBox = document.getElementById('searchBox');
+    const universityCards = document.querySelectorAll('.university-card');
+    const noResults = document.getElementById('noResults');
+
+    searchBox.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        let hasResults = false;
+
+        universityCards.forEach(card => {
+            const universityName = card.querySelector('.university-name').textContent.toLowerCase();
+            const degreeItems = Array.from(card.querySelectorAll('.degree-item'))
+                .map(item => item.textContent.toLowerCase()).join(' ');
+            const categories = Array.from(card.querySelectorAll('.category-title'))
+                .map(title => title.textContent.toLowerCase()).join(' ');
+
+            const searchContent = universityName + ' ' + degreeItems + ' ' + categories;
+
+            if (searchContent.includes(searchTerm)) {
+                card.style.display = 'block';
+                hasResults = true;
+
+                // Highlight matching degree items
+                card.querySelectorAll('.degree-item').forEach(item => {
+                    if (item.textContent.toLowerCase().includes(searchTerm)) {
+                        item.classList.add('highlight');
+                    } else {
+                        item.classList.remove('highlight');
+                    }
+                });
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        noResults.classList.toggle('hidden', hasResults);
+    });
+
+    // Filter functionality
+    function filterCards(category) {
+        // Update active button
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+
+        universityCards.forEach(card => {
+            if (category === 'all') {
+                card.style.display = 'block';
+            } else {
+                const categories = card.getAttribute('data-categories');
+                if (categories && categories.includes(category)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            }
+        });
+
+        // Clear search when filtering
+        searchBox.value = '';
+        document.querySelectorAll('.degree-item').forEach(item => {
+            item.classList.remove('highlight');
+        });
+
+        noResults.classList.add('hidden');
+    }
+
+    // Add interactive hover effects
+    universityCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.borderLeft = '5px solid #3498db';
+        });
+
+        card.addEventListener('mouseleave', function() {
+            this.style.borderLeft = '1px solid #e0e0e0';
+        });
+    });
+</script>
+</body>
+</html>

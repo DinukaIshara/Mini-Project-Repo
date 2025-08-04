@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sri Lankan University Arts Degrees</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #ffffff;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #8B4513;
+            padding: 30px 0;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .search-container {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .search-box {
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 25px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            outline: none;
+        }
+
+        .university-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .university-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+
+        .university-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .university-name {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #8B4513;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #CD853F;
+            text-transform: uppercase;
+        }
+
+        .degree-category {
+            margin-bottom: 20px;
+        }
+
+        .category-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #B8860B;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .category-title::before {
+            content: "📚";
+            margin-right: 8px;
+        }
+
+        .specialization-list {
+            list-style: none;
+            margin-left: 20px;
+        }
+
+        .specialization-list li {
+            padding: 5px 0;
+            color: #555;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .specialization-list li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #CD853F;
+            font-weight: bold;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            background: #8B4513;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            color: #ffffff;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            background: #CD853F;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: #8B4513;
+            color: #ffffff;
+            transform: scale(1.05);
+        }
+
+        .degree-type {
+            background: #F5DEB3;
+            padding: 8px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            color: #8B4513;
+            font-weight: 500;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .university-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 15px;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Sri Lankan University Arts Degrees</h1>
+        <p>Comprehensive Guide to Arts & Humanities Programs in Sri Lankan Government Universities</p>
+    </div>
+
+    <div class="stats">
+        <div class="stat-item">
+            <span class="stat-number" id="universityCount">12</span>
+            <span class="stat-label">Universities</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number" id="programCount">4</span>
+            <span class="stat-label">Main Degree Types</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number" id="specializationCount">50+</span>
+            <span class="stat-label">Subject Areas</span>
+        </div>
+    </div>
+
+    <div class="search-container">
+        <input type="text" class="search-box" id="searchBox" placeholder="Search universities or arts programs...">
+    </div>
+
+    <div class="filter-buttons">
+        <button class="filter-btn active" onclick="filterCards('all')">All Programs</button>
+        <button class="filter-btn" onclick="filterCards('languages')">Languages & Literature</button>
+        <button class="filter-btn" onclick="filterCards('social')">Social Sciences</button>
+        <button class="filter-btn" onclick="filterCards('humanities')">Humanities</button>
+        <button class="filter-btn" onclick="filterCards('creative')">Creative Arts</button>
+    </div>
+
+    <div class="university-grid" id="universityGrid">
+        <!-- University of Peradeniya -->
+        <div class="university-card" data-categories="languages,social,humanities,creative">
+            <div class="university-name">University of Peradeniya - Faculty of Arts</div>
+            <div class="degree-type">BA General (3 years) | BA Special/Honours (4 years)</div>
+
+            <div class="degree-category">
+                <div class="category-title">Languages & Literature</div>
+                <ul class="specialization-list">
+                    <li>English Language & Literature</li>
+                    <li>Sinhala Language & Literature</li>
+                    <li>Tamil Language & Literature</li>
+                    <li>Sanskrit Studies</li>
+                    <li>Pali & Buddhist Studies</li>
+                </ul>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Social Sciences</div>
+                <ul class="specialization-list">
+                    <li>Psychology</li>
+                    <li>Sociology</li>
+                    <li>Political Science</li>
+                    <li>Anthropology</li>
+                    <li>Economics</li>
+                </ul>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Humanities</div>
+                <ul class="specialization-list">
+                    <li>History</li>
+                    <li>Geography</li>
+                    <li>Philosophy</li>
+                    <li>Archaeology</li>
+                </ul>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Creative Arts</div>
+                <ul class="specialization-list">
+                    <li>Fine Arts</li>
+                    <li>Drama & Theatre</li>
+                    <li>Music</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- University of Colombo -->
+        <div class="university-card" data-categories="languages,social,humanities">
+            <div class="university-name">University of Colombo - Faculty of Arts</div>
+            <div class="degree-type">BA General | BA Special/Honours | External Degrees</div>
+
+            <div class="degree-category">
+                <div class="category-title">Languages & Literature</div>
+                <ul class="specialization-list">
+                    <li>English Studies</li>
+                    <li>Sinhala Studies</li>
+                    <li>Tamil Studies</li>
+                    <li>French Studies</li>
+                    <li>German Studies</li>
+                    <li>Japanese Studies</li>
+                    <li>Chinese Studies</li>
+                </ul>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Social Sciences</div>
+                <ul class="specialization-list">
+                    <li>Sociology</li>
+                    <li>Political Science & Public Policy</li>
+                    <li>International Relations</li>
+                    <li>Psychology</li>
+                    <li>Criminology & Criminal Justice</li>
+                </ul>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Humanities</div>
+                <ul class="specialization-list">
+                    <li>History</li>
+                    <li>Philosophy</li>
+                    <li>Geography</li>
+                    <li>Archaeology</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- University of Sri Jayewardenepura -->
+        <div class="university-card" data-categories="languages,social,humanities">
+            <div class="university-name">University of Sri Jayewardenepura - Faculty of Humanities & Social Sciences</div>
+            <div class="degree-type">BA General | BA Special | External Degrees</div>
+
+            <div class="degree-category">
+                <div class="category-title">Languages & Literature</div>
+                <ul class="specialization-list">
+                    <li>English</li>
+                    <li>Sinhala</li>
+                    <li>Tamil</li>
+                    <li>Pali & Buddhist Studies</li>
+                </ul>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Social Sciences</div>
+                <ul class="specialization-list">
+                    <li>Sociology</li>
+                    <li>Psychology</li>
+                    <li>Political Science</li>
+                    <li>Mass Communication</li>
+                    <li>Social Work</li>
+                </ul>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Humanities</div>
+                <ul class="specialization-list">
+                    <li>History</li>
+                    <li>Geography</li>
+                    <li>Philosophy</li>
+                    <li>Religious Studies</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- University of Kelaniya -->
+        <div class="university-card" data-categories="languages,social,humanities">
+            <div class="university-name">University of Kelaniya - Faculty of Humanities</div>
+            <div class="degree-type">BA General | BA Special</div>
+
+            <div class="degree-category">
+                <div class="category-title">Languages & Literature</div>
+                <ul class="specialization-list">
+                    <li>English Language & Literature</li>
+                    <li>Sinhala Language & Literature</li>
+                    <li>Tamil Language & Literature</li>
+                    <li>Modern Languages</li>
+                </ul>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Social Sciences</div>
+                <ul class="specialization-list">
+                    <li>Sociology</li>
+                    <li>Psychology</li>
+                    <li>Political Science</li>
+                    <li>Mass Communication</li>
+                </ul>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Humanities</div>
+                <ul class="specialization-list">
+                    <li>History</li>
+                    <li>Philosophy</li>
+                    <li>Cultural Studies</li>
+                    <li>Religious Studies</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- University of Ruhuna -->
+        <div class="university-card" data-categories="languages,social,humanities">
+            <div class="university-name">University of Ruhuna - Faculty of Humanities & Social Sciences</div>
+            <div class="degree-type">BA General | BA Special</div>
+
+            <div class="degree-category">
+                <div class="category-title">Languages & Literature</div>
+                <ul class="specialization-list">
+                    <li>Sinhala</li>
+                    <li>English</li>
+                    <li>Tamil</li>
+                </ul>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Social Sciences</div>
+                <ul class="specialization-list">
+                    <li>Sociology</li>
+                    <li>Political Science</li>
+                    <li>Psychology</li>
+                    <li>Geography</li>
+                </ul>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Humanities</div>
+                <ul class="specialization-list">
+                    <li>History</li>
+                    <li>Philosophy</li>
+                    <li>Archaeology</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Eastern University -->
+        <div class="university-card" data-categories="languages,social,humanities">
+            <div class="university-name">Eastern University - Faculty of Arts & Culture</div>
+            <div class="degree-type">BA General | BA Special</div>
+
+            <div class="degree-category">
+                <div class="category-title">Languages & Literature</div>
+                <ul class="specialization-list">
+                    <li>Tamil Language & Literature</li>
+                    <li>English Language & Literature</li>
+                    <li>Arabic & Islamic Studies</li>
+                    <li>Sinhala Studies</li>
+                </ul>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Social Sciences</div>
+                <ul class="specialization-list">
+                    <li>Political Science</li>
+                    <li>Economics</li>
+                    <li>Geography</li>
+                    <li>Psychology</li>
+                </ul>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Cultural Studies</div>
+                <ul class="specialization-list">
+                    <li>Islamic Culture</li>
+                    <li>Tamil Culture</li>
+                    <li>History</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- South Eastern University -->
+        <div class="university-card" data-categories="languages,social,humanities">
+            <div class="university-name">South Eastern University - Faculty of Arts & Culture</div>
+            <div class="degree-type">BA General | BA Special</div>
+
+            <div class="degree-category">
+                <div class="category-title">Languages & Literature</div>
+                <ul class="specialization-list">
+                    <li>Arabic Language & Literature</li>
+                    <li>Tamil Language & Literature</li>
+                    <li>English Language & Literature</li>
+                    <li>Islamic Studies</li>
+                </ul>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Social Sciences</div>
+                <ul class="specialization-list">
+                    <li>Political Science</li>
+                    <li>Economics</li>
+                    <li>Geography</li>
+                    <li>Sociology</li>
+                </ul>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Islamic Studies</div>
+                <ul class="specialization-list">
+                    <li>Quran & Hadith Studies</li>
+                    <li>Islamic Law</li>
+                    <li>Islamic History</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Sabaragamuwa University -->
+        <div class="university-card" data-categories="languages,social">
+            <div class="university-name">Sabaragamuwa University - Faculty of Social Sciences & Languages</div>
+            <div class="degree-type">BA General | BA Special</div>
+
+            <div class="degree-category">
+                <div class="category-title">Languages</div>
+                <ul class="specialization-list">
+                    <li>Sinhala</li>
+                    <li>English</li>
+                    <li>Tamil</li>
+                </ul>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Social Sciences</div>
+                <ul class="specialization-list">
+                    <li>Rural Development</li>
+                    <li>Sociology</li>
+                    <li>Geography</li>
+                    <li>Political Science</li>
+                    <li>Economics</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Wayamba University -->
+        <div class="university-card" data-categories="languages,social">
+            <div class="university-name">Wayamba University - Faculty of Social Sciences & Languages</div>
+            <div class="degree-type">BA General | BA Special</div>
+
+            <div class="degree-category">
+                <div class="category-title">Languages</div>
+                <ul class="specialization-list">
+                    <li>Sinhala</li>
+                    <li>English</li>
+                    <li>Tamil</li>
+                </ul>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Social Sciences</div>
+                <ul class="specialization-list">
+                    <li>Agricultural Extension</li>
+                    <li>Rural Sociology</li>
+                    <li>Geography</li>
+                    <li>Economics</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- University of Visual & Performing Arts -->
+        <div class="university-card" data-categories="creative">
+            <div class="university-name">University of Visual & Performing Arts</div>
+            <div class="degree-type">BVA | BPA | Diploma Programs</div>
+
+            <div class="degree-category">
+                <div class="category-title">Visual Arts</div>
+                <ul class="specialization-list">
+                    <li>Fine Arts</li>
+                    <li>Graphic Design</li>
+                    <li>Sculpture</li>
+                    <li>Painting</li>
+                    <li>Applied Arts</li>
+                </ul>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Performing Arts</div>
+                <ul class="specialization-list">
+                    <li>Music</li>
+                    <li>Dance</li>
+                    <li>Drama & Theatre</li>
+                    <li>Film & Television</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Rajarata University -->
+        <div class="university-card" data-categories="social,humanities">
+            <div class="university-name">Rajarata University - Faculty of Social Sciences & Humanities</div>
+            <div class="degree-type">BA General | BA Special</div>
+
+            <div class="degree-category">
+                <div class="category-title">Social Sciences</div>
+                <ul class="specialization-list">
+                    <li>Sociology</li>
+                    <li>Political Science</li>
+                    <li>Economics</li>
+                    <li>Geography</li>
+                </ul>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Humanities</div>
+                <ul class="specialization-list">
+                    <li>History</li>
+                    <li>Archaeology</li>
+                    <li>Philosophy</li>
+                    <li>Religious Studies</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Open University of Sri Lanka -->
+        <div class="university-card" data-categories="languages,social,humanities">
+            <div class="university-name">Open University of Sri Lanka - Faculty of Humanities & Social Sciences</div>
+            <div class="degree-type">BA (External) | Diploma Programs</div>
+
+            <div class="degree-category">
+                <div class="category-title">Languages & Literature</div>
+                <ul class="specialization-list">
+                    <li>English Studies</li>
+                    <li>Sinhala Studies</li>
+                    <li>Tamil Studies</li>
+                </ul>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Social Sciences</div>
+                <ul class="specialization-list">
+                    <li>Sociology</li>
+                    <li>Psychology</li>
+                    <li>Political Science</li>
+                    <li>Social Work</li>
+                </ul>
+            </div>
+
+            <div class="degree-category">
+                <div class="category-title">Applied Studies</div>
+                <ul class="specialization-list">
+                    <li>Library & Information Science</li>
+                    <li>Mass Communication</li>
+                    <li>Public Administration</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Search functionality
+    const searchBox = document.getElementById('searchBox');
+    const universityCards = document.querySelectorAll('.university-card');
+
+    searchBox.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+
+        universityCards.forEach(card => {
+            const universityName = card.querySelector('.university-name').textContent.toLowerCase();
+            const specializations = Array.from(card.querySelectorAll('.specialization-list li'))
+                .map(li => li.textContent.toLowerCase()).join(' ');
+            const categories = Array.from(card.querySelectorAll('.category-title'))
+                .map(title => title.textContent.toLowerCase()).join(' ');
+
+            const searchContent = universityName + ' ' + specializations + ' ' + categories;
+
+            if (searchContent.includes(searchTerm)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+
+    // Filter functionality
+    function filterCards(category) {
+        // Update active button
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+
+        universityCards.forEach(card => {
+            if (category === 'all') {
+                card.style.display = 'block';
+            } else {
+                const categories = card.getAttribute('data-categories');
+                if (categories.includes(category)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            }
+        });
+    }
+
+    // Add some interactive hover effects
+    universityCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.borderLeft = '5px solid #CD853F';
+        });
+
+        card.addEventListener('mouseleave', function() {
+            this.style.borderLeft = '1px solid #e0e0e0';
+        });
+    });
+
+    // Add smooth scroll animation for search results
+    searchBox.addEventListener('focus', function() {
+        this.style.transform = 'scale(1.02)';
+    });
+
+    searchBox.addEventListener('blur', function() {
+        this.style.transform = 'scale(1)';
+    });
+</script>
+</body>
+</html>

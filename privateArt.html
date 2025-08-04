@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arts Stream Private Universities - Sri Lanka</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #ffffff;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #8b5a2b;
+            padding: 30px 0;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .search-bar {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .search-input {
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 25px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            outline: none;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            background: #d4a574;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: #8b5a2b;
+            color: #ffffff;
+            transform: scale(1.05);
+        }
+
+        .stats-section {
+            display: flex;
+            justify-content: space-around;
+            background: #8b5a2b;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            color: #ffffff;
+        }
+
+        .stat-card {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .university-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .university-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+
+        .university-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .university-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #8b5a2b;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #d4a574;
+            text-transform: uppercase;
+        }
+
+        .programs-list {
+            list-style: none;
+        }
+
+        .program-item {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            margin: 8px 0;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border-left: 4px solid #d4a574;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            color: #555;
+        }
+
+        .program-item:hover {
+            background: linear-gradient(135deg, #d4a574, #8b5a2b);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .program-item::before {
+            content: '🎭';
+            margin-right: 8px;
+            font-size: 14px;
+        }
+
+        .no-results {
+            text-align: center;
+            color: #8b5a2b;
+            font-size: 1.2rem;
+            margin: 50px 0;
+            display: none;
+        }
+
+        .footer {
+            text-align: center;
+            color: #8b5a2b;
+            margin-top: 50px;
+            padding: 30px 0;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .university-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .search-input {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Arts Stream Private Universities</h1>
+        <p>Liberal Arts, Business & Social Sciences Programs in Sri Lanka's Leading Private Institutions</p>
+    </div>
+
+    <div class="stats-section">
+        <div class="stat-card">
+            <span class="stat-number" id="universityCount">7</span>
+            <span class="stat-label">Universities</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-number" id="programCount">0</span>
+            <span class="stat-label">Arts Programs</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-number">8</span>
+            <span class="stat-label">Study Fields</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-number">45+</span>
+            <span class="stat-label">Specializations</span>
+        </div>
+    </div>
+
+    <div class="search-bar">
+        <input type="text" class="search-input" placeholder="Search arts, business & social science programs..." id="searchInput">
+    </div>
+
+    <div class="filter-buttons" id="filterButtons">
+        <button class="filter-btn active" onclick="filterPrograms('all')">All Programs</button>
+        <button class="filter-btn" onclick="filterPrograms('business')">Business</button>
+        <button class="filter-btn" onclick="filterPrograms('arts')">Arts & Humanities</button>
+        <button class="filter-btn" onclick="filterPrograms('law')">Law</button>
+        <button class="filter-btn" onclick="filterPrograms('education')">Education</button>
+        <button class="filter-btn" onclick="filterPrograms('social')">Social Sciences</button>
+    </div>
+
+    <div class="university-grid" id="universityGrid">
+        <!-- Universities will be populated by JavaScript -->
+    </div>
+
+    <div class="no-results" id="noResults">
+        <p>No programs found matching your search criteria.</p>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 Arts Stream Universities Guide | Nurturing Creative Minds & Critical Thinking</p>
+    </div>
+</div>
+
+<script>
+    const universities = [
+        {
+            name: "General Sir John Kotelawala Defence University",
+            programs: [
+                "BSc in Strategic Studies & International Relations",
+                "Bachelor of Laws (LLB)",
+                "Bachelor of Science Honours in Information Technology",
+                "Bachelor of Science Honours in Information Systems",
+                "Bachelor of Science in Social Sciences",
+                "Bachelor of Science Honours in International Business and Economics",
+                "Bachelor of Science in Applied Data Science Communication",
+                "Bachelor of Arts in Teaching English to Speakers of Other Languages (TESOL)",
+                "Bachelor of Science in Criminology & Criminal Justice",
+                "Bachelor of Architecture Honours",
+                "Bachelor of Science Honours in Industrial and Service Quality Management",
+                "Bachelor of Science Honours in Property and Investment Management",
+                "Bachelor of Science Honours in Geoinformatics"
+            ]
+        },
+        {
+            name: "NSBM Green University",
+            programs: [
+                "BM (Honors) in Business Analytics",
+                "BM (Honors) in Business Economics",
+                "BBM (Hons) Tourism, Hospitality & Events",
+                "BSc in Multimedia",
+                "BA in Business Communication",
+                "BM (Hons) in Accounting and Finance",
+                "BSc in Business Management (Industrial Management) (Special)",
+                "BSc in Business Management (Logistics Management) (Special)",
+                "BSc in Business Management (Project Management) (Special)",
+                "BM (Hons) in Law and Business Studies",
+                "BM (Hons.) in Law and International Trade",
+                "BM (Hons) in Law and E-Commerce",
+                "Bachelor of Interior Design"
+            ]
+        },
+        {
+            name: "Saegis Campus",
+            programs: [
+                "Bachelor of Business Administration (BBA)",
+                "BBM (Hons) Tourism and Hospitality Management",
+                "Bachelor of Business Management (Honours)",
+                "Bachelor of Business Management Honours Accounting and Finance",
+                "Business Management Honours in Human Resource Management",
+                "Bachelor of Business Management Honours in Logistics and Supply Chain Management",
+                "Bachelor of Information Technology (BIT)",
+                "Bachelor of Arts in English"
+            ]
+        },
+        {
+            name: "SLTC University",
+            programs: [
+                "BBM (Hons) in Accounting and Finance",
+                "BSc (Hons) in E-Tourism and Digital Marketing",
+                "BBM (Hons) in Human Resource Management",
+                "Bachelor of Business Management Hons",
+                "BBM (Hons) in Operations Management",
+                "BBM (Hons) in Supply Chain Management",
+                "BSc (Hons) in Travel And Tourism Management",
+                "BSc in Fashion Merchandise Management"
+            ]
+        },
+        {
+            name: "Sri Lanka Institute of Information Technology",
+            programs: [
+                "BSc (Hons) Psychology",
+                "LLB (Hons) Law",
+                "B.Ed (Hons) in English",
+                "B.Ed (Hons) in Social Sciences",
+                "BSc (Hons) in Financial Mathematics and Applied Statistics"
+            ]
+        },
+        {
+            name: "Horizon Campus",
+            programs: [
+                "Bachelor Of Law (LLB)",
+                "Bachelor of Education (Hons)",
+                "BA (Hons) in English"
+            ]
+        },
+        {
+            name: "CINEC University",
+            programs: [
+                "BSc (Hons) Computer Science",
+                "BSc (Hons) Computer Science (Software Engineering)",
+                "BSc (Hons) in Business and Industrial Mathematics",
+                "Bachelor of Business Management Honours in Accounting",
+                "Bachelor of Business Management Honours in Banking and Finance",
+                "Bachelor of Business Management Honours in Marketing",
+                "Bachelor of Education in English (Hons)",
+                "Bachelor of Management Honours in Business Administration",
+                "Bachelor of Management Honours in Industrial Management",
+                "Bachelor of Management Honours in Tourism and Hospitality Management",
+                "Bachelor of Arts (Hons) in English Degree",
+                "Bachelor of Science in International Transportation Management and Logistics (ITML)"
+            ]
+        }
+    ];
+
+    function renderUniversities(universitiesToShow = universities) {
+        const grid = document.getElementById('universityGrid');
+        const noResults = document.getElementById('noResults');
+
+        if (universitiesToShow.length === 0) {
+            grid.style.display = 'none';
+            noResults.style.display = 'block';
+            return;
+        }
+
+        grid.style.display = 'grid';
+        noResults.style.display = 'none';
+
+        grid.innerHTML = '';
+
+        universitiesToShow.forEach((university, index) => {
+            const card = document.createElement('div');
+            card.className = 'university-card';
+
+            const programsList = university.programs.map(program =>
+                `<li class="program-item">${program}</li>`
+            ).join('');
+
+            card.innerHTML = `
+                    <div class="university-title">${university.name}</div>
+                    <ul class="programs-list">
+                        ${programsList}
+                    </ul>
+                `;
+
+            grid.appendChild(card);
+        });
+    }
+
+    function updateProgramCount() {
+        const totalPrograms = universities.reduce((sum, uni) => sum + uni.programs.length, 0);
+        document.getElementById('programCount').textContent = totalPrograms;
+    }
+
+    function searchPrograms() {
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
+        if (!searchTerm) {
+            renderUniversities();
+            return;
+        }
+
+        const filteredUniversities = universities.map(university => {
+            const filteredPrograms = university.programs.filter(program =>
+                program.toLowerCase().includes(searchTerm) ||
+                university.name.toLowerCase().includes(searchTerm)
+            );
+
+            return {
+                ...university,
+                programs: filteredPrograms
+            };
+        }).filter(university => university.programs.length > 0);
+
+        renderUniversities(filteredUniversities);
+    }
+
+    // Filter functionality
+    function filterPrograms(category) {
+        // Update active button
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+
+        const filteredUniversities = universities.map(university => {
+            let filteredPrograms = university.programs;
+
+            if (category !== 'all') {
+                filteredPrograms = university.programs.filter(program => {
+                    const programLower = program.toLowerCase();
+                    switch(category) {
+                        case 'business':
+                            return programLower.includes('business') || programLower.includes('management') || programLower.includes('accounting') || programLower.includes('finance') || programLower.includes('economics') || programLower.includes('marketing') || programLower.includes('logistics') || programLower.includes('tourism') || programLower.includes('hospitality');
+                        case 'arts':
+                            return programLower.includes('arts') || programLower.includes('english') || programLower.includes('tesol') || programLower.includes('interior design') || programLower.includes('multimedia') || programLower.includes('communication') || programLower.includes('fashion');
+                        case 'law':
+                            return programLower.includes('law') || programLower.includes('llb') || programLower.includes('legal');
+                        case 'education':
+                            return programLower.includes('education') || programLower.includes('b.ed') || programLower.includes('bed') || programLower.includes('teaching');
+                        case 'social':
+                            return programLower.includes('social') || programLower.includes('psychology') || programLower.includes('criminology') || programLower.includes('strategic studies') || programLower.includes('international relations') || programLower.includes('geoinformatics');
+                        default:
+                            return true;
+                    }
+                });
+            }
+
+            return {
+                ...university,
+                programs: filteredPrograms
+            };
+        }).filter(university => university.programs.length > 0);
+
+        renderUniversities(filteredUniversities);
+    }
+
+    // Event listeners
+    document.getElementById('searchInput').addEventListener('input', searchPrograms);
+
+    // Initialize the page
+    document.addEventListener('DOMContentLoaded', function() {
+        renderUniversities();
+        updateProgramCount();
+    });
+</script>
+</body>
+</html>

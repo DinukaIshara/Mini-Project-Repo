@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sri Lankan Universities - Commerce Programs</title>
+    <title>Sri Lankan University Commerce & Business Programs</title>
     <style>
         * {
             margin: 0;
@@ -13,180 +13,141 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            line-height: 1.6;
+            color: #333;
+            background: #ffffff;
             min-height: 100vh;
-            padding: 20px 0;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 20px;
         }
 
         .header {
             text-align: center;
             margin-bottom: 40px;
-            color: white;
+            color: #2c5282;
+            padding: 30px 0;
         }
 
         .header h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin-bottom: 10px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            animation: slideInDown 1s ease-out;
         }
 
         .header p {
             font-size: 1.2rem;
             opacity: 0.9;
-            animation: fadeIn 1.5s ease-out;
         }
 
         .search-container {
             margin-bottom: 30px;
             text-align: center;
-            animation: fadeInUp 1s ease-out 0.5s both;
         }
 
         .search-box {
-            padding: 15px 20px;
+            padding: 12px 20px;
             font-size: 16px;
             border: none;
-            border-radius: 50px;
-            width: 100%;
-            max-width: 500px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            outline: none;
-            transition: all 0.3s ease;
-        }
-
-        .search-box:focus {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-        }
-
-        .filters {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-            animation: fadeInUp 1s ease-out 0.7s both;
-        }
-
-        .filter-btn {
-            padding: 10px 20px;
-            background: rgba(255,255,255,0.2);
-            color: white;
-            border: 2px solid rgba(255,255,255,0.3);
             border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 14px;
-            backdrop-filter: blur(10px);
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            outline: none;
         }
 
-        .filter-btn:hover, .filter-btn.active {
-            background: rgba(255,255,255,0.3);
-            border-color: rgba(255,255,255,0.6);
-            transform: translateY(-2px);
-        }
-
-        .universities-grid {
+        .university-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 25px;
-            animation: fadeInUp 1s ease-out 1s both;
         }
 
         .university-card {
-            background: rgba(255,255,255,0.95);
-            border-radius: 20px;
+            background: white;
+            border-radius: 15px;
             padding: 25px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid #e0e0e0;
         }
 
         .university-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border-left: 5px solid #3498db;
         }
 
         .university-name {
-            color: #4a5568;
             font-size: 1.4rem;
             font-weight: bold;
-            margin-bottom: 15px;
+            color: #2c5282;
+            margin-bottom: 20px;
             padding-bottom: 10px;
-            border-bottom: 3px solid #667eea;
-            position: relative;
+            border-bottom: 3px solid #3498db;
+            text-transform: uppercase;
         }
 
-        .university-name::after {
-            content: '';
-            position: absolute;
-            bottom: -3px;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
+        .degree-category {
+            margin-bottom: 20px;
         }
 
-        .programs-list {
-            list-style: none;
+        .category-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #e74c3c;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
         }
 
-        .program-item {
-            padding: 8px 0;
-            color: #2d3748;
-            border-bottom: 1px solid #e2e8f0;
-            transition: all 0.2s ease;
-            cursor: pointer;
+        .category-title::before {
+            content: "💼";
+            margin-right: 8px;
+        }
+
+        .degree-item {
+            background: #f8f9fa;
+            margin-bottom: 8px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            border-left: 3px solid #3498db;
             position: relative;
             padding-left: 20px;
+            color: #555;
         }
 
-        .program-item::before {
-            content: '🎓';
+        .degree-item::before {
+            content: "▸";
             position: absolute;
-            left: 0;
-            top: 8px;
+            left: 5px;
+            color: #3498db;
+            font-weight: bold;
         }
 
-        .program-item:hover {
-            color: #667eea;
-            padding-left: 25px;
-            background: rgba(102, 126, 234, 0.05);
-        }
-
-        .program-item:last-child {
-            border-bottom: none;
+        .degree-item.highlight {
+            background: #fff3cd;
+            border-left-color: #ffc107;
         }
 
         .stats {
             display: flex;
-            justify-content: center;
-            gap: 40px;
+            justify-content: space-around;
+            background: #2c5282;
+            padding: 20px;
+            border-radius: 10px;
             margin-bottom: 30px;
-            flex-wrap: wrap;
-            animation: fadeInUp 1s ease-out 0.9s both;
+            color: #ffffff;
         }
 
         .stat-item {
             text-align: center;
-            color: white;
-            background: rgba(255,255,255,0.1);
-            padding: 20px;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
         }
 
         .stat-number {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: bold;
             display: block;
         }
@@ -194,42 +155,31 @@
         .stat-label {
             font-size: 0.9rem;
             opacity: 0.8;
-            margin-top: 5px;
         }
 
-        .no-results {
-            text-align: center;
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            background: #73a4d3;
             color: white;
-            font-size: 1.2rem;
-            margin: 50px 0;
-            opacity: 0.8;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
         }
 
-        @keyframes slideInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .filter-btn:hover, .filter-btn.active {
+            background: #2c5282;
+            color: #ffffff;
+            transform: scale(1.05);
         }
 
         @media (max-width: 768px) {
@@ -237,348 +187,355 @@
                 font-size: 2rem;
             }
 
-            .universities-grid {
+            .university-grid {
                 grid-template-columns: 1fr;
             }
 
+            .container {
+                padding: 15px;
+            }
+
             .stats {
-                gap: 20px;
+                flex-direction: column;
+                gap: 15px;
             }
 
-            .filters {
-                gap: 10px;
-            }
-
-            .filter-btn {
-                padding: 8px 15px;
-                font-size: 12px;
+            .filter-buttons {
+                justify-content: center;
             }
         }
 
-        .highlight {
-            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
-            padding: 2px 4px;
-            border-radius: 3px;
-            font-weight: bold;
+        .hidden {
+            display: none;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            font-style: italic;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
     </style>
 </head>
 <body>
 <div class="container">
     <div class="header">
-        <h1>Sri Lankan Universities</h1>
-        <p>Commerce & Business Programs Directory</p>
+        <h1>💼 Sri Lankan University Commerce & Business Programs</h1>
+        <p>Comprehensive Guide to Business Administration, Commerce & Management Programs</p>
     </div>
 
     <div class="stats">
         <div class="stat-item">
-            <span class="stat-number" id="totalUniversities">12</span>
+            <span class="stat-number" id="universityCount">12</span>
             <span class="stat-label">Universities</span>
         </div>
         <div class="stat-item">
-            <span class="stat-number" id="totalPrograms">0</span>
-            <span class="stat-label">Programs</span>
+            <span class="stat-number" id="programCount">60+</span>
+            <span class="stat-label">Business Programs</span>
         </div>
         <div class="stat-item">
-            <span class="stat-number" id="visibleCards">12</span>
-            <span class="stat-label">Showing</span>
+            <span class="stat-number" id="specializationCount">15+</span>
+            <span class="stat-label">Specializations</span>
         </div>
     </div>
 
     <div class="search-container">
-        <input type="text" class="search-box" id="searchBox" placeholder="Search programs, universities, or specializations...">
+        <input type="text" class="search-box" id="searchBox" placeholder="Search universities or business programs...">
     </div>
 
-    <div class="filters">
-        <button class="filter-btn active" data-filter="all">All Programs</button>
-        <button class="filter-btn" data-filter="accounting">Accounting</button>
-        <button class="filter-btn" data-filter="finance">Finance</button>
-        <button class="filter-btn" data-filter="marketing">Marketing</button>
-        <button class="filter-btn" data-filter="management">Management</button>
-        <button class="filter-btn" data-filter="business">Business</button>
-        <button class="filter-btn" data-filter="commerce">Commerce</button>
+    <div class="filter-buttons">
+        <button class="filter-btn active" onclick="filterCards('all')">All Programs</button>
+        <button class="filter-btn" onclick="filterCards('accounting')">Accounting</button>
+        <button class="filter-btn" onclick="filterCards('finance')">Finance</button>
+        <button class="filter-btn" onclick="filterCards('marketing')">Marketing</button>
+        <button class="filter-btn" onclick="filterCards('management')">Management</button>
+        <button class="filter-btn" onclick="filterCards('business')">Business Admin</button>
+        <button class="filter-btn" onclick="filterCards('commerce')">Commerce</button>
     </div>
 
-    <div class="universities-grid" id="universitiesGrid">
-        <!-- University cards will be populated by JavaScript -->
+    <div class="university-grid" id="universityGrid">
+        <!-- University of Colombo -->
+        <div class="university-card" data-categories="business,finance,marketing,accounting,management">
+            <div class="university-name">University of Colombo</div>
+            <div class="degree-category">
+                <div class="category-title">Business Administration</div>
+                <div class="degree-item">Bachelor of Business Administration Honours</div>
+                <div class="degree-item">Bachelor of Business Administration Honours in Finance</div>
+                <div class="degree-item">Bachelor of Business Administration Honours in Human Resource Management</div>
+                <div class="degree-item">Bachelor of Business Administration Honours in Marketing</div>
+                <div class="degree-item">Bachelor of Business Administration Honours in Accounting</div>
+                <div class="degree-item">Bachelor of Business Administration Honours in Business Economics</div>
+                <div class="degree-item">Bachelor of Business Administration Honours in International Business</div>
+                <div class="degree-item">Bachelor of Business Administration Honours in Hospitality and Leisure Management</div>
+            </div>
+        </div>
+
+        <!-- University of Sri Jayewardenepura -->
+        <div class="university-card" data-categories="business,management,commerce,accounting,marketing,finance">
+            <div class="university-name">University of Sri Jayewardenepura</div>
+            <div class="degree-category">
+                <div class="category-title">Business Administration</div>
+                <div class="degree-item">Bachelor of Science Honours in Business Administration</div>
+                <div class="degree-item">Bachelor of Science Honours in Management (Public)</div>
+                <div class="degree-item">Bachelor of Science Honours in Business Administration (Business Economics)</div>
+                <div class="degree-item">Bachelor of Science Honours in Business Information Systems</div>
+                <div class="degree-item">Bachelor of Science Honours in Operations and Technology Management</div>
+                <div class="degree-item">Bachelor of Science Honours in Entrepreneurship</div>
+            </div>
+            <div class="degree-category">
+                <div class="category-title">Commerce & Specialized Programs</div>
+                <div class="degree-item">Bachelor of Commerce Honours</div>
+                <div class="degree-item">Bachelor of Science Honours in Real Estate Management and Valuation</div>
+                <div class="degree-item">Bachelor of Science Honours in Accounting</div>
+                <div class="degree-item">Bachelor of Science Honours in Marketing Management</div>
+                <div class="degree-item">Bachelor of Science Honours in Human Resource Management</div>
+                <div class="degree-item">Bachelor of Science Honours in Finance</div>
+            </div>
+        </div>
+
+        <!-- University of Kelaniya -->
+        <div class="university-card" data-categories="business,management,commerce,accounting,marketing,finance">
+            <div class="university-name">University of Kelaniya</div>
+            <div class="degree-category">
+                <div class="category-title">Business Management</div>
+                <div class="degree-item">Bachelor of Business Management Honours in Human Resource</div>
+                <div class="degree-item">Bachelor of Business Management Honours in Accountancy</div>
+                <div class="degree-item">Bachelor of Business Management Honours in Marketing</div>
+                <div class="degree-item">Bachelor of Business Management Honours in Finance</div>
+                <div class="degree-item">Bachelor of Business Management Honours in Insurance</div>
+                <div class="degree-item">Bachelor of Business Management Honours in Banking</div>
+                <div class="degree-item">Bachelor of Business Management Honours in Auditing and Forensic Accounting</div>
+                <div class="degree-item">Bachelor of Business Management Honours in Financial Engineering</div>
+                <div class="degree-item">Bachelor of Business Management Honours in Accounting Information Systems</div>
+            </div>
+            <div class="degree-category">
+                <div class="category-title">Commerce Programs</div>
+                <div class="degree-item">Bachelor of Commerce Honours</div>
+                <div class="degree-item">Bachelor of Commerce Honours in Business Technology</div>
+                <div class="degree-item">Bachelor of Commerce Honours in Entrepreneurship</div>
+                <div class="degree-item">Bachelor of Commerce Honours in Financial Management</div>
+            </div>
+        </div>
+
+        <!-- University of Jaffna -->
+        <div class="university-card" data-categories="business,accounting,finance,management,marketing,commerce">
+            <div class="university-name">University of Jaffna</div>
+            <div class="degree-category">
+                <div class="category-title">Business Administration</div>
+                <div class="degree-item">Bachelor of Business Administration Honours in Tourism and Hospitality Management</div>
+                <div class="degree-item">Bachelor of Business Administration Honours in Accounting</div>
+                <div class="degree-item">Bachelor of Business Administration Honours in Financial Management</div>
+                <div class="degree-item">Bachelor of Business Administration Honours in Human Resource Management</div>
+                <div class="degree-item">Bachelor of Business Administration Honours in Marketing</div>
+            </div>
+            <div class="degree-category">
+                <div class="category-title">Commerce Programs</div>
+                <div class="degree-item">Bachelor of Commerce Honours in Accounting and Finance</div>
+                <div class="degree-item">Bachelor of Commerce Honours in Business Technology Management</div>
+                <div class="degree-item">Bachelor of Commerce Honours</div>
+            </div>
+        </div>
+
+        <!-- University of Ruhuna -->
+        <div class="university-card" data-categories="business,accounting,finance,management,marketing">
+            <div class="university-name">University of Ruhuna</div>
+            <div class="degree-category">
+                <div class="category-title">Business Administration</div>
+                <div class="degree-item">Bachelor of Business Administration Honours in Accounting</div>
+                <div class="degree-item">Bachelor of Business Administration Honours in Business Management</div>
+                <div class="degree-item">Bachelor of Business Administration Honours in Entrepreneurship</div>
+                <div class="degree-item">Bachelor of Business Administration Honours in Finance</div>
+                <div class="degree-item">Bachelor of Business Administration Honours in Human Resources Management</div>
+                <div class="degree-item">Bachelor of Business Administration Honours in Marketing</div>
+            </div>
+        </div>
+
+        <!-- Eastern University -->
+        <div class="university-card" data-categories="business,management,commerce,accounting,finance,marketing">
+            <div class="university-name">Eastern University, Sri Lanka</div>
+            <div class="degree-category">
+                <div class="category-title">Business Administration</div>
+                <div class="degree-item">Bachelor of Business Administration Honours</div>
+                <div class="degree-item">Bachelor of Business Administration Honours in Marketing Management</div>
+                <div class="degree-item">Bachelor of Business Administration Honours in Human Resource Management</div>
+            </div>
+            <div class="degree-category">
+                <div class="category-title">Commerce & Management</div>
+                <div class="degree-item">Bachelor of Commerce Honours</div>
+                <div class="degree-item">Bachelor of Commerce Honours in Accounting and Finance</div>
+                <div class="degree-item">Bachelor of Commerce Honours in Enterprise Development</div>
+                <div class="degree-item">Bachelor of Commerce Honours in Business Economics</div>
+                <div class="degree-item">Bachelor of Science Honours in Management</div>
+                <div class="degree-item">Bachelor of Science Honours in Marketing Management</div>
+                <div class="degree-item">Bachelor of Science Honours in Human Resource Management</div>
+                <div class="degree-item">Bachelor of Science Honours in Information Systems</div>
+                <div class="degree-item">Bachelor of Science Honours in Accountancy and Finance</div>
+                <div class="degree-item">Bachelor of Science in Management</div>
+            </div>
+        </div>
+
+        <!-- South Eastern University -->
+        <div class="university-card" data-categories="business,commerce">
+            <div class="university-name">South Eastern University of Sri Lanka</div>
+            <div class="degree-category">
+                <div class="category-title">Business & Commerce</div>
+                <div class="degree-item">Bachelor of Business Administration Honours</div>
+                <div class="degree-item">Bachelor of Commerce Honours</div>
+            </div>
+        </div>
+
+        <!-- Rajarata University -->
+        <div class="university-card" data-categories="accounting,finance,business,management,marketing">
+            <div class="university-name">Rajarata University of Sri Lanka</div>
+            <div class="degree-category">
+                <div class="category-title">Business & Management</div>
+                <div class="degree-item">Bachelor of Science Honours in Accountancy & Finance</div>
+                <div class="degree-item">Bachelor of Science Honours in Business Management</div>
+                <div class="degree-item">Bachelor of Science Honours in Tourism and Hospitality Management</div>
+                <div class="degree-item">Bachelor of Science Honours in Marketing Management</div>
+                <div class="degree-item">Bachelor of Science Honours in Human Resource Management</div>
+                <div class="degree-item">Bachelor of Science Honours in Information Systems</div>
+            </div>
+        </div>
+
+        <!-- Wayamba University -->
+        <div class="university-card" data-categories="accounting,finance,business,management">
+            <div class="university-name">Wayamba University of Sri Lanka</div>
+            <div class="degree-category">
+                <div class="category-title">Finance & Business</div>
+                <div class="degree-item">Bachelor of Science Honours in Accountancy & Business Finance</div>
+                <div class="degree-item">Bachelor of Science Honours in Banking & Business Finance</div>
+                <div class="degree-item">Bachelor of Science Honours in Business Management</div>
+                <div class="degree-item">Bachelor of Science Honours in Insurance & Finance</div>
+            </div>
+        </div>
+
+        <!-- Sabaragamuwa University -->
+        <div class="university-card" data-categories="business,management,marketing,finance">
+            <div class="university-name">Sabaragamuwa University of Sri Lanka</div>
+            <div class="degree-category">
+                <div class="category-title">Business & Management</div>
+                <div class="degree-item">Bachelor of Science Honours in Business Management</div>
+                <div class="degree-item">Bachelor of Science Honours in Financial Management</div>
+                <div class="degree-item">Bachelor of Science Honours in Marketing Management</div>
+                <div class="degree-item">Bachelor of Science Honours in Tourism Management</div>
+                <div class="degree-item">Bachelor of Science Honours in Eco Business Management</div>
+                <div class="degree-item">Bachelor of Science Honours in Banking & Insurance</div>
+            </div>
+        </div>
+
+        <!-- University of Peradeniya -->
+        <div class="university-card" data-categories="business,management,marketing,accounting,finance">
+            <div class="university-name">University of Peradeniya</div>
+            <div class="degree-category">
+                <div class="category-title">Business Administration</div>
+                <div class="degree-item">Bachelor of Business Administration Honours in Human Resource Management</div>
+                <div class="degree-item">Bachelor of Business Administration Honours in Marketing Management</div>
+                <div class="degree-item">Bachelor of Business Administration Honours in Operations Management</div>
+                <div class="degree-item">Bachelor of Business Administration Honours in Accounting and Finance</div>
+                <div class="degree-item">Bachelor of Business Administration Honours in Organizational Management</div>
+            </div>
+        </div>
+
+        <!-- University of Vavuniya -->
+        <div class="university-card" data-categories="business,management,accounting,finance,marketing">
+            <div class="university-name">University of Vavuniya, Sri Lanka</div>
+            <div class="degree-category">
+                <div class="category-title">Business Management</div>
+                <div class="degree-item">Bachelor of Business Management</div>
+                <div class="degree-item">Bachelor of Business Management Honours in Accounting & Finance</div>
+                <div class="degree-item">Bachelor of Business Management Honours in Marketing Management</div>
+                <div class="degree-item">Bachelor of Business Management Honours in Business Economics</div>
+                <div class="degree-item">Bachelor of Business Management Honours in Human Resource Management</div>
+                <div class="degree-item">Bachelor of Business Management Honours in Entrepreneurship</div>
+                <div class="degree-item">Bachelor of Business Management Honours in Banking and Insurance</div>
+            </div>
+        </div>
     </div>
 
-    <div class="no-results" id="noResults" style="display: none;">
-        No programs found matching your search criteria.
+    <div id="noResults" class="no-results hidden">
+        <p>No universities or programs found matching your search criteria.</p>
     </div>
 </div>
 
 <script>
-    const universitiesData = [
-        {
-            name: "University of Colombo",
-            programs: [
-                "Bachelor of Business Administration Honours",
-                "Bachelor of Business Administration Honours in Finance",
-                "Bachelor of Business Administration Honours in Human Resource Management",
-                "Bachelor of Business Administration Honours in Marketing",
-                "Bachelor of Business Administration Honours in Accounting",
-                "Bachelor of Business Administration Honours in Business Economics",
-                "Bachelor of Business Administration Honours in International Business",
-                "Bachelor of Business Administration Honours in Hospitality and Leisure Management"
-            ]
-        },
-        {
-            name: "University of Sri Jayewardenepura",
-            programs: [
-                "Bachelor of Science Honours in Business Administration",
-                "Bachelor of Science Honours in Management (Public)",
-                "Bachelor of Commerce Honours",
-                "Bachelor of Science Honours in Real Estate Management and Valuation",
-                "Bachelor of Science Honours in Accounting",
-                "Bachelor of Science Honours in Marketing Management",
-                "Bachelor of Science Honours in Human Resource Management",
-                "Bachelor of Science Honours in Business Administration (Business Economics)",
-                "Bachelor of Science Honours in Finance",
-                "Bachelor of Science Honours in Business Information Systems",
-                "Bachelor of Science Honours in Operations and Technology Management",
-                "Bachelor of Science Honours in Entrepreneurship"
-            ]
-        },
-        {
-            name: "University of Kelaniya",
-            programs: [
-                "Bachelor of Business Management Honours in Human Resource",
-                "Bachelor of Business Management Honours in Accountancy",
-                "Bachelor of Business Management Honours in Marketing",
-                "Bachelor of Business Management Honours in Finance",
-                "Bachelor of Commerce Honours",
-                "Bachelor of Commerce Honours in Business Technology",
-                "Bachelor of Commerce Honours in Entrepreneurship",
-                "Bachelor of Commerce Honours in Financial Management",
-                "Bachelor of Business Management Honours in Insurance",
-                "Bachelor of Business Management Honours in Banking",
-                "Bachelor of Business Management Honours in Auditing and Forensic Accounting",
-                "Bachelor of Business Management Honours in Financial Engineering",
-                "Bachelor of Business Management Honours in Accounting Information Systems"
-            ]
-        },
-        {
-            name: "University of Jaffna",
-            programs: [
-                "Bachelor of Business Administration Honours in Tourism and Hospitality Management",
-                "Bachelor of Business Administration Honours in Accounting",
-                "Bachelor of Business Administration Honours in Financial Management",
-                "Bachelor of Business Administration Honours in Human Resource Management",
-                "Bachelor of Business Administration Honours in Marketing",
-                "Bachelor of Commerce Honours in Accounting and Finance",
-                "Bachelor of Commerce Honours in Business Technology Management",
-                "Bachelor of Commerce Honours"
-            ]
-        },
-        {
-            name: "University of Ruhuna",
-            programs: [
-                "Bachelor of Business Administration Honours in Accounting",
-                "Bachelor of Business Administration Honours in Business Management",
-                "Bachelor of Business Administration Honours in Entrepreneurship",
-                "Bachelor of Business Administration Honours in Finance",
-                "Bachelor of Business Administration Honours in Human Resources Management",
-                "Bachelor of Business Administration Honours in Marketing"
-            ]
-        },
-        {
-            name: "Eastern University, Sri Lanka",
-            programs: [
-                "Bachelor of Business Administration Honours",
-                "Bachelor of Business Administration Honours in Marketing Management",
-                "Bachelor of Business Administration Honours in Human Resource Management",
-                "Bachelor of Commerce Honours",
-                "Bachelor of Commerce Honours in Accounting and Finance",
-                "Bachelor of Commerce Honours in Enterprise Development",
-                "Bachelor of Commerce Honours in Business Economics",
-                "Bachelor of Science Honours in Management",
-                "Bachelor of Science Honours in Marketing Management",
-                "Bachelor of Science Honours in Human Resource Management",
-                "Bachelor of Science Honours in Information Systems",
-                "Bachelor of Science Honours in Accountancy and Finance",
-                "Bachelor of Science in Management"
-            ]
-        },
-        {
-            name: "South Eastern University of Sri Lanka",
-            programs: [
-                "Bachelor of Business Administration Honours",
-                "Bachelor of Commerce Honours"
-            ]
-        },
-        {
-            name: "Rajarata University of Sri Lanka",
-            programs: [
-                "Bachelor of Science Honours in Accountancy & Finance",
-                "Bachelor of Science Honours in Business Management",
-                "Bachelor of Science Honours in Tourism and Hospitality Management",
-                "Bachelor of Science Honours in Marketing Management",
-                "Bachelor of Science Honours in Human Resource Management",
-                "Bachelor of Science Honours in Information Systems"
-            ]
-        },
-        {
-            name: "Wayamba University of Sri Lanka",
-            programs: [
-                "Bachelor of Science Honours in Accountancy & Business Finance",
-                "Bachelor of Science Honours in Banking & Business Finance",
-                "Bachelor of Science Honours in Business Management",
-                "Bachelor of Science Honours in Insurance & Finance"
-            ]
-        },
-        {
-            name: "Sabaragamuwa University of Sri Lanka",
-            programs: [
-                "Bachelor of Science Honours in Business Management",
-                "Bachelor of Science Honours in Financial Management",
-                "Bachelor of Science Honours in Marketing Management",
-                "Bachelor of Science Honours in Tourism Management",
-                "Bachelor of Science Honours in Eco Business Management",
-                "Bachelor of Science Honours in Banking & Insurance"
-            ]
-        },
-        {
-            name: "University of Peradeniya",
-            programs: [
-                "Bachelor of Business Administration Honours in Human Resource Management",
-                "Bachelor of Business Administration Honours in Marketing Management",
-                "Bachelor of Business Administration Honours in Operations Management",
-                "Bachelor of Business Administration Honours in Accounting and Finance",
-                "Bachelor of Business Administration Honours in Organizational Management"
-            ]
-        },
-        {
-            name: "University of Vavuniya, Sri Lanka",
-            programs: [
-                "Bachelor of Business Management",
-                "Bachelor of Business Management Honours in Accounting & Finance",
-                "Bachelor of Business Management Honours in Marketing Management",
-                "Bachelor of Business Management Honours in Business Economics",
-                "Bachelor of Business Management Honours in Human Resource Management",
-                "Bachelor of Business Management Honours in Entrepreneurship",
-                "Bachelor of Business Management Honours in Banking and Insurance"
-            ]
-        }
-    ];
-
-    let filteredData = [...universitiesData];
-
-    function highlightText(text, searchTerm) {
-        if (!searchTerm) return text;
-        const regex = new RegExp(`(${searchTerm})`, 'gi');
-        return text.replace(regex, '<span class="highlight">$1</span>');
-    }
-
-    function renderUniversities(data) {
-        const grid = document.getElementById('universitiesGrid');
-        const noResults = document.getElementById('noResults');
-
-        if (data.length === 0) {
-            grid.innerHTML = '';
-            noResults.style.display = 'block';
-            document.getElementById('visibleCards').textContent = '0';
-            return;
-        }
-
-        noResults.style.display = 'none';
-        document.getElementById('visibleCards').textContent = data.length;
-
-        const searchTerm = document.getElementById('searchBox').value;
-
-        grid.innerHTML = data.map(university => `
-                <div class="university-card">
-                    <h2 class="university-name">${highlightText(university.name, searchTerm)}</h2>
-                    <ul class="programs-list">
-                        ${university.programs.map(program =>
-            `<li class="program-item">${highlightText(program, searchTerm)}</li>`
-        ).join('')}
-                    </ul>
-                </div>
-            `).join('');
-    }
-
-    function filterData(filterType, searchTerm = '') {
-        let filtered = [...universitiesData];
-
-        // Filter by category
-        if (filterType !== 'all') {
-            filtered = filtered.map(university => ({
-                ...university,
-                programs: university.programs.filter(program =>
-                    program.toLowerCase().includes(filterType.toLowerCase())
-                )
-            })).filter(university => university.programs.length > 0);
-        }
-
-        // Filter by search term
-        if (searchTerm) {
-            filtered = filtered.map(university => ({
-                ...university,
-                programs: university.programs.filter(program =>
-                    program.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                    university.name.toLowerCase().includes(searchTerm.toLowerCase())
-                )
-            })).filter(university =>
-                university.programs.length > 0 ||
-                university.name.toLowerCase().includes(searchTerm.toLowerCase())
-            );
-        }
-
-        return filtered;
-    }
-
-    function updateTotalPrograms() {
-        const totalPrograms = universitiesData.reduce((sum, university) => sum + university.programs.length, 0);
-        document.getElementById('totalPrograms').textContent = totalPrograms;
-    }
-
     // Search functionality
-    document.getElementById('searchBox').addEventListener('input', (e) => {
-        const searchTerm = e.target.value.trim();
-        const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
-        filteredData = filterData(activeFilter, searchTerm);
-        renderUniversities(filteredData);
+    const searchBox = document.getElementById('searchBox');
+    const universityCards = document.querySelectorAll('.university-card');
+    const noResults = document.getElementById('noResults');
+
+    searchBox.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        let hasResults = false;
+
+        universityCards.forEach(card => {
+            const universityName = card.querySelector('.university-name').textContent.toLowerCase();
+            const degreeItems = Array.from(card.querySelectorAll('.degree-item'))
+                .map(item => item.textContent.toLowerCase()).join(' ');
+            const categories = Array.from(card.querySelectorAll('.category-title'))
+                .map(title => title.textContent.toLowerCase()).join(' ');
+
+            const searchContent = universityName + ' ' + degreeItems + ' ' + categories;
+
+            if (searchContent.includes(searchTerm)) {
+                card.style.display = 'block';
+                hasResults = true;
+
+                // Highlight matching degree items
+                card.querySelectorAll('.degree-item').forEach(item => {
+                    if (item.textContent.toLowerCase().includes(searchTerm)) {
+                        item.classList.add('highlight');
+                    } else {
+                        item.classList.remove('highlight');
+                    }
+                });
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        noResults.classList.toggle('hidden', hasResults);
     });
 
     // Filter functionality
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+    function filterCards(category) {
+        // Update active button
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
 
-            const filterType = btn.dataset.filter;
-            const searchTerm = document.getElementById('searchBox').value.trim();
-            filteredData = filterData(filterType, searchTerm);
-            renderUniversities(filteredData);
+        universityCards.forEach(card => {
+            if (category === 'all') {
+                card.style.display = 'block';
+            } else {
+                const categories = card.getAttribute('data-categories');
+                if (categories && categories.includes(category)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            }
         });
-    });
 
-    // Initialize
-    updateTotalPrograms();
-    renderUniversities(universitiesData);
+        // Clear search when filtering
+        searchBox.value = '';
+        document.querySelectorAll('.degree-item').forEach(item => {
+            item.classList.remove('highlight');
+        });
 
-    // Add smooth scrolling and interactive effects
-    document.addEventListener('DOMContentLoaded', () => {
-        // Animate stats on load
-        const statNumbers = document.querySelectorAll('.stat-number');
-        statNumbers.forEach((stat, index) => {
-            const finalValue = parseInt(stat.textContent);
-            stat.textContent = '0';
+        noResults.classList.add('hidden');
+    }
 
-            setTimeout(() => {
-                let current = 0;
-                const increment = finalValue / 30;
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= finalValue) {
-                        stat.textContent = finalValue;
-                        clearInterval(timer);
-                    } else {
-                        stat.textContent = Math.floor(current);
-                    }
-                }, 50);
-            }, index * 200);
+    // Add interactive hover effects
+    universityCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.borderLeft = '5px solid #3498db';
+        });
+
+        card.addEventListener('mouseleave', function() {
+            this.style.borderLeft = '1px solid #e0e0e0';
         });
     });
 </script>

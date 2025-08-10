@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sri Lankan University Science Programs Guide</title>
+    <title>Sri Lankan University Mathematics Programs</title>
     <style>
         * {
             margin: 0;
@@ -15,12 +15,12 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #ec4899 100%);
+            background: #ffffff;
             min-height: 100vh;
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
@@ -28,67 +28,18 @@
         .header {
             text-align: center;
             margin-bottom: 40px;
-            color: white;
-            padding: 40px 0;
+            color: #3073b3;
+            padding: 30px 0;
         }
 
         .header h1 {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-            animation: fadeInDown 1s ease-out;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .header p {
-            font-size: 1.3rem;
-            opacity: 0.9;
-            animation: fadeInUp 1s ease-out 0.3s both;
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            background: rgba(255,255,255,0.1);
-            padding: 30px;
-            border-radius: 20px;
-            margin-bottom: 40px;
-            color: white;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 15px;
-            border-radius: 15px;
-            background: rgba(255,255,255,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .stat-item:hover {
-            transform: scale(1.05);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .stat-label {
-            font-size: 1rem;
+            font-size: 1.2rem;
             opacity: 0.9;
         }
 
@@ -98,182 +49,162 @@
         }
 
         .search-box {
-            padding: 15px 25px;
+            padding: 12px 20px;
             font-size: 16px;
             border: none;
-            border-radius: 50px;
+            border-radius: 25px;
             width: 100%;
-            max-width: 500px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            max-width: 400px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             outline: none;
-            transition: all 0.3s ease;
-        }
-
-        .search-box:focus {
-            transform: scale(1.02);
-            box-shadow: 0 12px 35px rgba(0,0,0,0.2);
-        }
-
-        .filter-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            padding: 12px 24px;
-            background: rgba(255,255,255,0.2);
-            color: white;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 14px;
-            font-weight: 600;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.3);
-        }
-
-        .filter-btn:hover, .filter-btn.active {
-            background: white;
-            color: #4f46e5;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
 
         .university-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
         }
 
         .university-card {
             background: white;
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            transition: all 0.4s ease;
-            border: 1px solid rgba(255,255,255,0.2);
-            backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .university-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #4f46e5, #7c3aed, #ec4899);
-            animation: shimmer 2s ease-in-out infinite;
-        }
-
-        @keyframes shimmer {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
         }
 
         .university-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border-left: 5px solid #3498db;
         }
 
         .university-name {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid #4f46e5;
+            color: #2c5282;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         .degree-category {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .category-title {
             font-size: 1.1rem;
             font-weight: 600;
-            color: #7c3aed;
-            margin-bottom: 12px;
+            color: #e74c3c;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
-            padding: 8px 12px;
-            background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%);
-            border-radius: 8px;
-            border-left: 4px solid #7c3aed;
         }
 
         .category-title::before {
-            content: "🔬";
-            margin-right: 10px;
-            font-size: 1.2rem;
+            content: "📚";
+            margin-right: 8px;
         }
 
         .specialization-list {
             list-style: none;
-            margin-left: 15px;
+            margin-left: 20px;
         }
 
         .specialization-list li {
-            padding: 8px 0;
+            padding: 5px 0;
             color: #555;
             position: relative;
-            padding-left: 25px;
-            transition: all 0.3s ease;
-            border-radius: 5px;
-            margin: 2px 0;
-        }
-
-        .specialization-list li:hover {
-            background: #f8f9fa;
-            padding-left: 30px;
-            color: #4f46e5;
+            padding-left: 20px;
         }
 
         .specialization-list li::before {
             content: "▸";
             position: absolute;
             left: 0;
-            color: #4f46e5;
+            color: #3498db;
             font-weight: bold;
-            font-size: 1.2rem;
         }
 
-        .category-count {
-            display: inline-block;
-            background: #4f46e5;
-            color: white;
-            font-size: 0.8rem;
-            padding: 2px 8px;
-            border-radius: 12px;
-            margin-left: 10px;
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            background: #2c5282;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            color: #ffffff;
         }
 
-        .hidden {
-            display: none;
-        }
-
-        .no-results {
+        .stat-item {
             text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            background: #73a4d3;
             color: white;
-            font-size: 1.5rem;
-            padding: 50px;
-            background: rgba(255,255,255,0.1);
+            border: none;
             border-radius: 20px;
-            backdrop-filter: blur(10px);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: #3073b3;
+            color: #ffffff;
+            transform: scale(1.05);
+        }
+
+        .degree-item {
+            background: #f8f9fa;
+            margin-bottom: 8px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            border-left: 3px solid #3498db;
+            position: relative;
+            padding-left: 20px;
+            color: #555;
+        }
+
+        .degree-item::before {
+            content: "▸";
+            position: absolute;
+            left: 5px;
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        .degree-item.highlight {
+            background: #fff3cd;
+            border-left-color: #ffc107;
         }
 
         @media (max-width: 768px) {
             .header h1 {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
 
             .university-grid {
@@ -285,45 +216,27 @@
             }
 
             .stats {
-                grid-template-columns: repeat(2, 1fr);
+                flex-direction: column;
+                gap: 15px;
             }
 
             .filter-buttons {
-                gap: 8px;
-            }
-
-            .filter-btn {
-                padding: 8px 16px;
-                font-size: 12px;
+                justify-content: center;
             }
         }
 
-        .scroll-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #4f46e5;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            cursor: pointer;
-            font-size: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            transition: all 0.3s ease;
-            opacity: 0;
-            visibility: hidden;
+        .hidden {
+            display: none;
         }
 
-        .scroll-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .scroll-to-top:hover {
-            background: #3730a3;
-            transform: scale(1.1);
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            font-style: italic;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
     </style>
 </head>
@@ -347,14 +260,10 @@
             <span class="stat-number" id="specializationCount">25+</span>
             <span class="stat-label">Specializations</span>
         </div>
-        <div class="stat-item">
-            <span class="stat-number">40+</span>
-            <span class="stat-label">Degree Options</span>
-        </div>
     </div>
 
     <div class="search-container">
-        <input type="text" class="search-box" id="searchBox" placeholder="🔍 Search universities, programs, or specializations...">
+        <input type="text" class="search-box" id="searchBox" placeholder="Search universities or degree programs...">
     </div>
 
     <div class="filter-buttons">
@@ -377,12 +286,10 @@
                 <div class="category-title">Computer Science</div>
             </div>
             <div class="degree-category">
-                <div class="category-title">Industrial Statistics & Mathematical Finance <span class="category-count">3</span></div>
-                <ul class="specialization-list">
-                    <li>Bachelor of Science (03 Years)</li>
-                    <li>Bachelor of Science Honours in Industrial Statistics</li>
-                    <li>Bachelor of Science Honours in Mathematical Finance</li>
-                </ul>
+                <div class="category-title">Industrial Statistics & Mathematical Finance</div>
+                <div class="degree-item">Bachelor of Science (03 Years)</div>
+                <div class="degree-item">Bachelor of Science Honours in Industrial Statistics</div>
+                <div class="degree-item">Bachelor of Science Honours in Mathematical Finance</div>
             </div>
         </div>
 
@@ -404,10 +311,8 @@
                 <div class="category-title">Physical Science</div>
             </div>
             <div class="degree-category">
-                <div class="category-title">Physical Science - ICT <span class="category-count">1</span></div>
-                <ul class="specialization-list">
-                    <li>Bachelor of Science in Physics and ICT</li>
-                </ul>
+                <div class="category-title">Physical Science - ICT</div>
+                <div class="degree-item">Bachelor of Science in Physics and ICT</div>
             </div>
         </div>
 
@@ -418,17 +323,13 @@
                 <div class="category-title">Physical Science</div>
             </div>
             <div class="degree-category">
-                <div class="category-title">Physical Science - ICT <span class="category-count">1</span></div>
-                <ul class="specialization-list">
-                    <li>Bachelor of Science in Physics and Electronics</li>
-                </ul>
+                <div class="category-title">Physical Science - ICT</div>
+                <div class="degree-item">Bachelor of Science in Physics and Electronics</div>
             </div>
             <div class="degree-category">
-                <div class="category-title">Electronics and Computer Science <span class="category-count">2</span></div>
-                <ul class="specialization-list">
-                    <li>Bachelor of Science in Electronics and Computer Science (03 Years)</li>
-                    <li>Bachelor of Science Honours in Electronics and Computer Science</li>
-                </ul>
+                <div class="category-title">Electronics and Computer Science</div>
+                <div class="degree-item">Bachelor of Science in Electronics and Computer Science (03 Years)</div>
+                <div class="degree-item">Bachelor of Science Honours in Electronics and Computer Science</div>
             </div>
         </div>
 
@@ -464,12 +365,10 @@
                 <div class="category-title">Computer Science</div>
             </div>
             <div class="degree-category">
-                <div class="category-title">Applied Sciences <span class="category-count">3</span></div>
-                <ul class="specialization-list">
-                    <li>Bachelor of Science in Applied Physics and Electronics</li>
-                    <li>Bachelor of Science Honours in Applied Physics</li>
-                    <li>Bachelor of Science Honours in Electronics</li>
-                </ul>
+                <div class="category-title">Applied Sciences</div>
+                <div class="degree-item">Bachelor of Science in Applied Physics and Electronics</div>
+                <div class="degree-item">Bachelor of Science Honours in Applied Physics</div>
+                <div class="degree-item">Bachelor of Science Honours in Electronics</div>
             </div>
         </div>
 
@@ -485,13 +384,11 @@
         <div class="university-card" data-categories="applied">
             <div class="university-name">Rajarata University of Sri Lanka</div>
             <div class="degree-category">
-                <div class="category-title">Applied Sciences <span class="category-count">4</span></div>
-                <ul class="specialization-list">
-                    <li>Bachelor of Science in Applied Sciences (03 Years)</li>
-                    <li>Bachelor of Science Honours in Applied Sciences</li>
-                    <li>Bachelor of Science Honours (Joint Major) in Applied Sciences</li>
-                    <li>Bachelor of Science Honours in Industrial Mathematics</li>
-                </ul>
+                <div class="category-title">Applied Sciences</div>
+                <div class="degree-item">Bachelor of Science in Applied Sciences (03 Years)</div>
+                <div class="degree-item">Bachelor of Science Honours in Applied Sciences</div>
+                <div class="degree-item">Bachelor of Science Honours (Joint Major) in Applied Sciences</div>
+                <div class="degree-item">Bachelor of Science Honours in Industrial Mathematics</div>
             </div>
         </div>
 
@@ -499,13 +396,11 @@
         <div class="university-card" data-categories="applied,computer,data">
             <div class="university-name">Sabaragamuwa University of Sri Lanka</div>
             <div class="degree-category">
-                <div class="category-title">Applied Sciences <span class="category-count">4</span></div>
-                <ul class="specialization-list">
-                    <li>Bachelor of Science (Applied Sciences) Honours in Chemical Technology</li>
-                    <li>Bachelor of Science (Applied Sciences) Honours in Computer Science & Technology</li>
-                    <li>Bachelor of Science (Applied Sciences) Honours in Applied Physics</li>
-                    <li>Bachelor of Science (Applied Sciences) in Physical Sciences</li>
-                </ul>
+                <div class="category-title">Applied Sciences</div>
+                <div class="degree-item">Bachelor of Science (Applied Sciences) Honours in Chemical Technology</div>
+                <div class="degree-item">Bachelor of Science (Applied Sciences) Honours in Computer Science & Technology</div>
+                <div class="degree-item">Bachelor of Science (Applied Sciences) Honours in Applied Physics</div>
+                <div class="degree-item">Bachelor of Science (Applied Sciences) in Physical Sciences</div>
             </div>
             <div class="degree-category">
                 <div class="category-title">Data Science</div>
@@ -516,11 +411,9 @@
         <div class="university-card" data-categories="applied,computer">
             <div class="university-name">University of Vavuniya, Sri Lanka</div>
             <div class="degree-category">
-                <div class="category-title">Applied Sciences <span class="category-count">2</span></div>
-                <ul class="specialization-list">
-                    <li>Bachelor of Science in Applied Mathematics & Computing</li>
-                    <li>Bachelor of Science Honours in Computer Science</li>
-                </ul>
+                <div class="category-title">Applied Sciences</div>
+                <div class="degree-item">Bachelor of Science in Applied Mathematics & Computing</div>
+                <div class="degree-item">Bachelor of Science Honours in Computer Science</div>
             </div>
         </div>
 
@@ -528,14 +421,12 @@
         <div class="university-card" data-categories="applied">
             <div class="university-name">Wayamba University of Sri Lanka</div>
             <div class="degree-category">
-                <div class="category-title">Applied Sciences <span class="category-count">5</span></div>
-                <ul class="specialization-list">
-                    <li>Bachelor of Science (03 Years)</li>
-                    <li>Bachelor of Science (Joint Major)</li>
-                    <li>Bachelor of Science Honours in Applied Electronics</li>
-                    <li>Bachelor of Science Honours in Industrial Management</li>
-                    <li>Bachelor of Science Honours in Mathematics with Statistics</li>
-                </ul>
+                <div class="category-title">Applied Sciences</div>
+                <div class="degree-item">Bachelor of Science (03 Years)</div>
+                <div class="degree-item">Bachelor of Science (Joint Major)</div>
+                <div class="degree-item">Bachelor of Science Honours in Applied Electronics</div>
+                <div class="degree-item">Bachelor of Science Honours in Industrial Management</div>
+                <div class="degree-item">Bachelor of Science Honours in Mathematics with Statistics</div>
             </div>
         </div>
 
@@ -548,13 +439,10 @@
         </div>
     </div>
 
-    <div class="no-results hidden" id="noResults">
-        <h2>🔍 No Results Found</h2>
-        <p>Try adjusting your search terms or filters</p>
+    <div id="noResults" class="no-results hidden">
+        <p>No universities or programs found matching your search criteria.</p>
     </div>
 </div>
-
-<button class="scroll-to-top" id="scrollToTop">↑</button>
 
 <script>
     // Search functionality
@@ -563,32 +451,36 @@
     const noResults = document.getElementById('noResults');
 
     searchBox.addEventListener('input', function() {
-        const searchTerm = this.value.toLowerCase().trim();
-        let visibleCards = 0;
+        const searchTerm = this.value.toLowerCase();
+        let hasResults = false;
 
         universityCards.forEach(card => {
             const universityName = card.querySelector('.university-name').textContent.toLowerCase();
-            const specializations = Array.from(card.querySelectorAll('.specialization-list li'))
-                .map(li => li.textContent.toLowerCase()).join(' ');
+            const degreeItems = Array.from(card.querySelectorAll('.degree-item'))
+                .map(item => item.textContent.toLowerCase()).join(' ');
             const categories = Array.from(card.querySelectorAll('.category-title'))
                 .map(title => title.textContent.toLowerCase()).join(' ');
 
-            const searchContent = universityName + ' ' + specializations + ' ' + categories;
+            const searchContent = universityName + ' ' + degreeItems + ' ' + categories;
 
-            if (searchTerm === '' || searchContent.includes(searchTerm)) {
+            if (searchContent.includes(searchTerm)) {
                 card.style.display = 'block';
-                visibleCards++;
+                hasResults = true;
+
+                // Highlight matching degree items
+                card.querySelectorAll('.degree-item').forEach(item => {
+                    if (item.textContent.toLowerCase().includes(searchTerm)) {
+                        item.classList.add('highlight');
+                    } else {
+                        item.classList.remove('highlight');
+                    }
+                });
             } else {
                 card.style.display = 'none';
             }
         });
 
-        // Show/hide no results message
-        if (visibleCards === 0 && searchTerm !== '') {
-            noResults.classList.remove('hidden');
-        } else {
-            noResults.classList.add('hidden');
-        }
+        noResults.classList.toggle('hidden', hasResults);
     });
 
     // Filter functionality
@@ -597,120 +489,37 @@
         document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
         event.target.classList.add('active');
 
-        // Clear search box when filtering
-        searchBox.value = '';
-        noResults.classList.add('hidden');
-
-        let visibleCards = 0;
-
         universityCards.forEach(card => {
             if (category === 'all') {
                 card.style.display = 'block';
-                visibleCards++;
             } else {
                 const categories = card.getAttribute('data-categories');
                 if (categories && categories.includes(category)) {
                     card.style.display = 'block';
-                    visibleCards++;
                 } else {
                     card.style.display = 'none';
                 }
             }
         });
 
-        // Animate filtered cards
-        setTimeout(() => {
-            const visibleCardElements = Array.from(universityCards).filter(card =>
-                card.style.display !== 'none'
-            );
-            visibleCardElements.forEach((card, index) => {
-                setTimeout(() => {
-                    card.style.animation = 'fadeInUp 0.6s ease-out';
-                }, index * 100);
-            });
-        }, 100);
-    }
-
-    // Scroll to top functionality
-    const scrollToTopBtn = document.getElementById('scrollToTop');
-
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 300) {
-            scrollToTopBtn.classList.add('visible');
-        } else {
-            scrollToTopBtn.classList.remove('visible');
-        }
-    });
-
-    scrollToTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
+        // Clear search when filtering
+        searchBox.value = '';
+        document.querySelectorAll('.degree-item').forEach(item => {
+            item.classList.remove('highlight');
         });
-    });
+
+        noResults.classList.add('hidden');
+    }
 
     // Add interactive hover effects
     universityCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
-            this.style.borderLeft = '6px solid #4f46e5';
-            this.style.transition = 'all 0.3s ease';
+            this.style.borderLeft = '5px solid #3498db';
         });
 
         card.addEventListener('mouseleave', function() {
-            this.style.borderLeft = 'none';
+            this.style.borderLeft = '1px solid #e0e0e0';
         });
-    });
-
-    // Add loading animation to cards
-    window.addEventListener('load', () => {
-        universityCards.forEach((card, index) => {
-            setTimeout(() => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(30px)';
-                card.style.transition = 'all 0.6s ease-out';
-
-                setTimeout(() => {
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, 50);
-            }, index * 150);
-        });
-    });
-
-    // Update statistics dynamically
-    function updateStats() {
-        const totalUniversities = universityCards.length;
-        const totalCategories = new Set();
-        let totalSpecializations = 0;
-
-        universityCards.forEach(card => {
-            const categories = card.getAttribute('data-categories');
-            if (categories) {
-                categories.split(',').forEach(cat => totalCategories.add(cat.trim()));
-            }
-
-            const specs = card.querySelectorAll('.specialization-list li');
-            totalSpecializations += specs.length;
-        });
-
-        document.getElementById('universityCount').textContent = totalUniversities;
-        document.getElementById('programCount').textContent = totalCategories.size;
-        document.getElementById('specializationCount').textContent = totalSpecializations + '+';
-    }
-
-    updateStats();
-
-    // Add keyboard shortcuts
-    document.addEventListener('keydown', (e) => {
-        if (e.ctrlKey && e.key === '/') {
-            e.preventDefault();
-            searchBox.focus();
-        }
-        if (e.key === 'Escape') {
-            searchBox.value = '';
-            searchBox.dispatchEvent(new Event('input'));
-            searchBox.blur();
-        }
     });
 </script>
 </body>

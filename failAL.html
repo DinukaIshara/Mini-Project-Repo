@@ -628,6 +628,34 @@
         font-size: 1rem;
       }
 
+      /* Mobile Menu Toggle */
+      .mobile-menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 0.5rem;
+      }
+
+      .hamburger {
+        display: flex;
+        flex-direction: column;
+        width: 25px;
+        height: 20px;
+        justify-content: space-between;
+      }
+
+      .hamburger span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background-color: white;
+        border-radius: 1px;
+        transition: all 0.3s ease;
+      }
+
       .team-grid, .path-grid {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       }
@@ -644,6 +672,34 @@
 
       .team-grid {
         grid-template-columns: 1fr;
+      }
+
+      /* Mobile Menu Toggle */
+      .mobile-menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 0.5rem;
+      }
+
+      .hamburger {
+        display: flex;
+        flex-direction: column;
+        width: 25px;
+        height: 20px;
+        justify-content: space-between;
+      }
+
+      .hamburger span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background-color: white;
+        border-radius: 1px;
+        transition: all 0.3s ease;
       }
     }
   </style>
@@ -663,13 +719,33 @@
 </header>
 
 <!-- Navigation -->
+<!--<nav>-->
+<!--  <div class="container">-->
+<!--    <div class="nav-container">-->
+<!--      <a onclick="location.href='index.html'" href="index.html" class="nav-item">Home</a>-->
+<!--      <a onclick="location.href='pathselection.html'" href="pathselection.html" class="nav-item">Path Selection</a>-->
+<!--      <a onclick="location.href='private.html'" href="private.html" class="nav-item">Institutions</a>-->
+<!--      <a onclick="location.href='resources.html'" href="#resources" class="nav-item">Resources</a>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</nav>-->
 <nav>
   <div class="container">
     <div class="nav-container">
-      <a onclick="location.href='index.html'" href="index.html" class="nav-item">Home</a>
-      <a onclick="location.href='pathselection.html'" href="pathselection.html" class="nav-item">Path Selection</a>
-      <a onclick="location.href='private.html'" href="private.html" class="nav-item">Institutions</a>
-      <a onclick="location.href='resources.html'" href="#resources" class="nav-item">Resources</a>
+      <div class="nav-menu" id="navMenu">
+        <a onclick="location.href='index.html'" href="index.html" class="nav-item" data-translate="nav_home">Home</a>
+        <a onclick="location.href='pathselection.html'" href="pathselection.html" class="nav-item" data-translate="nav_path_selection">Government</a>
+        <a onclick="location.href='private.html'" href="private.html" class="nav-item" data-translate="nav_institutions">Institutions</a>
+        <a onclick="location.href='private.html'" href="private.html" class="nav-item" data-translate="nav_semi_government">Semi-Government</a>
+        <a onclick="location.href='resources.html'" href="#resources" class="nav-item" data-translate="nav_resources">Resources</a>
+      </div>
+      <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <div class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </button>
     </div>
   </div>
 </nav>

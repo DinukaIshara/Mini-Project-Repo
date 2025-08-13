@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sri Lanka State Universities - Degree Programs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #ffffff;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #1e3a8a;
+            padding: 30px 0;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .search-bar {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .search-input {
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 25px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            outline: none;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: #1e3a8a;
+            color: #ffffff;
+            transform: scale(1.05);
+        }
+
+        .stats-section {
+            display: flex;
+            justify-content: space-around;
+            background: #1e3a8a;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            color: #ffffff;
+        }
+
+        .stat-card {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .university-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .university-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+
+        .university-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .university-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #1e3a8a;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3b82f6;
+            text-transform: uppercase;
+        }
+
+        .programs-list {
+            list-style: none;
+        }
+
+        .program-item {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            margin: 8px 0;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border-left: 4px solid #3b82f6;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            color: #555;
+        }
+
+        .program-item:hover {
+            background: linear-gradient(135deg, #3b82f6, #1e3a8a);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .program-item::before {
+            content: '🎓';
+            margin-right: 8px;
+            font-size: 14px;
+        }
+
+        .program-details {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .program-item:hover .program-details {
+            color: #e5e7eb;
+        }
+
+        .no-results {
+            text-align: center;
+            color: #1e3a8a;
+            font-size: 1.2rem;
+            margin: 50px 0;
+            display: none;
+        }
+
+        .footer {
+            text-align: center;
+            color: #1e3a8a;
+            margin-top: 50px;
+            padding: 30px 0;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .university-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .search-input {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Sri Lanka State Universities</h1>
+        <p>Comprehensive Guide to State University Degree Programs & Eligibility Requirements</p>
+    </div>
+
+    <div class="stats-section">
+        <div class="stat-card">
+            <span class="stat-number" id="universityCount">14</span>
+            <span class="stat-label">Universities</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-number" id="programCount">65</span>
+            <span class="stat-label">Degree Programs</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-number">15+</span>
+            <span class="stat-label">Study Fields</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-number">4</span>
+            <span class="stat-label">Years Average</span>
+        </div>
+    </div>
+
+    <div class="search-bar">
+        <input type="text" class="search-input" placeholder="Search universities or degree programs..." id="searchInput">
+    </div>
+
+    <div class="filter-buttons" id="filterButtons">
+        <button class="filter-btn active" onclick="filterPrograms('all')">All Programs</button>
+        <button class="filter-btn" onclick="filterPrograms('technology')">Technology/IT</button>
+        <button class="filter-btn" onclick="filterPrograms('business')">Business</button>
+        <button class="filter-btn" onclick="filterPrograms('engineering')">Engineering</button>
+        <button class="filter-btn" onclick="filterPrograms('design')">Design/Arts</button>
+        <button class="filter-btn" onclick="filterPrograms('science')">Science</button>
+        <button class="filter-btn" onclick="filterPrograms('management')">Management</button>
+    </div>
+
+    <div class="university-grid" id="universityGrid">
+        <!-- Universities will be populated by JavaScript -->
+    </div>
+
+    <div class="no-results" id="noResults">
+        <p>No programs found matching your search criteria.</p>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 Sri Lanka State Universities Guide | Excellence in Higher Education</p>
+    </div>
+</div>
+
+<script>
+    const universities = [
+        {
+            name: "University of Moratuwa",
+            programs: [
+                { name: "Information Technology", duration: "4 years", requirement: "C in Higher Math/Combined Math/Physics" },
+                { name: "Quantity Surveying", duration: "4 years", requirement: "S in Combined Math/Higher Math" },
+                { name: "Urban Informatics and Planning", duration: "4 years", requirement: "S grades in 3 subjects" },
+                { name: "Architecture", duration: "5 years", requirement: "S passes + Aptitude Test" },
+                { name: "Fashion Design & Product Development", duration: "4 years", requirement: "S grades in any 3 A/L + Aptitude Test" },
+                { name: "Landscape Architecture", duration: "4 years", requirement: "S passes + Aptitude Test" },
+                { name: "Design", duration: "4 years", requirement: "S grades in any 3 A/L + Aptitude Test" },
+                { name: "Facilities Management", duration: "4 years", requirement: "S grades in specified subjects" },
+                { name: "Business Science", duration: "4 years", requirement: "S grades from Physical Science/Commerce" },
+                { name: "Information Technology & Management", duration: "4 years", requirement: "2 C grades in specified subjects" }
+            ]
+        },
+        {
+            name: "University of Kelaniya",
+            programs: [
+                { name: "Management & Information Technology", duration: "4 years", requirement: "C in Higher Math/Combined Math/Physics" },
+                { name: "Financial Engineering", duration: "4 years", requirement: "S passes in Economics + Accounting + one other" },
+                { name: "Translation Studies", duration: "4 years", requirement: "C pass in Sinhala/Tamil" },
+                { name: "Software Engineering", duration: "4 years", requirement: "S grades in Combined Math, Physics + one other" },
+                { name: "Sports Science & Management", duration: "4 years", requirement: "S passes in any 3 subjects + Practical Test" },
+                { name: "Film & Television Studies", duration: "4 years", requirement: "S grades in any 3 subjects + Aptitude Test" }
+            ]
+        },
+        {
+            name: "University of Sri Jayewardenepura",
+            programs: [
+                { name: "Information Systems", duration: "4 years", requirement: "C in Combined Math/Physics/ICT + 2 S passes" },
+                { name: "Software Engineering", duration: "4 years", requirement: "S grades in Combined Math, Physics + one other" },
+                { name: "Sports Science & Management", duration: "4 years", requirement: "S passes in any 3 subjects + Practical Test" },
+                { name: "Financial Economics", duration: "4 years", requirement: "B in Economics + S grades in 2 others" },
+                { name: "Creative Music Technology and Production", duration: "4 years", requirement: "S passes in any 3 subjects" },
+                { name: "Polymer Science and Industrial Management", duration: "4 years", requirement: "S grades in specified combinations" }
+            ]
+        },
+        {
+            name: "University of Colombo",
+            programs: [
+                { name: "Law (LLB)", duration: "4 years", requirement: "3 S passes including specified subjects" },
+                { name: "Information Systems", duration: "3-4 years", requirement: "C in Combined Math/Physics/ICT + 2 S passes" },
+                { name: "Primary Education", duration: "4 years", requirement: "S passes in any 3 A/L subjects" }
+            ]
+        },
+        {
+            name: "Uva Wellassa University",
+            programs: [
+                { name: "Science & Technology", duration: "4 years", requirement: "S grades in specified combinations" },
+                { name: "Computer Science & Technology", duration: "4 years", requirement: "S grades in specified combinations" },
+                { name: "Entrepreneurship and Management", duration: "4 years", requirement: "S grades in any 3 subjects" },
+                { name: "Industrial Information Technology", duration: "4 years", requirement: "C in Combined Math/Physics/ICT + 2 S grades" },
+                { name: "Mineral Resources and Technology", duration: "4 years", requirement: "S grades in specified combinations" },
+                { name: "Hospitality, Tourism and Events Management", duration: "4 years", requirement: "S grades in any 3 subjects" },
+                { name: "Human Resource Development", duration: "4 years", requirement: "S grades in any 3 subjects" },
+                { name: "English Language & Applied Linguistics", duration: "4 years", requirement: "S grades in any 3 subjects" },
+                { name: "Plantation Management and Technology", duration: "4 years", requirement: "S grades in specified combinations" }
+            ]
+        },
+        {
+            name: "Eastern University",
+            programs: [
+                { name: "Translation Studies (English/Tamil)", duration: "4 years", requirement: "C pass in Sinhala/Tamil" }
+            ]
+        },
+        {
+            name: "Gampaha Wickramarachchi University",
+            programs: [
+                { name: "Health Information and Communication Technology", duration: "4 years", requirement: "S grades from Engineering/Biosystem Technology" },
+                { name: "Health Tourism and Hospitality Management", duration: "4 years", requirement: "S grades from specified streams" },
+                { name: "Biomedical Technology", duration: "4 years", requirement: "S grades from Engineering/Biosystem Technology" },
+                { name: "Indigenous Pharmaceutical Technology", duration: "4 years", requirement: "S grades from specified streams" },
+                { name: "Yoga and Parapsychology", duration: "4 years", requirement: "S grades in any 3 subjects" },
+                { name: "Social Studies in Indigenous Knowledge", duration: "4 years", requirement: "S grades in any 3 subjects" }
+            ]
+        },
+        {
+            name: "Rajarata University",
+            programs: [
+                { name: "Tourism & Hospitality Management", duration: "4 years", requirement: "Any 3 subjects from specified streams" },
+                { name: "Information and Communication Technology", duration: "4 years", requirement: "C in Combined Math/Physics/ICT + 2 S grades" }
+            ]
+        },
+        {
+            name: "Sabaragamuwa University",
+            programs: [
+                { name: "Surveying Science", duration: "4 years", requirement: "S passes in Physics + Combined Math + 1 subject" },
+                { name: "Physical Education", duration: "4 years", requirement: "S passes in any 3 subjects + Practical Test" },
+                { name: "Sports Science & Management", duration: "4 years", requirement: "S passes in any 3 subjects + Practical Test" },
+                { name: "Tourism & Hospitality Management", duration: "4 years", requirement: "Any 3 subjects from specified streams" },
+                { name: "Information Systems", duration: "4 years", requirement: "C in Combined Math/Physics/ICT + 2 S passes" },
+                { name: "Translation Studies (English/Sinhala)", duration: "4 years", requirement: "C pass in Sinhala/Tamil" },
+                { name: "Food Business Management", duration: "4 years", requirement: "S passes from Science/Commerce streams" },
+                { name: "Software Engineering", duration: "4 years", requirement: "S grades in Combined Math, Physics + one other" }
+            ]
+        },
+        {
+            name: "South Eastern University",
+            programs: [
+                { name: "Management and Information Technology", duration: "3 years", requirement: "S passes in any 3 subjects" }
+            ]
+        },
+        {
+            name: "University of Jaffna",
+            programs: [
+                { name: "Law (LLB)", duration: "4 years", requirement: "S grades in specified subjects" },
+                { name: "Physical Education", duration: "4 years", requirement: "S passes in any 3 subjects + Practical Test" },
+                { name: "Translation Studies (English/Tamil)", duration: "4 years", requirement: "C pass in Sinhala/Tamil" }
+            ]
+        },
+        {
+            name: "University of Peradeniya",
+            programs: [
+                { name: "Law (LLB)", duration: "4 years", requirement: "S grades in specified subjects" },
+                { name: "Geographical Information Science", duration: "4 years", requirement: "S passes in any 3 subjects from Arts/Science" }
+            ]
+        },
+        {
+            name: "University of Ruhuna",
+            programs: [
+                { name: "Marine and Fresh Water Sciences", duration: "4 years", requirement: "S grades in specified combinations" },
+                { name: "Financial Mathematics and Industrial Statistics", duration: "4 years", requirement: "S grades in Combined Math + 2 others" }
+            ]
+        },
+        {
+            name: "University of Vavuniya",
+            programs: [
+                { name: "Project Management", duration: "3 years", requirement: "C grades in 2 specified subjects" },
+                { name: "Information and Communication Technology", duration: "3-4 years", requirement: "C in Combined Math/Physics/ICT + 2 S grades" }
+            ]
+        }
+    ];
+
+    function renderUniversities(universitiesToShow = universities) {
+        const grid = document.getElementById('universityGrid');
+        const noResults = document.getElementById('noResults');
+
+        if (universitiesToShow.length === 0) {
+            grid.style.display = 'none';
+            noResults.style.display = 'block';
+            return;
+        }
+
+        grid.style.display = 'grid';
+        noResults.style.display = 'none';
+
+        grid.innerHTML = '';
+
+        universitiesToShow.forEach((university, index) => {
+            const card = document.createElement('div');
+            card.className = 'university-card';
+
+            const programsList = university.programs.map(program =>
+                `<li class="program-item">
+                    ${program.name}
+                    <div class="program-details">Duration: ${program.duration} | ${program.requirement}</div>
+                </li>`
+            ).join('');
+
+            card.innerHTML = `
+                <div class="university-title">${university.name}</div>
+                <ul class="programs-list">
+                    ${programsList}
+                </ul>
+            `;
+
+            grid.appendChild(card);
+        });
+    }
+
+    function searchPrograms() {
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
+        if (!searchTerm) {
+            renderUniversities();
+            return;
+        }
+
+        const filteredUniversities = universities.map(university => {
+            const filteredPrograms = university.programs.filter(program =>
+                program.name.toLowerCase().includes(searchTerm) ||
+                university.name.toLowerCase().includes(searchTerm) ||
+                program.requirement.toLowerCase().includes(searchTerm)
+            );
+
+            return {
+                ...university,
+                programs: filteredPrograms
+            };
+        }).filter(university => university.programs.length > 0);
+
+        renderUniversities(filteredUniversities);
+    }
+
+    function filterPrograms(category) {
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+
+        const filteredUniversities = universities.map(university => {
+            let filteredPrograms = university.programs;
+
+            if (category !== 'all') {
+                filteredPrograms = university.programs.filter(program => {
+                    const programLower = program.name.toLowerCase();
+                    switch(category) {
+                        case 'technology':
+                            return programLower.includes('information technology') || programLower.includes('software') || programLower.includes('computer') || programLower.includes('ict');
+                        case 'business':
+                            return programLower.includes('business') || programLower.includes('financial') || programLower.includes('economics') || programLower.includes('entrepreneurship');
+                        case 'engineering':
+                            return programLower.includes('engineering') || programLower.includes('surveying') || programLower.includes('architecture');
+                        case 'design':
+                            return programLower.includes('design') || programLower.includes('fashion') || programLower.includes('landscape') || programLower.includes('film');
+                        case 'science':
+                            return programLower.includes('science') || programLower.includes('technology') || programLower.includes('biomedical') || programLower.includes('marine') || programLower.includes('mineral');
+                        case 'management':
+                            return programLower.includes('management') || programLower.includes('tourism') || programLower.includes('hospitality') || programLower.includes('human resource');
+                        default:
+                            return true;
+                    }
+                });
+            }
+
+            return {
+                ...university,
+                programs: filteredPrograms
+            };
+        }).filter(university => university.programs.length > 0);
+
+        renderUniversities(filteredUniversities);
+    }
+
+    document.getElementById('searchInput').addEventListener('input', searchPrograms);
+
+    document.addEventListener('DOMContentLoaded', function() {
+        renderUniversities();
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineering & Technical Education Programs - Sri Lanka</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #ffffff;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #dc2626;
+            padding: 30px 0;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .search-bar {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .search-input {
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 25px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            outline: none;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            background: #ef4444;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: #dc2626;
+            color: #ffffff;
+            transform: scale(1.05);
+        }
+
+        .stats-section {
+            display: flex;
+            justify-content: space-around;
+            background: #dc2626;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            color: #ffffff;
+        }
+
+        .stat-card {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .university-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .university-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+
+        .university-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .university-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #dc2626;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #ef4444;
+            text-transform: uppercase;
+        }
+
+        .programs-list {
+            list-style: none;
+        }
+
+        .program-item {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            margin: 8px 0;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border-left: 4px solid #ef4444;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            color: #555;
+        }
+
+        .program-item:hover {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .program-item::before {
+            content: '⚙️';
+            margin-right: 8px;
+            font-size: 14px;
+        }
+
+        .program-details {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .program-item:hover .program-details {
+            color: #fecaca;
+        }
+
+        .specialization {
+            font-size: 0.8rem;
+            color: #888;
+            margin-left: 20px;
+            font-style: italic;
+        }
+
+        .program-item:hover .specialization {
+            color: #fed7d7;
+        }
+
+        .no-results {
+            text-align: center;
+            color: #dc2626;
+            font-size: 1.2rem;
+            margin: 50px 0;
+            display: none;
+        }
+
+        .footer {
+            text-align: center;
+            color: #dc2626;
+            margin-top: 50px;
+            padding: 30px 0;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .university-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .search-input {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Engineering & Technical Education</h1>
+        <p>Professional Engineering Diplomas, Certificates & Technology Programs in Sri Lanka</p>
+    </div>
+
+    <div class="stats-section">
+        <div class="stat-card">
+            <span class="stat-number" id="institutionCount">5</span>
+            <span class="stat-label">Institutions</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-number" id="programCount">35</span>
+            <span class="stat-label">Programs</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-number">8</span>
+            <span class="stat-label">Engineering Fields</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-number">20+</span>
+            <span class="stat-label">Specializations</span>
+        </div>
+    </div>
+
+    <div class="search-bar">
+        <input type="text" class="search-input" placeholder="Search engineering programs & technologies..." id="searchInput">
+    </div>
+
+    <div class="filter-buttons" id="filterButtons">
+        <button class="filter-btn active" onclick="filterPrograms('all')">All Programs</button>
+        <button class="filter-btn" onclick="filterPrograms('civil')">Civil Engineering</button>
+        <button class="filter-btn" onclick="filterPrograms('mechanical')">Mechanical</button>
+        <button class="filter-btn" onclick="filterPrograms('electrical')">Electrical</button>
+        <button class="filter-btn" onclick="filterPrograms('automotive')">Automotive</button>
+        <button class="filter-btn" onclick="filterPrograms('manufacturing')">Manufacturing</button>
+        <button class="filter-btn" onclick="filterPrograms('technology')">Technology</button>
+    </div>
+
+    <div class="university-grid" id="universityGrid">
+        <!-- Institutions will be populated by JavaScript -->
+    </div>
+
+    <div class="no-results" id="noResults">
+        <p>No programs found matching your search criteria.</p>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 Engineering & Technical Education Guide | Building Tomorrow's Engineers</p>
+    </div>
+</div>
+
+<script>
+    const institutions = [
+        {
+            name: "Institute of Higher National Diploma in Engineering",
+            type: "Higher National Diploma",
+            programs: [
+                {
+                    name: "Civil Engineering",
+                    type: "HND",
+                    specializations: []
+                },
+                {
+                    name: "Mechanical Engineering",
+                    type: "HND",
+                    specializations: []
+                },
+                {
+                    name: "Electrical and Electronics Engineering",
+                    type: "HND",
+                    specializations: []
+                },
+                {
+                    name: "Building Services Engineering",
+                    type: "HND",
+                    specializations: []
+                },
+                {
+                    name: "Quantity Surveying",
+                    type: "HND",
+                    specializations: []
+                }
+            ]
+        },
+        {
+            name: "Korea National Vocational Institute",
+            type: "National Diploma",
+            programs: [
+                {
+                    name: "Automobile Technology",
+                    type: "National Diploma",
+                    specializations: []
+                },
+                {
+                    name: "CNC Manufacturing Technology",
+                    type: "National Diploma",
+                    specializations: []
+                },
+                {
+                    name: "Fluid Power Technology",
+                    type: "National Diploma",
+                    specializations: []
+                },
+                {
+                    name: "Electrical Technology",
+                    type: "National Diploma",
+                    specializations: []
+                },
+                {
+                    name: "Mechatronic Technology",
+                    type: "National Diploma",
+                    specializations: []
+                },
+                {
+                    name: "Welding Technology",
+                    type: "National Diploma",
+                    specializations: []
+                },
+                {
+                    name: "Refrigeration & Air-conditioning",
+                    type: "National Diploma",
+                    specializations: []
+                },
+                {
+                    name: "Automation & Robotics Technology",
+                    type: "National Diploma",
+                    specializations: []
+                },
+                {
+                    name: "Electronic Technology",
+                    type: "National Diploma",
+                    specializations: []
+                }
+            ]
+        },
+        {
+            name: "Technical College",
+            type: "National Diploma & Certificate",
+            programs: [
+                {
+                    name: "Automobile Technology",
+                    type: "National Diploma (NVQ 05)",
+                    specializations: []
+                },
+                {
+                    name: "Engineering Draughtsmanship",
+                    type: "National Certificate",
+                    specializations: []
+                },
+                {
+                    name: "Drafting Technology",
+                    type: "National Diploma (NVQ Level 5)",
+                    specializations: []
+                },
+                {
+                    name: "Quantity Surveying Technology",
+                    type: "National Diploma (NVQ Level 5)",
+                    specializations: []
+                },
+                {
+                    name: "Engineering Craft Practice (Motor Vehicle Mechanic)",
+                    type: "National Certificate",
+                    specializations: []
+                },
+                {
+                    name: "Construction Technology",
+                    type: "National Diploma (NVQ Level 5)",
+                    specializations: []
+                }
+            ]
+        },
+        {
+            name: "Institute of Engineering Technology",
+            type: "Engineering Technology Diploma",
+            programs: [
+                {
+                    name: "Civil Engineering",
+                    type: "Engineering Technology",
+                    specializations: [
+                        "Building & Structural Engineering",
+                        "Highway & Railway Engineering",
+                        "Water & Environmental Engineering"
+                    ]
+                },
+                {
+                    name: "Electrical Engineering",
+                    type: "Engineering Technology",
+                    specializations: [
+                        "Network & Communication Engineering",
+                        "Power Engineering"
+                    ]
+                },
+                {
+                    name: "Mechanical Engineering",
+                    type: "Engineering Technology",
+                    specializations: [
+                        "Automotive Engineering",
+                        "Production Engineering",
+                        "Marine Engineering"
+                    ]
+                }
+            ]
+        },
+        {
+            name: "Institute of Engineering - University of Moratuwa",
+            type: "Engineering Technology",
+            programs: [
+                {
+                    name: "Civil Engineering Technology",
+                    type: "Engineering Technology",
+                    specializations: []
+                },
+                {
+                    name: "Electrical, Electronic and Telecommunication Engineering",
+                    type: "Engineering Technology",
+                    specializations: []
+                },
+                {
+                    name: "Mechanical Engineering",
+                    type: "Engineering Technology",
+                    specializations: []
+                },
+                {
+                    name: "Polymer Technology",
+                    type: "Engineering Technology",
+                    specializations: []
+                },
+                {
+                    name: "Textile and Clothing Technology",
+                    type: "Engineering Technology",
+                    specializations: []
+                }
+            ]
+        }
+    ];
+
+    function renderInstitutions(institutionsToShow = institutions) {
+        const grid = document.getElementById('universityGrid');
+        const noResults = document.getElementById('noResults');
+
+        if (institutionsToShow.length === 0) {
+            grid.style.display = 'none';
+            noResults.style.display = 'block';
+            return;
+        }
+
+        grid.style.display = 'grid';
+        noResults.style.display = 'none';
+
+        grid.innerHTML = '';
+
+        institutionsToShow.forEach((institution, index) => {
+            const card = document.createElement('div');
+            card.className = 'university-card';
+
+            const programsList = institution.programs.map(program => {
+                let specializationsHtml = '';
+                if (program.specializations && program.specializations.length > 0) {
+                    specializationsHtml = program.specializations.map(spec =>
+                        `<div class="specialization">• ${spec}</div>`
+                    ).join('');
+                }
+
+                return `<li class="program-item">
+                    ${program.name}
+                    <div class="program-details">Type: ${program.type}</div>
+                    ${specializationsHtml}
+                </li>`;
+            }).join('');
+
+            card.innerHTML = `
+                <div class="university-title">${institution.name}</div>
+                <ul class="programs-list">
+                    ${programsList}
+                </ul>
+            `;
+
+            grid.appendChild(card);
+        });
+    }
+
+    function searchPrograms() {
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
+        if (!searchTerm) {
+            renderInstitutions();
+            return;
+        }
+
+        const filteredInstitutions = institutions.map(institution => {
+            const filteredPrograms = institution.programs.filter(program =>
+                program.name.toLowerCase().includes(searchTerm) ||
+                institution.name.toLowerCase().includes(searchTerm) ||
+                program.type.toLowerCase().includes(searchTerm) ||
+                (program.specializations && program.specializations.some(spec =>
+                    spec.toLowerCase().includes(searchTerm)
+                ))
+            );
+
+            return {
+                ...institution,
+                programs: filteredPrograms
+            };
+        }).filter(institution => institution.programs.length > 0);
+
+        renderInstitutions(filteredInstitutions);
+    }
+
+    function filterPrograms(category) {
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+
+        const filteredInstitutions = institutions.map(institution => {
+            let filteredPrograms = institution.programs;
+
+            if (category !== 'all') {
+                filteredPrograms = institution.programs.filter(program => {
+                    const programLower = program.name.toLowerCase();
+                    const specializationsText = program.specializations ?
+                        program.specializations.join(' ').toLowerCase() : '';
+
+                    switch(category) {
+                        case 'civil':
+                            return programLower.includes('civil') || programLower.includes('construction') ||
+                                programLower.includes('building') || programLower.includes('quantity surveying') ||
+                                specializationsText.includes('structural') || specializationsText.includes('highway');
+                        case 'mechanical':
+                            return programLower.includes('mechanical') || programLower.includes('automotive') ||
+                                programLower.includes('automobile') || programLower.includes('welding') ||
+                                programLower.includes('refrigeration') || specializationsText.includes('marine') ||
+                                specializationsText.includes('production');
+                        case 'electrical':
+                            return programLower.includes('electrical') || programLower.includes('electronic') ||
+                                programLower.includes('electronics') || programLower.includes('telecommunication') ||
+                                programLower.includes('power') || specializationsText.includes('communication');
+                        case 'automotive':
+                            return programLower.includes('automobile') || programLower.includes('automotive') ||
+                                programLower.includes('motor vehicle') || specializationsText.includes('automotive');
+                        case 'manufacturing':
+                            return programLower.includes('manufacturing') || programLower.includes('cnc') ||
+                                programLower.includes('production') || programLower.includes('mechatronic') ||
+                                programLower.includes('automation') || programLower.includes('robotics');
+                        case 'technology':
+                            return programLower.includes('technology') || programLower.includes('textile') ||
+                                programLower.includes('polymer') || programLower.includes('fluid power') ||
+                                programLower.includes('drafting') || programLower.includes('draughtsmanship');
+                        default:
+                            return true;
+                    }
+                });
+            }
+
+            return {
+                ...institution,
+                programs: filteredPrograms
+            };
+        }).filter(institution => institution.programs.length > 0);
+
+        renderInstitutions(filteredInstitutions);
+    }
+
+    document.getElementById('searchInput').addEventListener('input', searchPrograms);
+
+    document.addEventListener('DOMContentLoaded', function() {
+        renderInstitutions();
+    });
+</script>
+</body>
+</html>

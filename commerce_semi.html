@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Specialized Science & Marine Programs - Sri Lanka</title>
+    <title>Commerce & Professional Qualifications - Sri Lanka</title>
     <style>
         * {
             margin: 0;
@@ -15,7 +15,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+            background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
             min-height: 100vh;
         }
 
@@ -28,7 +28,7 @@
         .header {
             text-align: center;
             margin-bottom: 40px;
-            color: #006064;
+            color: #4a148c;
             padding: 30px 0;
         }
 
@@ -70,7 +70,7 @@
 
         .filter-btn {
             padding: 8px 16px;
-            background: #0097a7;
+            background: #7b1fa2;
             color: white;
             border: none;
             border-radius: 20px;
@@ -80,7 +80,7 @@
         }
 
         .filter-btn:hover, .filter-btn.active {
-            background: #006064;
+            background: #4a148c;
             color: #ffffff;
             transform: scale(1.05);
         }
@@ -88,7 +88,7 @@
         .stats-section {
             display: flex;
             justify-content: space-around;
-            background: linear-gradient(135deg, #006064, #0097a7);
+            background: linear-gradient(135deg, #4a148c, #7b1fa2);
             padding: 20px;
             border-radius: 10px;
             margin-bottom: 30px;
@@ -124,7 +124,7 @@
             padding: 25px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
             transition: all 0.3s ease;
-            border: 1px solid rgba(0, 151, 167, 0.2);
+            border: 1px solid rgba(123, 31, 162, 0.2);
             backdrop-filter: blur(10px);
         }
 
@@ -137,10 +137,10 @@
         .university-title {
             font-size: 1.4rem;
             font-weight: bold;
-            color: #006064;
+            color: #4a148c;
             margin-bottom: 20px;
             padding-bottom: 10px;
-            border-bottom: 3px solid #0097a7;
+            border-bottom: 3px solid #7b1fa2;
             text-transform: uppercase;
         }
 
@@ -149,45 +149,45 @@
         }
 
         .program-item {
-            background: linear-gradient(135deg, #e0f2f1, #b2dfdb);
+            background: linear-gradient(135deg, #f3e5f5, #e1bee7);
             margin: 8px 0;
             padding: 15px;
             border-radius: 10px;
-            border-left: 4px solid #0097a7;
+            border-left: 4px solid #7b1fa2;
             transition: all 0.3s ease;
             cursor: pointer;
             position: relative;
             overflow: hidden;
-            color: #004d40;
+            color: #4a148c;
         }
 
         .program-item:hover {
-            background: linear-gradient(135deg, #0097a7, #006064);
+            background: linear-gradient(135deg, #7b1fa2, #4a148c);
             color: white;
             transform: translateX(5px);
         }
 
         .program-item::before {
-            content: '🌊';
+            content: '💼';
             margin-right: 8px;
             font-size: 16px;
         }
 
         .program-details {
             font-size: 0.85rem;
-            color: #00695c;
+            color: #6a1b9a;
             margin-top: 8px;
             font-weight: 500;
         }
 
         .program-item:hover .program-details {
-            color: #b2ebf2;
+            color: #e1bee7;
         }
 
-        .degree-type {
+        .qualification-type {
             display: inline-block;
-            background: rgba(0, 151, 167, 0.1);
-            color: #006064;
+            background: rgba(123, 31, 162, 0.1);
+            color: #4a148c;
             padding: 4px 8px;
             border-radius: 12px;
             font-size: 0.75rem;
@@ -195,35 +195,19 @@
             margin-top: 5px;
         }
 
-        .program-item:hover .degree-type {
+        .program-item:hover .qualification-type {
             background: rgba(255, 255, 255, 0.2);
-            color: #e0f7fa;
+            color: #f3e5f5;
         }
 
         .specialization-note {
-            background: rgba(0, 96, 100, 0.1);
+            background: rgba(74, 20, 140, 0.1);
             padding: 15px;
             border-radius: 8px;
             margin: 15px 0;
-            border-left: 4px solid #0097a7;
-            color: #004d40;
+            border-left: 4px solid #7b1fa2;
+            color: #4a148c;
             font-style: italic;
-        }
-
-        .no-results {
-            text-align: center;
-            color: #006064;
-            font-size: 1.2rem;
-            margin: 50px 0;
-            display: none;
-        }
-
-        .footer {
-            text-align: center;
-            color: #006064;
-            margin-top: 50px;
-            padding: 30px 0;
-            opacity: 0.8;
         }
 
         .coming-soon {
@@ -235,6 +219,31 @@
             color: #e65100;
             font-style: italic;
             margin: 10px 0;
+        }
+
+        .professional-body {
+            background: linear-gradient(135deg, #e8f5e8, #c8e6c8);
+            border: 2px solid #4caf50;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px 0;
+            color: #2e7d32;
+        }
+
+        .no-results {
+            text-align: center;
+            color: #4a148c;
+            font-size: 1.2rem;
+            margin: 50px 0;
+            display: none;
+        }
+
+        .footer {
+            text-align: center;
+            color: #4a148c;
+            margin-top: 50px;
+            padding: 30px 0;
+            opacity: 0.8;
         }
 
         @media (max-width: 768px) {
@@ -266,39 +275,39 @@
 <body>
 <div class="container">
     <div class="header">
-        <h1>Specialized Science & Marine Programs</h1>
-        <p>Ocean Sciences, Marine Technology & Professional Healthcare Education in Sri Lanka</p>
+        <h1>Commerce & Professional Qualifications</h1>
+        <p>Professional Accounting, Management & Maritime Commerce Education in Sri Lanka</p>
     </div>
 
     <div class="stats-section">
         <div class="stat-card">
-            <span class="stat-number" id="institutionCount">2</span>
+            <span class="stat-number" id="institutionCount">4</span>
             <span class="stat-label">Institutions</span>
         </div>
         <div class="stat-card">
-            <span class="stat-number" id="programCount">4</span>
-            <span class="stat-label">Degree Programs</span>
+            <span class="stat-number" id="programCount">15+</span>
+            <span class="stat-label">Qualifications</span>
         </div>
         <div class="stat-card">
             <span class="stat-number">3</span>
-            <span class="stat-label">Marine Sciences</span>
+            <span class="stat-label">Professional Bodies</span>
         </div>
         <div class="stat-card">
-            <span class="stat-number">1</span>
-            <span class="stat-label">Healthcare</span>
+            <span class="stat-number">2</span>
+            <span class="stat-label">Universities</span>
         </div>
     </div>
 
     <div class="search-bar">
-        <input type="text" class="search-input" placeholder="Search marine sciences, healthcare & specialized programs..." id="searchInput">
+        <input type="text" class="search-input" placeholder="Search commerce, accounting & professional qualifications..." id="searchInput">
     </div>
 
     <div class="filter-buttons" id="filterButtons">
         <button class="filter-btn active" onclick="filterPrograms('all')">All Programs</button>
-        <button class="filter-btn" onclick="filterPrograms('marine')">Marine Sciences</button>
-        <button class="filter-btn" onclick="filterPrograms('technology')">Technology</button>
-        <button class="filter-btn" onclick="filterPrograms('healthcare')">Healthcare</button>
-        <button class="filter-btn" onclick="filterPrograms('logistics')">Logistics</button>
+        <button class="filter-btn" onclick="filterPrograms('maritime')">Maritime</button>
+        <button class="filter-btn" onclick="filterPrograms('accounting')">Accounting</button>
+        <button class="filter-btn" onclick="filterPrograms('management')">Management</button>
+        <button class="filter-btn" onclick="filterPrograms('professional')">Professional Bodies</button>
     </div>
 
     <div class="university-grid" id="universityGrid">
@@ -310,7 +319,7 @@
     </div>
 
     <div class="footer">
-        <p>&copy; 2025 Specialized Science Education Guide | Exploring Ocean Sciences & Professional Healthcare</p>
+        <p>&copy; 2025 Commerce & Professional Education Guide | Building Business Leaders & Professionals</p>
     </div>
 </div>
 
@@ -318,44 +327,57 @@
     const institutions = [
         {
             name: "Ocean University of Sri Lanka",
-            type: "Marine & Ocean Sciences",
-            description: "Sri Lanka's premier institution for ocean sciences, marine technology, and aquatic studies",
+            type: "Specialized Maritime University",
+            description: "Leading institution for maritime commerce and coastal management studies",
             programs: [
                 {
-                    name: "Aquaculture and Seafood Technology",
-                    degree: "BTech",
-                    description: "Advanced study of fish farming, seafood processing, and aquatic biotechnology",
-                    duration: "4 years",
-                    field: "marine"
-                },
-                {
-                    name: "Fisheries and Marine Sciences",
-                    degree: "BSc",
-                    description: "Comprehensive study of marine ecosystems, fisheries management, and marine biology",
-                    duration: "4 years",
-                    field: "marine"
-                },
-                {
-                    name: "Oceanography",
-                    degree: "BSc",
-                    description: "Study of ocean currents, marine geology, and physical oceanographic processes",
-                    duration: "4 years",
-                    field: "marine"
-                },
-                {
                     name: "Maritime Transportation and Logistics",
-                    degree: "BSc",
-                    description: "Specialized program in shipping, port management, and maritime supply chain",
+                    type: "BSc",
+                    description: "Comprehensive program covering shipping operations, port management, and international logistics",
                     duration: "4 years",
-                    field: "logistics"
+                    category: "maritime"
+                },
+                {
+                    name: "Management of Coastal and Marine Resources",
+                    type: "BSc",
+                    description: "Specialized program in sustainable coastal development and marine resource management",
+                    duration: "4 years",
+                    category: "maritime"
                 }
             ]
         },
         {
-            name: "Sri Lanka Nursing Council",
-            type: "Healthcare Professional Regulation",
-            description: "Regulatory body for nursing education and professional healthcare standards",
-            programs: []
+            name: "University College",
+            type: "Higher Education Institution",
+            description: "Comprehensive university college offering diverse academic and professional programs",
+            programs: [
+                {
+                    name: "Business Administration",
+                    type: "Degree",
+                    description: "Comprehensive business education covering management, finance, and operations",
+                    duration: "3-4 years",
+                    category: "management"
+                },
+                {
+                    name: "Commerce Studies",
+                    type: "Degree",
+                    description: "Traditional commerce education with accounting, economics, and business studies",
+                    duration: "3-4 years",
+                    category: "accounting"
+                }
+            ]
+        },
+        {
+            name: "Association of Accounting Technicians (AAT)",
+            type: "Professional Accounting Body",
+            description: "Leading professional accounting qualification provider in Sri Lanka",
+            isLimited: true
+        },
+        {
+            name: "Chartered Institute of Sri Lanka",
+            type: "Professional Chartered Body",
+            description: "Premier chartered professional institute offering various business and management qualifications",
+            isLimited: true
         }
     ];
 
@@ -364,9 +386,9 @@
         const noResults = document.getElementById('noResults');
 
         const institutionsWithPrograms = institutionsToShow.filter(inst => inst.programs && inst.programs.length > 0);
-        const institutionsWithoutPrograms = institutionsToShow.filter(inst => !inst.programs || inst.programs.length === 0);
+        const professionalBodies = institutionsToShow.filter(inst => inst.isLimited);
 
-        if (institutionsWithPrograms.length === 0 && institutionsWithoutPrograms.length === 0) {
+        if (institutionsWithPrograms.length === 0 && professionalBodies.length === 0) {
             grid.style.display = 'none';
             noResults.style.display = 'block';
             return;
@@ -376,7 +398,7 @@
         noResults.style.display = 'none';
         grid.innerHTML = '';
 
-        // Render institutions with programs
+        // Render institutions with detailed programs
         institutionsWithPrograms.forEach((institution, index) => {
             const card = document.createElement('div');
             card.className = 'university-card';
@@ -385,7 +407,7 @@
                 return `<li class="program-item">
                     ${program.name}
                     <div class="program-details">${program.description}</div>
-                    <div class="degree-type">${program.degree} • ${program.duration}</div>
+                    <div class="qualification-type">${program.type} • ${program.duration}</div>
                 </li>`;
             }).join('');
 
@@ -400,40 +422,57 @@
             grid.appendChild(card);
         });
 
-        // Render institutions without detailed programs
-        institutionsWithoutPrograms.forEach((institution, index) => {
+        // Render professional bodies
+        professionalBodies.forEach((institution, index) => {
             const card = document.createElement('div');
             card.className = 'university-card';
+
+            let content = '';
+
+            if (institution.name.includes('AAT')) {
+                content = `
+                    <div class="professional-body">
+                        <h3>📊 Professional Accounting Qualifications</h3>
+                        <p><strong>Association of Accounting Technicians Sri Lanka</strong></p>
+                        <br>
+                        <p><strong>Available Qualifications:</strong></p>
+                        <ul style="text-align: left; margin: 10px 0; color: #2e7d32;">
+                            <li>• AAT Foundation Level</li>
+                            <li>• AAT Intermediate Level</li>
+                            <li>• AAT Final Level</li>
+                            <li>• Professional Accounting Technician</li>
+                            <li>• Business Accounting & Finance</li>
+                        </ul>
+                        <p><em>Pathway to CA Sri Lanka and other international accounting qualifications</em></p>
+                    </div>
+                `;
+            } else if (institution.name.includes('Chartered')) {
+                content = `
+                    <div class="professional-body">
+                        <h3>🏆 Chartered Professional Qualifications</h3>
+                        <p><strong>Various Chartered Institutes in Sri Lanka</strong></p>
+                        <br>
+                        <p><strong>Available Programs:</strong></p>
+                        <ul style="text-align: left; margin: 10px 0; color: #2e7d32;">
+                            <li>• Chartered Accountant (CA Sri Lanka)</li>
+                            <li>• Chartered Management Accountant (CMA)</li>
+                            <li>• Chartered Financial Analyst (CFA)</li>
+                            <li>• Chartered Institute of Marketing</li>
+                            <li>• Chartered Institute of Personnel Management</li>
+                        </ul>
+                        <p><em>Internationally recognized professional qualifications</em></p>
+                    </div>
+                `;
+            }
 
             card.innerHTML = `
                 <div class="university-title">${institution.name}</div>
                 <div class="specialization-note">${institution.description}</div>
-                <div class="coming-soon">
-                    <h3>🏥 Professional Healthcare Education</h3>
-                    <p>Nursing programs and healthcare professional certifications available through accredited institutions. Contact the Sri Lanka Nursing Council for current program offerings and registration requirements.</p>
-                    <br>
-                    <p><strong>Services:</strong></p>
-                    <ul style="text-align: left; margin: 10px 0;">
-                        <li>• Nursing Education Standards</li>
-                        <li>• Professional Registration</li>
-                        <li>• Continuing Education Programs</li>
-                        <li>• Healthcare Quality Assurance</li>
-                    </ul>
-                </div>
+                ${content}
             `;
 
             grid.appendChild(card);
         });
-    }
-
-    function updateStats() {
-        const totalPrograms = institutions.reduce((sum, inst) => sum + (inst.programs ? inst.programs.length : 0), 0);
-        document.getElementById('programCount').textContent = totalPrograms;
-
-        const marinePrograms = institutions.reduce((sum, inst) => {
-            if (!inst.programs) return sum;
-            return sum + inst.programs.filter(p => p.field === 'marine').length;
-        }, 0);
     }
 
     function searchPrograms() {
@@ -444,33 +483,20 @@
             return;
         }
 
-        const filteredInstitutions = institutions.map(institution => {
-            if (!institution.programs || institution.programs.length === 0) {
-                // For institutions without programs, check name and description
-                if (institution.name.toLowerCase().includes(searchTerm) ||
-                    institution.description.toLowerCase().includes(searchTerm)) {
-                    return institution;
-                }
-                return { ...institution, programs: [] };
-            }
+        const filteredInstitutions = institutions.filter(institution => {
+            // Check institution name and description
+            const matchesInstitution = institution.name.toLowerCase().includes(searchTerm) ||
+                institution.description.toLowerCase().includes(searchTerm);
 
-            const filteredPrograms = institution.programs.filter(program =>
+            // Check programs if they exist
+            const matchesPrograms = institution.programs && institution.programs.some(program =>
                 program.name.toLowerCase().includes(searchTerm) ||
                 program.description.toLowerCase().includes(searchTerm) ||
-                program.degree.toLowerCase().includes(searchTerm) ||
-                institution.name.toLowerCase().includes(searchTerm) ||
-                institution.description.toLowerCase().includes(searchTerm)
+                program.type.toLowerCase().includes(searchTerm)
             );
 
-            return {
-                ...institution,
-                programs: filteredPrograms
-            };
-        }).filter(institution =>
-            (institution.programs && institution.programs.length > 0) ||
-            institution.name.toLowerCase().includes(searchTerm) ||
-            institution.description.toLowerCase().includes(searchTerm)
-        );
+            return matchesInstitution || matchesPrograms;
+        });
 
         renderInstitutions(filteredInstitutions);
     }
@@ -484,47 +510,29 @@
             return;
         }
 
-        const filteredInstitutions = institutions.map(institution => {
-            if (!institution.programs || institution.programs.length === 0) {
-                // Include healthcare institution when healthcare filter is selected
-                if (category === 'healthcare' && institution.name.toLowerCase().includes('nursing')) {
-                    return institution;
-                }
-                return { ...institution, programs: [] };
+        const filteredInstitutions = institutions.filter(institution => {
+            if (category === 'professional') {
+                return institution.isLimited;
             }
 
-            let filteredPrograms = institution.programs.filter(program => {
-                const programLower = program.name.toLowerCase();
-                const descriptionLower = program.description.toLowerCase();
+            if (category === 'maritime') {
+                return institution.name.toLowerCase().includes('ocean') ||
+                    (institution.programs && institution.programs.some(p => p.category === 'maritime'));
+            }
 
-                switch(category) {
-                    case 'marine':
-                        return program.field === 'marine' || programLower.includes('marine') ||
-                            programLower.includes('fisheries') || programLower.includes('oceanography') ||
-                            programLower.includes('aquaculture');
-                    case 'technology':
-                        return programLower.includes('technology') || programLower.includes('btech') ||
-                            descriptionLower.includes('biotechnology') || descriptionLower.includes('processing');
-                    case 'healthcare':
-                        return programLower.includes('health') || programLower.includes('nursing') ||
-                            programLower.includes('medical');
-                    case 'logistics':
-                        return program.field === 'logistics' || programLower.includes('logistics') ||
-                            programLower.includes('transportation') || programLower.includes('maritime') ||
-                            programLower.includes('shipping');
-                    default:
-                        return true;
-                }
-            });
+            if (category === 'accounting') {
+                return institution.name.toLowerCase().includes('aat') ||
+                    institution.name.toLowerCase().includes('chartered') ||
+                    (institution.programs && institution.programs.some(p => p.category === 'accounting'));
+            }
 
-            return {
-                ...institution,
-                programs: filteredPrograms
-            };
-        }).filter(institution =>
-            (institution.programs && institution.programs.length > 0) ||
-            (category === 'healthcare' && institution.name.toLowerCase().includes('nursing'))
-        );
+            if (category === 'management') {
+                return institution.name.toLowerCase().includes('college') ||
+                    (institution.programs && institution.programs.some(p => p.category === 'management'));
+            }
+
+            return false;
+        });
 
         renderInstitutions(filteredInstitutions);
     }
@@ -533,7 +541,6 @@
 
     document.addEventListener('DOMContentLoaded', function() {
         renderInstitutions();
-        updateStats();
     });
 </script>
 </body>

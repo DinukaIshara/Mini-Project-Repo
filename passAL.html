@@ -78,29 +78,115 @@
       margin-bottom: 1rem;
     }
 
+    /*!* Navigation *!*/
+    /*nav {*/
+    /*  background-color: var(--secondary-color);*/
+    /*  padding: 0.5rem 0;*/
+    /*}*/
+
+    /*.nav-container {*/
+    /*  display: flex;*/
+    /*  justify-content: center;*/
+    /*  flex-wrap: wrap;*/
+    /*}*/
+
+    /*.nav-item {*/
+    /*  color: white;*/
+    /*  text-decoration: none;*/
+    /*  padding: 0.5rem 1rem;*/
+    /*  margin: 0.25rem;*/
+    /*  border-radius: 4px;*/
+    /*  transition: background-color 0.3s;*/
+    /*}*/
+
+    /*.nav-item:hover {*/
+    /*  background-color: rgba(255,255,255,0.1);*/
+    /*}*/
     /* Navigation */
     nav {
-      background-color: var(--secondary-color);
-      padding: 0.5rem 0;
+      background-color: #2c3e50;
+      padding: 1rem 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
     }
 
     .nav-container {
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
     }
 
     .nav-item {
       color: white;
       text-decoration: none;
-      padding: 0.5rem 1rem;
-      margin: 0.25rem;
-      border-radius: 4px;
-      transition: background-color 0.3s;
+      padding: 10px 15px;
+      margin: 0 5px;
+      border-radius: 5px;
     }
 
     .nav-item:hover {
-      background-color: rgba(255,255,255,0.1);
+      background-color: #34495e;
+    }
+
+    /* Mobile Menu */
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .hamburger {
+      width: 25px;
+      height: 20px;
+      position: relative;
+    }
+
+    .hamburger span {
+      display: block;
+      height: 3px;
+      width: 100%;
+      background: white;
+      margin-bottom: 4px;
+    }
+
+    /* Mobile Styles */
+    @media (max-width: 768px) {
+      .mobile-toggle {
+        display: block;
+      }
+
+      .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #2c3e50;
+        flex-direction: column;
+        padding: 10px 0;
+      }
+
+      .nav-menu.active {
+        display: flex;
+      }
+
+      .nav-item {
+        margin: 5px 0;
+        padding: 15px 20px;
+        text-align: center;
+      }
     }
 
     /* Main Content */
@@ -662,14 +748,37 @@
   </div>
 </header>
 
-<!-- Navigation -->
+<!--&lt;!&ndash; Navigation &ndash;&gt;-->
+<!--<nav>-->
+<!--  <div class="container">-->
+<!--    <div class="nav-container">-->
+<!--      <a onclick="location.href='index.html'" href="index.html" class="nav-item">Home</a>-->
+<!--      <a onclick="location.href='pathselection.html'" href="pathselection.html" class="nav-item">Path Selection</a>-->
+<!--      <a onclick="location.href='private.html'" href="private.html" class="nav-item">Institutions</a>-->
+<!--      <a onclick="location.href='resources.html'" href="#resources" class="nav-item">Resources</a>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</nav>-->
 <nav>
   <div class="container">
     <div class="nav-container">
-      <a onclick="location.href='index.html'" href="index.html" class="nav-item">Home</a>
-      <a onclick="location.href='pathselection.html'" href="pathselection.html" class="nav-item">Path Selection</a>
-      <a onclick="location.href='private.html'" href="private.html" class="nav-item">Institutions</a>
-      <a onclick="location.href='resources.html'" href="#resources" class="nav-item">Resources</a>
+      <div class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="pathselection.html" class="nav-item">Government</a>
+        <a href="private.html" class="nav-item">Institutions</a>
+        <a href="private.html" class="nav-item">Semi-Government</a>
+        <a href="resources.html" class="nav-item">Resources</a>
+        <a href="#youtube" class="nav-item">YouTube</a>
+        <a href="#about" class="nav-item">About</a>
+        <a href="#contact" class="nav-item">Contact</a>
+      </div>
+      <button class="mobile-toggle" id="mobileToggle">
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </button>
     </div>
   </div>
 </nav>
@@ -711,6 +820,19 @@
 <script>
   // Get all navigation links
   const navLinks = document.querySelectorAll('.nav-item');
+  // const mobileToggle = document.getElementById('mobileToggle');
+  // const navMenu = document.getElementById('navMenu');
+  //
+  // mobileToggle.addEventListener('click', function() {
+  //   navMenu.classList.toggle('active');
+  // });
+  //
+  // // Close menu when clicking on nav items (mobile)
+  // document.querySelectorAll('.nav-item').forEach(item => {
+  //   item.addEventListener('click', () => {
+  //     navMenu.classList.remove('active');
+  //   });
+  // });
 
   // Add click event listeners
   navLinks.forEach(link => {

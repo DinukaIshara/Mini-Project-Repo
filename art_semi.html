@@ -1,543 +1,3 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-<!--    <title>Arts & Humanities Programs - Sri Lanka</title>-->
-<!--    <style>-->
-<!--        * {-->
-<!--            margin: 0;-->
-<!--            padding: 0;-->
-<!--            box-sizing: border-box;-->
-<!--        }-->
-
-<!--        body {-->
-<!--            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;-->
-<!--            line-height: 1.6;-->
-<!--            color: #333;-->
-<!--            background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);-->
-<!--            min-height: 100vh;-->
-<!--        }-->
-
-<!--        .container {-->
-<!--            max-width: 1200px;-->
-<!--            margin: 0 auto;-->
-<!--            padding: 20px;-->
-<!--        }-->
-
-<!--        .header {-->
-<!--            text-align: center;-->
-<!--            margin-bottom: 40px;-->
-<!--            color: #4a148c;-->
-<!--            padding: 30px 0;-->
-<!--        }-->
-
-<!--        .header h1 {-->
-<!--            font-size: 2.5rem;-->
-<!--            margin-bottom: 10px;-->
-<!--            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);-->
-<!--        }-->
-
-<!--        .header p {-->
-<!--            font-size: 1.2rem;-->
-<!--            opacity: 0.9;-->
-<!--        }-->
-
-<!--        .search-bar {-->
-<!--            margin-bottom: 30px;-->
-<!--            text-align: center;-->
-<!--        }-->
-
-<!--        .search-input {-->
-<!--            padding: 12px 20px;-->
-<!--            font-size: 16px;-->
-<!--            border: none;-->
-<!--            border-radius: 25px;-->
-<!--            width: 100%;-->
-<!--            max-width: 400px;-->
-<!--            box-shadow: 0 4px 15px rgba(0,0,0,0.1);-->
-<!--            outline: none;-->
-<!--            background: rgba(255, 255, 255, 0.9);-->
-<!--        }-->
-
-<!--        .filter-buttons {-->
-<!--            display: flex;-->
-<!--            justify-content: center;-->
-<!--            gap: 10px;-->
-<!--            margin-bottom: 30px;-->
-<!--            flex-wrap: wrap;-->
-<!--        }-->
-
-<!--        .filter-btn {-->
-<!--            padding: 8px 16px;-->
-<!--            background: #7b1fa2;-->
-<!--            color: white;-->
-<!--            border: none;-->
-<!--            border-radius: 20px;-->
-<!--            cursor: pointer;-->
-<!--            transition: all 0.3s ease;-->
-<!--            font-size: 14px;-->
-<!--        }-->
-
-<!--        .filter-btn:hover, .filter-btn.active {-->
-<!--            background: #4a148c;-->
-<!--            color: #ffffff;-->
-<!--            transform: scale(1.05);-->
-<!--        }-->
-
-<!--        .stats-section {-->
-<!--            display: flex;-->
-<!--            justify-content: space-around;-->
-<!--            background: linear-gradient(135deg, #4a148c, #7b1fa2);-->
-<!--            padding: 20px;-->
-<!--            border-radius: 10px;-->
-<!--            margin-bottom: 30px;-->
-<!--            color: #ffffff;-->
-<!--            box-shadow: 0 8px 25px rgba(0,0,0,0.2);-->
-<!--        }-->
-
-<!--        .stat-card {-->
-<!--            text-align: center;-->
-<!--        }-->
-
-<!--        .stat-number {-->
-<!--            font-size: 2.5rem;-->
-<!--            font-weight: bold;-->
-<!--            display: block;-->
-<!--            margin-bottom: 5px;-->
-<!--        }-->
-
-<!--        .stat-label {-->
-<!--            font-size: 1rem;-->
-<!--            opacity: 0.9;-->
-<!--        }-->
-
-<!--        .university-grid {-->
-<!--            display: grid;-->
-<!--            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));-->
-<!--            gap: 25px;-->
-<!--        }-->
-
-<!--        .university-card {-->
-<!--            background: rgba(255, 255, 255, 0.95);-->
-<!--            border-radius: 15px;-->
-<!--            padding: 25px;-->
-<!--            box-shadow: 0 10px 30px rgba(0,0,0,0.15);-->
-<!--            transition: all 0.3s ease;-->
-<!--            border: 1px solid rgba(123, 31, 162, 0.2);-->
-<!--            backdrop-filter: blur(10px);-->
-<!--        }-->
-
-<!--        .university-card:hover {-->
-<!--            transform: translateY(-5px);-->
-<!--            box-shadow: 0 20px 40px rgba(0,0,0,0.2);-->
-<!--            background: rgba(255, 255, 255, 1);-->
-<!--        }-->
-
-<!--        .university-title {-->
-<!--            font-size: 1.4rem;-->
-<!--            font-weight: bold;-->
-<!--            color: #4a148c;-->
-<!--            margin-bottom: 20px;-->
-<!--            padding-bottom: 10px;-->
-<!--            border-bottom: 3px solid #7b1fa2;-->
-<!--            text-transform: uppercase;-->
-<!--        }-->
-
-<!--        .programs-list {-->
-<!--            list-style: none;-->
-<!--        }-->
-
-<!--        .program-item {-->
-<!--            background: linear-gradient(135deg, #fce4ec, #f8bbd9);-->
-<!--            margin: 8px 0;-->
-<!--            padding: 15px;-->
-<!--            border-radius: 10px;-->
-<!--            border-left: 4px solid #7b1fa2;-->
-<!--            transition: all 0.3s ease;-->
-<!--            cursor: pointer;-->
-<!--            position: relative;-->
-<!--            overflow: hidden;-->
-<!--            color: #6a1b9a;-->
-<!--        }-->
-
-<!--        .program-item:hover {-->
-<!--            background: linear-gradient(135deg, #7b1fa2, #4a148c);-->
-<!--            color: white;-->
-<!--            transform: translateX(5px);-->
-<!--        }-->
-
-<!--        .program-item::before {-->
-<!--            content: '🎨';-->
-<!--            margin-right: 8px;-->
-<!--            font-size: 16px;-->
-<!--        }-->
-
-<!--        .program-details {-->
-<!--            font-size: 0.85rem;-->
-<!--            color: #6a1b9a;-->
-<!--            margin-top: 8px;-->
-<!--            font-weight: 500;-->
-<!--        }-->
-
-<!--        .program-item:hover .program-details {-->
-<!--            color: #f8bbd9;-->
-<!--        }-->
-
-<!--        .degree-type {-->
-<!--            display: inline-block;-->
-<!--            background: rgba(123, 31, 162, 0.1);-->
-<!--            color: #4a148c;-->
-<!--            padding: 4px 8px;-->
-<!--            border-radius: 12px;-->
-<!--            font-size: 0.75rem;-->
-<!--            font-weight: bold;-->
-<!--            margin-top: 5px;-->
-<!--        }-->
-
-<!--        .program-item:hover .degree-type {-->
-<!--            background: rgba(255, 255, 255, 0.2);-->
-<!--            color: #f3e5f5;-->
-<!--        }-->
-
-<!--        .specialization-note {-->
-<!--            background: rgba(74, 20, 140, 0.1);-->
-<!--            padding: 15px;-->
-<!--            border-radius: 8px;-->
-<!--            margin: 15px 0;-->
-<!--            border-left: 4px solid #7b1fa2;-->
-<!--            color: #6a1b9a;-->
-<!--            font-style: italic;-->
-<!--        }-->
-
-<!--        .no-results {-->
-<!--            text-align: center;-->
-<!--            color: #4a148c;-->
-<!--            font-size: 1.2rem;-->
-<!--            margin: 50px 0;-->
-<!--            display: none;-->
-<!--        }-->
-
-<!--        .footer {-->
-<!--            text-align: center;-->
-<!--            color: #4a148c;-->
-<!--            margin-top: 50px;-->
-<!--            padding: 30px 0;-->
-<!--            opacity: 0.8;-->
-<!--        }-->
-
-<!--        .coming-soon {-->
-<!--            background: linear-gradient(135deg, #fff3e0, #ffe0b2);-->
-<!--            border: 2px dashed #ff9800;-->
-<!--            border-radius: 10px;-->
-<!--            padding: 20px;-->
-<!--            text-align: center;-->
-<!--            color: #e65100;-->
-<!--            font-style: italic;-->
-<!--            margin: 10px 0;-->
-<!--        }-->
-
-<!--        @media (max-width: 768px) {-->
-<!--            .header h1 {-->
-<!--                font-size: 2rem;-->
-<!--            }-->
-
-<!--            .university-grid {-->
-<!--                grid-template-columns: 1fr;-->
-<!--                gap: 20px;-->
-<!--            }-->
-
-<!--            .search-input {-->
-<!--                width: 90%;-->
-<!--            }-->
-
-<!--            .stats-section {-->
-<!--                flex-wrap: wrap;-->
-<!--                gap: 15px;-->
-<!--            }-->
-
-<!--            .stat-card {-->
-<!--                flex: 1;-->
-<!--                min-width: 120px;-->
-<!--            }-->
-<!--        }-->
-<!--    </style>-->
-<!--</head>-->
-<!--<body>-->
-<!--<div class="container">-->
-<!--    <div class="header">-->
-<!--        <h1>Arts & Humanities Programs</h1>-->
-<!--        <p>Creative Arts, Education, Cultural Studies & Humanities in Sri Lanka</p>-->
-<!--    </div>-->
-
-<!--    <div class="stats-section">-->
-<!--        <div class="stat-card">-->
-<!--            <span class="stat-number" id="institutionCount">4</span>-->
-<!--            <span class="stat-label">Institutions</span>-->
-<!--        </div>-->
-<!--        <div class="stat-card">-->
-<!--            <span class="stat-number" id="programCount">8</span>-->
-<!--            <span class="stat-label">Programs</span>-->
-<!--        </div>-->
-<!--        <div class="stat-card">-->
-<!--            <span class="stat-number">3</span>-->
-<!--            <span class="stat-label">Arts Fields</span>-->
-<!--        </div>-->
-<!--        <div class="stat-card">-->
-<!--            <span class="stat-number">2</span>-->
-<!--            <span class="stat-label">Education</span>-->
-<!--        </div>-->
-<!--    </div>-->
-
-<!--    <div class="search-bar">-->
-<!--        <input type="text" class="search-input" placeholder="Search arts, crafts, education, cultural studies..." id="searchInput">-->
-<!--    </div>-->
-
-<!--    <div class="filter-buttons" id="filterButtons">-->
-<!--        <button class="filter-btn active" onclick="filterPrograms('all')">All Programs</button>-->
-<!--        <button class="filter-btn" onclick="filterPrograms('marine')">Marine Studies</button>-->
-<!--        <button class="filter-btn" onclick="filterPrograms('education')">Education</button>-->
-<!--        <button class="filter-btn" onclick="filterPrograms('crafts')">Arts & Crafts</button>-->
-<!--        <button class="filter-btn" onclick="filterPrograms('cultural')">Cultural Studies</button>-->
-<!--    </div>-->
-
-<!--    <div class="university-grid" id="universityGrid">-->
-<!--        &lt;!&ndash; Institutions will be populated by JavaScript &ndash;&gt;-->
-<!--    </div>-->
-
-<!--    <div class="no-results" id="noResults">-->
-<!--        <p>No programs found matching your search criteria.</p>-->
-<!--    </div>-->
-
-<!--    <div class="footer">-->
-<!--        <p>&copy; 2025 Arts & Humanities Education Guide | Nurturing Creative Excellence</p>-->
-<!--    </div>-->
-<!--</div>-->
-
-<!--<script>-->
-<!--    const institutions = [-->
-<!--        {-->
-<!--            name: "Ocean University of Sri Lanka",-->
-<!--            type: "Coastal & Marine Management",-->
-<!--            description: "Specialized programs in coastal zone management and marine environmental studies",-->
-<!--            programs: [-->
-<!--                {-->
-<!--                    name: "Management of Coastal and Marine Environment",-->
-<!--                    degree: "BSc/MSc",-->
-<!--                    description: "Integrated coastal zone management, marine conservation, and sustainable development",-->
-<!--                    duration: "3-4 years",-->
-<!--                    field: "marine"-->
-<!--                }-->
-<!--            ]-->
-<!--        },-->
-<!--        {-->
-<!--            name: "University College",-->
-<!--            type: "Liberal Arts & Sciences",-->
-<!--            description: "Comprehensive university education with diverse academic programs",-->
-<!--            programs: [-->
-<!--                {-->
-<!--                    name: "Liberal Arts",-->
-<!--                    degree: "BA",-->
-<!--                    description: "Interdisciplinary studies in humanities, social sciences, and creative arts",-->
-<!--                    duration: "4 years",-->
-<!--                    field: "liberal"-->
-<!--                },-->
-<!--                {-->
-<!--                    name: "Fine Arts",-->
-<!--                    degree: "BFA",-->
-<!--                    description: "Visual arts, painting, sculpture, and contemporary artistic practices",-->
-<!--                    duration: "4 years",-->
-<!--                    field: "arts"-->
-<!--                },-->
-<!--                {-->
-<!--                    name: "Cultural Studies",-->
-<!--                    degree: "BA",-->
-<!--                    description: "Anthropology, sociology, and cultural analysis of Sri Lankan society",-->
-<!--                    duration: "3 years",-->
-<!--                    field: "cultural"-->
-<!--                }-->
-<!--            ]-->
-<!--        },-->
-<!--        {-->
-<!--            name: "Maharagama National Institute of Education",-->
-<!--            type: "Teacher Education & Pedagogy",-->
-<!--            description: "National center for teacher training, educational research, and curriculum development",-->
-<!--            programs: [-->
-<!--                {-->
-<!--                    name: "Primary Education Teaching",-->
-<!--                    degree: "Diploma/B.Ed",-->
-<!--                    description: "Early childhood education, primary pedagogy, and child development",-->
-<!--                    duration: "2-4 years",-->
-<!--                    field: "education"-->
-<!--                },-->
-<!--                {-->
-<!--                    name: "Secondary Education Teaching",-->
-<!--                    degree: "B.Ed/PGDE",-->
-<!--                    description: "Subject-specific teaching methodologies and educational psychology",-->
-<!--                    duration: "1-4 years",-->
-<!--                    field: "education"-->
-<!--                },-->
-<!--                {-->
-<!--                    name: "Educational Leadership",-->
-<!--                    degree: "M.Ed",-->
-<!--                    description: "School administration, educational management, and policy development",-->
-<!--                    duration: "2 years",-->
-<!--                    field: "education"-->
-<!--                }-->
-<!--            ]-->
-<!--        },-->
-<!--        {-->
-<!--            name: "National Crafts Council",-->
-<!--            type: "Traditional Arts & Crafts",-->
-<!--            description: "Preserving and promoting Sri Lankan traditional crafts, folk arts, and cultural heritage",-->
-<!--            programs: [-->
-<!--                {-->
-<!--                    name: "Traditional Wood Carving",-->
-<!--                    degree: "Certificate/Diploma",-->
-<!--                    description: "Kandyan wood carving, traditional sculpture, and decorative arts",-->
-<!--                    duration: "6 months - 2 years",-->
-<!--                    field: "crafts"-->
-<!--                },-->
-<!--                {-->
-<!--                    name: "Handloom Weaving",-->
-<!--                    degree: "Certificate/Diploma",-->
-<!--                    description: "Traditional textile production, pattern design, and fabric arts",-->
-<!--                    duration: "6 months - 2 years",-->
-<!--                    field: "crafts"-->
-<!--                }-->
-<!--            ]-->
-<!--        }-->
-<!--    ];-->
-
-<!--    function renderInstitutions(institutionsToShow = institutions) {-->
-<!--        const grid = document.getElementById('universityGrid');-->
-<!--        const noResults = document.getElementById('noResults');-->
-
-<!--        const institutionsWithPrograms = institutionsToShow.filter(inst => inst.programs && inst.programs.length > 0);-->
-
-<!--        if (institutionsWithPrograms.length === 0) {-->
-<!--            grid.style.display = 'none';-->
-<!--            noResults.style.display = 'block';-->
-<!--            return;-->
-<!--        }-->
-
-<!--        grid.style.display = 'grid';-->
-<!--        noResults.style.display = 'none';-->
-<!--        grid.innerHTML = '';-->
-
-<!--        institutionsWithPrograms.forEach((institution, index) => {-->
-<!--            const card = document.createElement('div');-->
-<!--            card.className = 'university-card';-->
-
-<!--            const programsList = institution.programs.map(program => {-->
-<!--                return `<li class="program-item">-->
-<!--                    ${program.name}-->
-<!--                    <div class="program-details">${program.description}</div>-->
-<!--                    <div class="degree-type">${program.degree} • ${program.duration}</div>-->
-<!--                </li>`;-->
-<!--            }).join('');-->
-
-<!--            card.innerHTML = `-->
-<!--                <div class="university-title">${institution.name}</div>-->
-<!--                <div class="specialization-note">${institution.description}</div>-->
-<!--                <ul class="programs-list">-->
-<!--                    ${programsList}-->
-<!--                </ul>-->
-<!--            `;-->
-
-<!--            grid.appendChild(card);-->
-<!--        });-->
-<!--    }-->
-
-<!--    function updateStats() {-->
-<!--        const totalPrograms = institutions.reduce((sum, inst) => sum + (inst.programs ? inst.programs.length : 0), 0);-->
-<!--        document.getElementById('programCount').textContent = totalPrograms;-->
-<!--    }-->
-
-<!--    function searchPrograms() {-->
-<!--        const searchTerm = document.getElementById('searchInput').value.toLowerCase();-->
-
-<!--        if (!searchTerm) {-->
-<!--            renderInstitutions();-->
-<!--            return;-->
-<!--        }-->
-
-<!--        const filteredInstitutions = institutions.map(institution => {-->
-<!--            const filteredPrograms = institution.programs.filter(program =>-->
-<!--                program.name.toLowerCase().includes(searchTerm) ||-->
-<!--                program.description.toLowerCase().includes(searchTerm) ||-->
-<!--                program.degree.toLowerCase().includes(searchTerm) ||-->
-<!--                institution.name.toLowerCase().includes(searchTerm) ||-->
-<!--                institution.description.toLowerCase().includes(searchTerm)-->
-<!--            );-->
-
-<!--            return {-->
-<!--                ...institution,-->
-<!--                programs: filteredPrograms-->
-<!--            };-->
-<!--        }).filter(institution =>-->
-<!--            (institution.programs && institution.programs.length > 0)-->
-<!--        );-->
-
-<!--        renderInstitutions(filteredInstitutions);-->
-<!--    }-->
-
-<!--    function filterPrograms(category) {-->
-<!--        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));-->
-<!--        event.target.classList.add('active');-->
-
-<!--        if (category === 'all') {-->
-<!--            renderInstitutions();-->
-<!--            return;-->
-<!--        }-->
-
-<!--        const filteredInstitutions = institutions.map(institution => {-->
-<!--            let filteredPrograms = institution.programs.filter(program => {-->
-<!--                const programLower = program.name.toLowerCase();-->
-<!--                const descriptionLower = program.description.toLowerCase();-->
-
-<!--                switch(category) {-->
-<!--                    case 'marine':-->
-<!--                        return program.field === 'marine' || programLower.includes('marine') ||-->
-<!--                            programLower.includes('coastal') || programLower.includes('ocean');-->
-<!--                    case 'education':-->
-<!--                        return program.field === 'education' || programLower.includes('education') ||-->
-<!--                            programLower.includes('teaching') || programLower.includes('teacher') ||-->
-<!--                            descriptionLower.includes('pedagogy') || descriptionLower.includes('educational');-->
-<!--                    case 'crafts':-->
-<!--                        return program.field === 'crafts' || programLower.includes('craft') ||-->
-<!--                            programLower.includes('wood') || programLower.includes('weaving') ||-->
-<!--                            programLower.includes('traditional') || descriptionLower.includes('carving');-->
-<!--                    case 'cultural':-->
-<!--                        return program.field === 'cultural' || program.field === 'arts' ||-->
-<!--                            program.field === 'liberal' || programLower.includes('cultural') ||-->
-<!--                            programLower.includes('arts') || programLower.includes('fine') ||-->
-<!--                            programLower.includes('liberal') || descriptionLower.includes('cultural');-->
-<!--                    default:-->
-<!--                        return true;-->
-<!--                }-->
-<!--            });-->
-
-<!--            return {-->
-<!--                ...institution,-->
-<!--                programs: filteredPrograms-->
-<!--            };-->
-<!--        }).filter(institution =>-->
-<!--            (institution.programs && institution.programs.length > 0)-->
-<!--        );-->
-
-<!--        renderInstitutions(filteredInstitutions);-->
-<!--    }-->
-
-<!--    document.getElementById('searchInput').addEventListener('input', searchPrograms);-->
-
-<!--    document.addEventListener('DOMContentLoaded', function() {-->
-<!--        renderInstitutions();-->
-<!--        updateStats();-->
-<!--    });-->
-<!--</script>-->
-<!--</body>-->
-<!--</html>-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -555,109 +15,8 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+            /*background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);*/
             min-height: 100vh;
-        }
-
-        .navbar {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-            border-bottom: 1px solid rgba(123, 31, 162, 0.1);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #4a148c;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo::before {
-            content: '🎓';
-            font-size: 2rem;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-item {
-            color: #4a148c;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .nav-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #7b1fa2, #4a148c);
-            transition: left 0.3s ease;
-            z-index: -1;
-        }
-
-        .nav-item:hover {
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .nav-item:hover::before {
-            left: 0;
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            padding: 5px;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: #4a148c;
-            margin: 3px 0;
-            transition: 0.3s;
-            border-radius: 3px;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
         }
 
         .container {
@@ -879,29 +238,6 @@
         }
 
         @media (max-width: 768px) {
-            .nav-menu {
-                position: fixed;
-                left: -100%;
-                top: 70px;
-                flex-direction: column;
-                background: rgba(255, 255, 255, 0.98);
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-                backdrop-filter: blur(10px);
-                padding: 2rem 0;
-                gap: 1rem;
-            }
-
-            .nav-menu.active {
-                left: 0;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
             .header h1 {
                 font-size: 2rem;
             }
@@ -928,23 +264,6 @@
     </style>
 </head>
 <body>
-<nav class="navbar">
-    <div class="nav-container">
-        <div class="nav-menu" id="navMenu">
-            <a href="index.html" class="nav-item">Home</a>
-            <a href="pathselection.html" class="nav-item">Government</a>
-            <a href="private.html" class="nav-item">Institutions</a>
-            <a href="private.html" class="nav-item">Semi-Government</a>
-            <a href="resources.html" class="nav-item">Resources</a>
-        </div>
-        <div class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </div>
-</nav>
-
 <div class="container">
     <div class="header">
         <h1>Arts & Humanities Programs</h1>
@@ -1212,31 +531,6 @@
 
     document.getElementById('searchInput').addEventListener('input', searchPrograms);
 
-    // Mobile navigation toggle
-    const hamburger = document.getElementById('hamburger');
-    const navMenu = document.getElementById('navMenu');
-
-    hamburger.addEventListener('click', function() {
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
-    });
-
-    // Close mobile menu when clicking on nav items
-    document.querySelectorAll('.nav-item').forEach(item => {
-        item.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-        });
-    });
-
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', function(event) {
-        if (!hamburger.contains(event.target) && !navMenu.contains(event.target)) {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-        }
-    });
-
     document.addEventListener('DOMContentLoaded', function() {
         renderInstitutions();
         updateStats();
@@ -1244,3 +538,712 @@
 </script>
 </body>
 </html>
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Arts & Humanities Programs - Sri Lanka</title>-->
+<!--    <style>-->
+<!--        * {-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--            box-sizing: border-box;-->
+<!--        }-->
+
+<!--        body {-->
+<!--            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;-->
+<!--            line-height: 1.6;-->
+<!--            color: #333;-->
+<!--            background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);-->
+<!--            min-height: 100vh;-->
+<!--        }-->
+
+<!--        .navbar {-->
+<!--            background: rgba(255, 255, 255, 0.95);-->
+<!--            backdrop-filter: blur(10px);-->
+<!--            padding: 1rem 0;-->
+<!--            position: sticky;-->
+<!--            top: 0;-->
+<!--            z-index: 1000;-->
+<!--            box-shadow: 0 2px 20px rgba(0,0,0,0.1);-->
+<!--            border-bottom: 1px solid rgba(123, 31, 162, 0.1);-->
+<!--        }-->
+
+<!--        .nav-container {-->
+<!--            max-width: 1200px;-->
+<!--            margin: 0 auto;-->
+<!--            display: flex;-->
+<!--            justify-content: space-between;-->
+<!--            align-items: center;-->
+<!--            padding: 0 20px;-->
+<!--        }-->
+
+<!--        .logo {-->
+<!--            font-size: 1.5rem;-->
+<!--            font-weight: bold;-->
+<!--            color: #4a148c;-->
+<!--            text-decoration: none;-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            gap: 10px;-->
+<!--        }-->
+
+<!--        .logo::before {-->
+<!--            content: '🎓';-->
+<!--            font-size: 2rem;-->
+<!--        }-->
+
+<!--        .nav-menu {-->
+<!--            display: flex;-->
+<!--            gap: 2rem;-->
+<!--            align-items: center;-->
+<!--        }-->
+
+<!--        .nav-item {-->
+<!--            color: #4a148c;-->
+<!--            text-decoration: none;-->
+<!--            font-weight: 500;-->
+<!--            padding: 0.5rem 1rem;-->
+<!--            border-radius: 20px;-->
+<!--            transition: all 0.3s ease;-->
+<!--            position: relative;-->
+<!--            overflow: hidden;-->
+<!--        }-->
+
+<!--        .nav-item::before {-->
+<!--            content: '';-->
+<!--            position: absolute;-->
+<!--            top: 0;-->
+<!--            left: -100%;-->
+<!--            width: 100%;-->
+<!--            height: 100%;-->
+<!--            background: linear-gradient(135deg, #7b1fa2, #4a148c);-->
+<!--            transition: left 0.3s ease;-->
+<!--            z-index: -1;-->
+<!--        }-->
+
+<!--        .nav-item:hover {-->
+<!--            color: white;-->
+<!--            transform: translateY(-2px);-->
+<!--        }-->
+
+<!--        .nav-item:hover::before {-->
+<!--            left: 0;-->
+<!--        }-->
+
+<!--        .hamburger {-->
+<!--            display: none;-->
+<!--            flex-direction: column;-->
+<!--            cursor: pointer;-->
+<!--            padding: 5px;-->
+<!--        }-->
+
+<!--        .hamburger span {-->
+<!--            width: 25px;-->
+<!--            height: 3px;-->
+<!--            background: #4a148c;-->
+<!--            margin: 3px 0;-->
+<!--            transition: 0.3s;-->
+<!--            border-radius: 3px;-->
+<!--        }-->
+
+<!--        .hamburger.active span:nth-child(1) {-->
+<!--            transform: rotate(-45deg) translate(-5px, 6px);-->
+<!--        }-->
+
+<!--        .hamburger.active span:nth-child(2) {-->
+<!--            opacity: 0;-->
+<!--        }-->
+
+<!--        .hamburger.active span:nth-child(3) {-->
+<!--            transform: rotate(45deg) translate(-5px, -6px);-->
+<!--        }-->
+
+<!--        .container {-->
+<!--            max-width: 1200px;-->
+<!--            margin: 0 auto;-->
+<!--            padding: 20px;-->
+<!--        }-->
+
+<!--        .header {-->
+<!--            text-align: center;-->
+<!--            margin-bottom: 40px;-->
+<!--            color: #4a148c;-->
+<!--            padding: 30px 0;-->
+<!--        }-->
+
+<!--        .header h1 {-->
+<!--            font-size: 2.5rem;-->
+<!--            margin-bottom: 10px;-->
+<!--            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);-->
+<!--        }-->
+
+<!--        .header p {-->
+<!--            font-size: 1.2rem;-->
+<!--            opacity: 0.9;-->
+<!--        }-->
+
+<!--        .search-bar {-->
+<!--            margin-bottom: 30px;-->
+<!--            text-align: center;-->
+<!--        }-->
+
+<!--        .search-input {-->
+<!--            padding: 12px 20px;-->
+<!--            font-size: 16px;-->
+<!--            border: none;-->
+<!--            border-radius: 25px;-->
+<!--            width: 100%;-->
+<!--            max-width: 400px;-->
+<!--            box-shadow: 0 4px 15px rgba(0,0,0,0.1);-->
+<!--            outline: none;-->
+<!--            background: rgba(255, 255, 255, 0.9);-->
+<!--        }-->
+
+<!--        .filter-buttons {-->
+<!--            display: flex;-->
+<!--            justify-content: center;-->
+<!--            gap: 10px;-->
+<!--            margin-bottom: 30px;-->
+<!--            flex-wrap: wrap;-->
+<!--        }-->
+
+<!--        .filter-btn {-->
+<!--            padding: 8px 16px;-->
+<!--            background: #7b1fa2;-->
+<!--            color: white;-->
+<!--            border: none;-->
+<!--            border-radius: 20px;-->
+<!--            cursor: pointer;-->
+<!--            transition: all 0.3s ease;-->
+<!--            font-size: 14px;-->
+<!--        }-->
+
+<!--        .filter-btn:hover, .filter-btn.active {-->
+<!--            background: #4a148c;-->
+<!--            color: #ffffff;-->
+<!--            transform: scale(1.05);-->
+<!--        }-->
+
+<!--        .stats-section {-->
+<!--            display: flex;-->
+<!--            justify-content: space-around;-->
+<!--            background: linear-gradient(135deg, #4a148c, #7b1fa2);-->
+<!--            padding: 20px;-->
+<!--            border-radius: 10px;-->
+<!--            margin-bottom: 30px;-->
+<!--            color: #ffffff;-->
+<!--            box-shadow: 0 8px 25px rgba(0,0,0,0.2);-->
+<!--        }-->
+
+<!--        .stat-card {-->
+<!--            text-align: center;-->
+<!--        }-->
+
+<!--        .stat-number {-->
+<!--            font-size: 2.5rem;-->
+<!--            font-weight: bold;-->
+<!--            display: block;-->
+<!--            margin-bottom: 5px;-->
+<!--        }-->
+
+<!--        .stat-label {-->
+<!--            font-size: 1rem;-->
+<!--            opacity: 0.9;-->
+<!--        }-->
+
+<!--        .university-grid {-->
+<!--            display: grid;-->
+<!--            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));-->
+<!--            gap: 25px;-->
+<!--        }-->
+
+<!--        .university-card {-->
+<!--            background: rgba(255, 255, 255, 0.95);-->
+<!--            border-radius: 15px;-->
+<!--            padding: 25px;-->
+<!--            box-shadow: 0 10px 30px rgba(0,0,0,0.15);-->
+<!--            transition: all 0.3s ease;-->
+<!--            border: 1px solid rgba(123, 31, 162, 0.2);-->
+<!--            backdrop-filter: blur(10px);-->
+<!--        }-->
+
+<!--        .university-card:hover {-->
+<!--            transform: translateY(-5px);-->
+<!--            box-shadow: 0 20px 40px rgba(0,0,0,0.2);-->
+<!--            background: rgba(255, 255, 255, 1);-->
+<!--        }-->
+
+<!--        .university-title {-->
+<!--            font-size: 1.4rem;-->
+<!--            font-weight: bold;-->
+<!--            color: #4a148c;-->
+<!--            margin-bottom: 20px;-->
+<!--            padding-bottom: 10px;-->
+<!--            border-bottom: 3px solid #7b1fa2;-->
+<!--            text-transform: uppercase;-->
+<!--        }-->
+
+<!--        .programs-list {-->
+<!--            list-style: none;-->
+<!--        }-->
+
+<!--        .program-item {-->
+<!--            background: linear-gradient(135deg, #fce4ec, #f8bbd9);-->
+<!--            margin: 8px 0;-->
+<!--            padding: 15px;-->
+<!--            border-radius: 10px;-->
+<!--            border-left: 4px solid #7b1fa2;-->
+<!--            transition: all 0.3s ease;-->
+<!--            cursor: pointer;-->
+<!--            position: relative;-->
+<!--            overflow: hidden;-->
+<!--            color: #6a1b9a;-->
+<!--        }-->
+
+<!--        .program-item:hover {-->
+<!--            background: linear-gradient(135deg, #7b1fa2, #4a148c);-->
+<!--            color: white;-->
+<!--            transform: translateX(5px);-->
+<!--        }-->
+
+<!--        .program-item::before {-->
+<!--            content: '🎨';-->
+<!--            margin-right: 8px;-->
+<!--            font-size: 16px;-->
+<!--        }-->
+
+<!--        .program-details {-->
+<!--            font-size: 0.85rem;-->
+<!--            color: #6a1b9a;-->
+<!--            margin-top: 8px;-->
+<!--            font-weight: 500;-->
+<!--        }-->
+
+<!--        .program-item:hover .program-details {-->
+<!--            color: #f8bbd9;-->
+<!--        }-->
+
+<!--        .degree-type {-->
+<!--            display: inline-block;-->
+<!--            background: rgba(123, 31, 162, 0.1);-->
+<!--            color: #4a148c;-->
+<!--            padding: 4px 8px;-->
+<!--            border-radius: 12px;-->
+<!--            font-size: 0.75rem;-->
+<!--            font-weight: bold;-->
+<!--            margin-top: 5px;-->
+<!--        }-->
+
+<!--        .program-item:hover .degree-type {-->
+<!--            background: rgba(255, 255, 255, 0.2);-->
+<!--            color: #f3e5f5;-->
+<!--        }-->
+
+<!--        .specialization-note {-->
+<!--            background: rgba(74, 20, 140, 0.1);-->
+<!--            padding: 15px;-->
+<!--            border-radius: 8px;-->
+<!--            margin: 15px 0;-->
+<!--            border-left: 4px solid #7b1fa2;-->
+<!--            color: #6a1b9a;-->
+<!--            font-style: italic;-->
+<!--        }-->
+
+<!--        .no-results {-->
+<!--            text-align: center;-->
+<!--            color: #4a148c;-->
+<!--            font-size: 1.2rem;-->
+<!--            margin: 50px 0;-->
+<!--            display: none;-->
+<!--        }-->
+
+<!--        .footer {-->
+<!--            text-align: center;-->
+<!--            color: #4a148c;-->
+<!--            margin-top: 50px;-->
+<!--            padding: 30px 0;-->
+<!--            opacity: 0.8;-->
+<!--        }-->
+
+<!--        .coming-soon {-->
+<!--            background: linear-gradient(135deg, #fff3e0, #ffe0b2);-->
+<!--            border: 2px dashed #ff9800;-->
+<!--            border-radius: 10px;-->
+<!--            padding: 20px;-->
+<!--            text-align: center;-->
+<!--            color: #e65100;-->
+<!--            font-style: italic;-->
+<!--            margin: 10px 0;-->
+<!--        }-->
+
+<!--        @media (max-width: 768px) {-->
+<!--            .nav-menu {-->
+<!--                position: fixed;-->
+<!--                left: -100%;-->
+<!--                top: 70px;-->
+<!--                flex-direction: column;-->
+<!--                background: rgba(255, 255, 255, 0.98);-->
+<!--                width: 100%;-->
+<!--                text-align: center;-->
+<!--                transition: 0.3s;-->
+<!--                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);-->
+<!--                backdrop-filter: blur(10px);-->
+<!--                padding: 2rem 0;-->
+<!--                gap: 1rem;-->
+<!--            }-->
+
+<!--            .nav-menu.active {-->
+<!--                left: 0;-->
+<!--            }-->
+
+<!--            .hamburger {-->
+<!--                display: flex;-->
+<!--            }-->
+
+<!--            .header h1 {-->
+<!--                font-size: 2rem;-->
+<!--            }-->
+
+<!--            .university-grid {-->
+<!--                grid-template-columns: 1fr;-->
+<!--                gap: 20px;-->
+<!--            }-->
+
+<!--            .search-input {-->
+<!--                width: 90%;-->
+<!--            }-->
+
+<!--            .stats-section {-->
+<!--                flex-wrap: wrap;-->
+<!--                gap: 15px;-->
+<!--            }-->
+
+<!--            .stat-card {-->
+<!--                flex: 1;-->
+<!--                min-width: 120px;-->
+<!--            }-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<nav class="navbar">-->
+<!--    <div class="nav-container">-->
+<!--        <div class="nav-menu" id="navMenu">-->
+<!--            <a href="index.html" class="nav-item">Home</a>-->
+<!--            <a href="pathselection.html" class="nav-item">Government</a>-->
+<!--            <a href="private.html" class="nav-item">Institutions</a>-->
+<!--            <a href="private.html" class="nav-item">Semi-Government</a>-->
+<!--            <a href="resources.html" class="nav-item">Resources</a>-->
+<!--        </div>-->
+<!--        <div class="hamburger" id="hamburger">-->
+<!--            <span></span>-->
+<!--            <span></span>-->
+<!--            <span></span>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</nav>-->
+
+<!--<div class="container">-->
+<!--    <div class="header">-->
+<!--        <h1>Arts & Humanities Programs</h1>-->
+<!--        <p>Creative Arts, Education, Cultural Studies & Humanities in Sri Lanka</p>-->
+<!--    </div>-->
+
+<!--    <div class="stats-section">-->
+<!--        <div class="stat-card">-->
+<!--            <span class="stat-number" id="institutionCount">4</span>-->
+<!--            <span class="stat-label">Institutions</span>-->
+<!--        </div>-->
+<!--        <div class="stat-card">-->
+<!--            <span class="stat-number" id="programCount">8</span>-->
+<!--            <span class="stat-label">Programs</span>-->
+<!--        </div>-->
+<!--        <div class="stat-card">-->
+<!--            <span class="stat-number">3</span>-->
+<!--            <span class="stat-label">Arts Fields</span>-->
+<!--        </div>-->
+<!--        <div class="stat-card">-->
+<!--            <span class="stat-number">2</span>-->
+<!--            <span class="stat-label">Education</span>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    <div class="search-bar">-->
+<!--        <input type="text" class="search-input" placeholder="Search arts, crafts, education, cultural studies..." id="searchInput">-->
+<!--    </div>-->
+
+<!--    <div class="filter-buttons" id="filterButtons">-->
+<!--        <button class="filter-btn active" onclick="filterPrograms('all')">All Programs</button>-->
+<!--        <button class="filter-btn" onclick="filterPrograms('marine')">Marine Studies</button>-->
+<!--        <button class="filter-btn" onclick="filterPrograms('education')">Education</button>-->
+<!--        <button class="filter-btn" onclick="filterPrograms('crafts')">Arts & Crafts</button>-->
+<!--        <button class="filter-btn" onclick="filterPrograms('cultural')">Cultural Studies</button>-->
+<!--    </div>-->
+
+<!--    <div class="university-grid" id="universityGrid">-->
+<!--        &lt;!&ndash; Institutions will be populated by JavaScript &ndash;&gt;-->
+<!--    </div>-->
+
+<!--    <div class="no-results" id="noResults">-->
+<!--        <p>No programs found matching your search criteria.</p>-->
+<!--    </div>-->
+
+<!--    <div class="footer">-->
+<!--        <p>&copy; 2025 Arts & Humanities Education Guide | Nurturing Creative Excellence</p>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    const institutions = [-->
+<!--        {-->
+<!--            name: "Ocean University of Sri Lanka",-->
+<!--            type: "Coastal & Marine Management",-->
+<!--            description: "Specialized programs in coastal zone management and marine environmental studies",-->
+<!--            programs: [-->
+<!--                {-->
+<!--                    name: "Management of Coastal and Marine Environment",-->
+<!--                    degree: "BSc/MSc",-->
+<!--                    description: "Integrated coastal zone management, marine conservation, and sustainable development",-->
+<!--                    duration: "3-4 years",-->
+<!--                    field: "marine"-->
+<!--                }-->
+<!--            ]-->
+<!--        },-->
+<!--        {-->
+<!--            name: "University College",-->
+<!--            type: "Liberal Arts & Sciences",-->
+<!--            description: "Comprehensive university education with diverse academic programs",-->
+<!--            programs: [-->
+<!--                {-->
+<!--                    name: "Liberal Arts",-->
+<!--                    degree: "BA",-->
+<!--                    description: "Interdisciplinary studies in humanities, social sciences, and creative arts",-->
+<!--                    duration: "4 years",-->
+<!--                    field: "liberal"-->
+<!--                },-->
+<!--                {-->
+<!--                    name: "Fine Arts",-->
+<!--                    degree: "BFA",-->
+<!--                    description: "Visual arts, painting, sculpture, and contemporary artistic practices",-->
+<!--                    duration: "4 years",-->
+<!--                    field: "arts"-->
+<!--                },-->
+<!--                {-->
+<!--                    name: "Cultural Studies",-->
+<!--                    degree: "BA",-->
+<!--                    description: "Anthropology, sociology, and cultural analysis of Sri Lankan society",-->
+<!--                    duration: "3 years",-->
+<!--                    field: "cultural"-->
+<!--                }-->
+<!--            ]-->
+<!--        },-->
+<!--        {-->
+<!--            name: "Maharagama National Institute of Education",-->
+<!--            type: "Teacher Education & Pedagogy",-->
+<!--            description: "National center for teacher training, educational research, and curriculum development",-->
+<!--            programs: [-->
+<!--                {-->
+<!--                    name: "Primary Education Teaching",-->
+<!--                    degree: "Diploma/B.Ed",-->
+<!--                    description: "Early childhood education, primary pedagogy, and child development",-->
+<!--                    duration: "2-4 years",-->
+<!--                    field: "education"-->
+<!--                },-->
+<!--                {-->
+<!--                    name: "Secondary Education Teaching",-->
+<!--                    degree: "B.Ed/PGDE",-->
+<!--                    description: "Subject-specific teaching methodologies and educational psychology",-->
+<!--                    duration: "1-4 years",-->
+<!--                    field: "education"-->
+<!--                },-->
+<!--                {-->
+<!--                    name: "Educational Leadership",-->
+<!--                    degree: "M.Ed",-->
+<!--                    description: "School administration, educational management, and policy development",-->
+<!--                    duration: "2 years",-->
+<!--                    field: "education"-->
+<!--                }-->
+<!--            ]-->
+<!--        },-->
+<!--        {-->
+<!--            name: "National Crafts Council",-->
+<!--            type: "Traditional Arts & Crafts",-->
+<!--            description: "Preserving and promoting Sri Lankan traditional crafts, folk arts, and cultural heritage",-->
+<!--            programs: [-->
+<!--                {-->
+<!--                    name: "Traditional Wood Carving",-->
+<!--                    degree: "Certificate/Diploma",-->
+<!--                    description: "Kandyan wood carving, traditional sculpture, and decorative arts",-->
+<!--                    duration: "6 months - 2 years",-->
+<!--                    field: "crafts"-->
+<!--                },-->
+<!--                {-->
+<!--                    name: "Handloom Weaving",-->
+<!--                    degree: "Certificate/Diploma",-->
+<!--                    description: "Traditional textile production, pattern design, and fabric arts",-->
+<!--                    duration: "6 months - 2 years",-->
+<!--                    field: "crafts"-->
+<!--                }-->
+<!--            ]-->
+<!--        }-->
+<!--    ];-->
+
+<!--    function renderInstitutions(institutionsToShow = institutions) {-->
+<!--        const grid = document.getElementById('universityGrid');-->
+<!--        const noResults = document.getElementById('noResults');-->
+
+<!--        const institutionsWithPrograms = institutionsToShow.filter(inst => inst.programs && inst.programs.length > 0);-->
+
+<!--        if (institutionsWithPrograms.length === 0) {-->
+<!--            grid.style.display = 'none';-->
+<!--            noResults.style.display = 'block';-->
+<!--            return;-->
+<!--        }-->
+
+<!--        grid.style.display = 'grid';-->
+<!--        noResults.style.display = 'none';-->
+<!--        grid.innerHTML = '';-->
+
+<!--        institutionsWithPrograms.forEach((institution, index) => {-->
+<!--            const card = document.createElement('div');-->
+<!--            card.className = 'university-card';-->
+
+<!--            const programsList = institution.programs.map(program => {-->
+<!--                return `<li class="program-item">-->
+<!--                    ${program.name}-->
+<!--                    <div class="program-details">${program.description}</div>-->
+<!--                    <div class="degree-type">${program.degree} • ${program.duration}</div>-->
+<!--                </li>`;-->
+<!--            }).join('');-->
+
+<!--            card.innerHTML = `-->
+<!--                <div class="university-title">${institution.name}</div>-->
+<!--                <div class="specialization-note">${institution.description}</div>-->
+<!--                <ul class="programs-list">-->
+<!--                    ${programsList}-->
+<!--                </ul>-->
+<!--            `;-->
+
+<!--            grid.appendChild(card);-->
+<!--        });-->
+<!--    }-->
+
+<!--    function updateStats() {-->
+<!--        const totalPrograms = institutions.reduce((sum, inst) => sum + (inst.programs ? inst.programs.length : 0), 0);-->
+<!--        document.getElementById('programCount').textContent = totalPrograms;-->
+<!--    }-->
+
+<!--    function searchPrograms() {-->
+<!--        const searchTerm = document.getElementById('searchInput').value.toLowerCase();-->
+
+<!--        if (!searchTerm) {-->
+<!--            renderInstitutions();-->
+<!--            return;-->
+<!--        }-->
+
+<!--        const filteredInstitutions = institutions.map(institution => {-->
+<!--            const filteredPrograms = institution.programs.filter(program =>-->
+<!--                program.name.toLowerCase().includes(searchTerm) ||-->
+<!--                program.description.toLowerCase().includes(searchTerm) ||-->
+<!--                program.degree.toLowerCase().includes(searchTerm) ||-->
+<!--                institution.name.toLowerCase().includes(searchTerm) ||-->
+<!--                institution.description.toLowerCase().includes(searchTerm)-->
+<!--            );-->
+
+<!--            return {-->
+<!--                ...institution,-->
+<!--                programs: filteredPrograms-->
+<!--            };-->
+<!--        }).filter(institution =>-->
+<!--            (institution.programs && institution.programs.length > 0)-->
+<!--        );-->
+
+<!--        renderInstitutions(filteredInstitutions);-->
+<!--    }-->
+
+<!--    function filterPrograms(category) {-->
+<!--        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));-->
+<!--        event.target.classList.add('active');-->
+
+<!--        if (category === 'all') {-->
+<!--            renderInstitutions();-->
+<!--            return;-->
+<!--        }-->
+
+<!--        const filteredInstitutions = institutions.map(institution => {-->
+<!--            let filteredPrograms = institution.programs.filter(program => {-->
+<!--                const programLower = program.name.toLowerCase();-->
+<!--                const descriptionLower = program.description.toLowerCase();-->
+
+<!--                switch(category) {-->
+<!--                    case 'marine':-->
+<!--                        return program.field === 'marine' || programLower.includes('marine') ||-->
+<!--                            programLower.includes('coastal') || programLower.includes('ocean');-->
+<!--                    case 'education':-->
+<!--                        return program.field === 'education' || programLower.includes('education') ||-->
+<!--                            programLower.includes('teaching') || programLower.includes('teacher') ||-->
+<!--                            descriptionLower.includes('pedagogy') || descriptionLower.includes('educational');-->
+<!--                    case 'crafts':-->
+<!--                        return program.field === 'crafts' || programLower.includes('craft') ||-->
+<!--                            programLower.includes('wood') || programLower.includes('weaving') ||-->
+<!--                            programLower.includes('traditional') || descriptionLower.includes('carving');-->
+<!--                    case 'cultural':-->
+<!--                        return program.field === 'cultural' || program.field === 'arts' ||-->
+<!--                            program.field === 'liberal' || programLower.includes('cultural') ||-->
+<!--                            programLower.includes('arts') || programLower.includes('fine') ||-->
+<!--                            programLower.includes('liberal') || descriptionLower.includes('cultural');-->
+<!--                    default:-->
+<!--                        return true;-->
+<!--                }-->
+<!--            });-->
+
+<!--            return {-->
+<!--                ...institution,-->
+<!--                programs: filteredPrograms-->
+<!--            };-->
+<!--        }).filter(institution =>-->
+<!--            (institution.programs && institution.programs.length > 0)-->
+<!--        );-->
+
+<!--        renderInstitutions(filteredInstitutions);-->
+<!--    }-->
+
+<!--    document.getElementById('searchInput').addEventListener('input', searchPrograms);-->
+
+<!--    // Mobile navigation toggle-->
+<!--    const hamburger = document.getElementById('hamburger');-->
+<!--    const navMenu = document.getElementById('navMenu');-->
+
+<!--    hamburger.addEventListener('click', function() {-->
+<!--        hamburger.classList.toggle('active');-->
+<!--        navMenu.classList.toggle('active');-->
+<!--    });-->
+
+<!--    // Close mobile menu when clicking on nav items-->
+<!--    document.querySelectorAll('.nav-item').forEach(item => {-->
+<!--        item.addEventListener('click', () => {-->
+<!--            hamburger.classList.remove('active');-->
+<!--            navMenu.classList.remove('active');-->
+<!--        });-->
+<!--    });-->
+
+<!--    // Close mobile menu when clicking outside-->
+<!--    document.addEventListener('click', function(event) {-->
+<!--        if (!hamburger.contains(event.target) && !navMenu.contains(event.target)) {-->
+<!--            hamburger.classList.remove('active');-->
+<!--            navMenu.classList.remove('active');-->
+<!--        }-->
+<!--    });-->
+
+<!--    document.addEventListener('DOMContentLoaded', function() {-->
+<!--        renderInstitutions();-->
+<!--        updateStats();-->
+<!--    });-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->

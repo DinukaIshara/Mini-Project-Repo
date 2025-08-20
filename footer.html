@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--dark-color), #0f172a);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #444;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1rem;
+            margin-top: 1rem;
+            border-top: 1px solid #444;
+        }
+
+        /* Section Styles */
+        .path-selection {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .path-selection h2 {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .sector-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .sector-card {
+            background: linear-gradient(135deg, #ffffff, #f8fafc);
+            border: 2px solid var(--light-color);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .sector-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .sector-card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light-color);
+        }
+
+        .institution-list {
+            list-style: none;
+        }
+
+        .institution-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .institution-list li:before {
+            content: "•";
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .institution-list a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .institution-list a:hover {
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h3 data-translate="site_title">Higher Learning Hub</h3>
+                <p data-translate="footer_description">Your guide to educational pathways after A/L exams. Helping students make informed decisions about their future.</p>
+                <div class="social-links" style="margin-top: 1rem;">
+                    <a href="#" class="social-icon">FB</a>
+                    <a href="https://www.youtube.com/@highereducation-f3g" class="social-icon">YT</a>
+                    <a href="#" class="social-icon">IN</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3 data-translate="quick_links">Quick Links</h3>
+                <ul>
+                    <li><a href="#home" data-translate="nav_home">Home</a></li>
+                    <li><a href="#pathselection" data-translate="nav_path_selection">Path Selection</a></li>
+                    <li><a href="#institutions" data-translate="nav_institutions">Institutions</a></li>
+                    <li><a href="#resources" data-translate="nav_resources">Resources</a></li>
+                    <li><a href="#youtube" data-translate="nav_youtube">YouTube Channel</a></li>
+                    <li><a href="#about" data-translate="nav_about">About Us</a></li>
+                    <li><a href="#contact" data-translate="nav_contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 data-translate="resources_title">Resources</h3>
+                <ul>
+                    <li><a href="#" data-translate="ugc">University Grants Commission</a></li>
+                    <li><a href="#" data-translate="naita_footer">NAITA</a></li>
+                    <li><a href="#" data-translate="vta">Vocational Training Authority</a></li>
+                    <li><a href="#" data-translate="open_uni">Open University</a></li>
+                    <li><a href="#" data-translate="ministry_education">Ministry of Education</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 data-translate="contact_us">Contact Us</h3>
+                <p data-translate="faculty_tech">Faculty of Technology</p>
+                <p data-translate="wayamba_uni">Wayamba University of Sri Lanka</p>
+                <p data-translate="location">Kuliyapitiya, Sri Lanka</p>
+                <p data-translate="email_label">Email: higherlearninghub@gmail.com</p>
+                <p data-translate="phone_label">Phone: +94 XXXXXXXXX</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p data-translate="copyright">&copy; 2025 Higher Learning Hub. A mini-project by students of Wayamba University of Sri Lanka.</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

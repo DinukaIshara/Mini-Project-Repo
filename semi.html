@@ -666,10 +666,11 @@
 <nav>
   <div class="container">
     <div class="nav-container">
-      <a onclick="location.href='index.html'" href="index.html" class="nav-item">Home</a>
-      <a onclick="location.href='pathselection.html'" href="pathselection.html" class="nav-item">Path Selection</a>
-      <a onclick="location.href='private.html'" href="private.html" class="nav-item">Institutions</a>
-      <a onclick="location.href='resource.html'" href="#resources" class="nav-item">Resources</a>
+      <a onclick="location.href='index.html'" href="index.html" class="nav-item" data-translate="nav_home">Home</a>
+      <a onclick="location.href='pathselection.html'" href="pathselection.html" class="nav-item" data-translate="nav_path_selection">Government</a>
+      <a onclick="location.href='private.html'" href="private.html" class="nav-item" data-translate="nav_institutions">Institutions</a>
+      <a onclick="location.href='semi.html'" href="semi.html" class="nav-item" data-translate="nav_semi_government">Semi-Government</a>
+      <a onclick="location.href='resources.html'" href="#resources" class="nav-item" data-translate="nav_resources">Resources</a>
     </div>
   </div>
 </nav>
@@ -701,6 +702,56 @@
     </div>
   </div>
 </section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-section">
+        <h3 data-translate="site_title">Higher Learning Hub</h3>
+        <p data-translate="footer_description">Your guide to educational pathways after A/L exams. Helping students make informed decisions about their future.</p>
+        <div class="social-links" style="margin-top: 1rem;">
+          <a href="#" class="social-icon">FB</a>
+          <a href="https://www.youtube.com/@highereducation-f3g" class="social-icon">YT</a>
+          <a href="#" class="social-icon">IN</a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3 data-translate="quick_links">Quick Links</h3>
+        <ul>
+          <li><a href="#home" data-translate="nav_home">Home</a></li>
+          <li><a href="#pathselection" data-translate="nav_path_selection">Path Selection</a></li>
+          <li><a href="#institutions" data-translate="nav_institutions">Institutions</a></li>
+          <li><a href="#resources" data-translate="nav_resources">Resources</a></li>
+          <li><a href="#youtube" data-translate="nav_youtube">YouTube Channel</a></li>
+          <li><a href="#about" data-translate="nav_about">About Us</a></li>
+          <li><a href="#contact" data-translate="nav_contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3 data-translate="resources_title">Resources</h3>
+        <ul>
+          <li><a href="#" data-translate="ugc">University Grants Commission</a></li>
+          <li><a href="#" data-translate="naita_footer">NAITA</a></li>
+          <li><a href="#" data-translate="vta">Vocational Training Authority</a></li>
+          <li><a href="#" data-translate="open_uni">Open University</a></li>
+          <li><a href="#" data-translate="ministry_education">Ministry of Education</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3 data-translate="contact_us">Contact Us</h3>
+        <p data-translate="faculty_tech">Faculty of Technology</p>
+        <p data-translate="wayamba_uni">Wayamba University of Sri Lanka</p>
+        <p data-translate="location">Kuliyapitiya, Sri Lanka</p>
+        <p data-translate="email_label">Email: higherlearninghub@gmail.com</p>
+        <p data-translate="phone_label">Phone: +94 XXXXXXXXX</p>
+      </div>
+    </div>
+    <div class="copyright">
+      <p data-translate="copyright">&copy; 2025 Higher Learning Hub. A mini-project by students of Wayamba University of Sri Lanka.</p>
+    </div>
+  </div>
+</footer>
 
 <!-- Simple JavaScript for Navigation -->
 <script>
